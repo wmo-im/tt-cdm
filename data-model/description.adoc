@@ -1,0 +1,261 @@
+.CDM observation_type
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key
+|``name``
+|required|Short name for observation type
+|``description``
+|required|Description of observation type
+|``link``
+|optional|Link to definition of observation type
+
+|===
+
+.CDM feature_type
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key
+|``name``
+|required|Short name for feature type
+|``description``
+|required|Description of feature type
+|``link``
+|optional|Link to definition of feature type
+
+|===
+
+.CDM users
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key
+|``name``
+|required|Name of user
+
+|===
+
+.CDM observed_property
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key
+|``short_name``
+|required|Short name representation of observed property, e.g. 'at'
+|``standard_name``
+|optional|CF standard name (if applicable), e.g. 'air_temperature'
+|``units``
+|required|Canonical units, e.g. 'Kelvin'
+|``description``
+|required|Description of observed property
+|``link``
+|optional|Link to definition / source of observed property
+
+|===
+
+.CDM observing_procedure
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key
+|``name``
+|required|Name of observing procedure
+|``description``
+|required|Description of observing procedure
+|``link``
+|optional|Link to further information
+
+|===
+
+.CDM record_status
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key
+|``name``
+|required|Short name for status
+|``description``
+|required|Description of the status
+
+|===
+
+.CDM hosts
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key
+|``name``
+|required|Preferred name of host
+|``description``
+|optional|Description of host
+|``link``
+|optional|URI to host, e.g. to OSCAR/Surface
+|``location``
+|optional|Location of station
+|``elevation``
+|optional|Elevation of station above mean sea level
+|``wigos_station_identifier``
+|optional|WIGOS station identifier
+|``facility_type``
+|optional|Type of observing facility, fixed land, mobile sea, etc
+|``date_established``
+|optional|Date host was first established
+|``wmo_region``
+|optional|WMO region in which the host is located
+|``territory``
+|optional|Territory the host is located in
+|``valid_from``
+|optional|Date from which the details for this record are valid
+|``valid_to``
+|optional|Date after which the details for this record are no longer valid
+|``version``
+|required|Version number of this record
+|``change_date``
+|required|Date this record was changed
+|``user``
+|required|Which user last modified this record
+|``status``
+|required|Whether this is the latest version or an archived version of the record
+|``comments``
+|required|Free text comments on this record, for example description of changes made etc
+
+|===
+
+.CDM observers
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key
+|``name``
+|required|Name of sensor
+|``description``
+|required|Description of sensor
+|``link``
+|optional|Link to further information
+|``location``
+|optional|Location of observer
+|``elevation``
+|optional|Elevation of observer above mean sea level
+
+|===
+
+.CDM collections
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key
+|``name``
+|required|Name of collection
+|``link``
+|optional|Link to further information on collection
+
+|===
+
+.CDM features
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key
+|``type``
+|required|enumerated feature type
+|``geometry``
+|required|
+|``elevation``
+|optional|Elevation of feature above mean sea level
+|``parent``
+|optional|Parent feature for this feature if nested
+|``name``
+|optional|Name of feature
+|``description``
+|optional|Description of feature
+|``link``
+|optional|Link to further information on feature
+
+|===
+
+.CDM source
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key
+|``name``
+|required|Name of source
+|``link``
+|optional|Link to further information on source
+
+|===
+
+.CDM observations
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key
+|``location``
+|required|Location of observation
+|``elevation``
+|optional|Elevation of observation above mean sea level
+|``observation_type``
+|optional|Type of observation
+|``phenomenon_start``
+|optional|Start time of the phenomenon being observed or observing period, if missing assumed instantaneous with time given by phenomenon_end
+|``phenomenon_end``
+|required|End time of the phenomenon being observed or observing period
+|``result_value``
+|required|The value of the result in float representation
+|``result_uom``
+|optional|Units used to represent the value being observed
+|``result_description``
+|optional|str representation of the result if applicable
+|``result_quality``
+|optional|JSON representation of the result quality, key / value pairs
+|``result_time``
+|optional|Time that the result became available
+|``valid_from``
+|optional|Time that the result starts to be valid
+|``valid_to``
+|optional|Time after which the result is no longer valid
+|``host``
+|optional|Host associated with making the observation, equivalent to OGC OMS 'host'
+|``observer``
+|optional|Observer associated with making the observation, equivalent to OGC OMS 'observer'
+|``observed_property``
+|required|The phenomenon, or thing, being observed
+|``observing_procedure``
+|optional|Procedure used to make the observation
+|``report_id``
+|optional|Parent report ID, used to link coincident observations together
+|``collection``
+|optional|Primary collection or dataset that this observation belongs to
+|``parameter``
+|optional|List of key/ value pairs in dict
+|``feature_of_interest``
+|optional|Feature that this observation is associated with
+|``version``
+|required|Version number of this record
+|``change_date``
+|required|Date this record was changed
+|``user``
+|required|Which user last modified this record
+|``status``
+|required|Whether this is the latest version or an archived version of the record
+|``comments``
+|required|Free text comments on this record, for example description of changes made etc
+|``source``
+|required|The source of this record
+
+|===
+
+
