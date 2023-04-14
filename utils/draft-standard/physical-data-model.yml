@@ -1,0 +1,1322 @@
+$schema: 'https://json-schema.org/draft/2020-12/schema'
+$id: 'https://raw.githubusercontent.com/opencdms/opencdms-data-layer/main/physical-data-model.yml'
+title: 'OpenCDMS schema for observations database'
+description: 'OpenCDMS schema for observations database'
+properties:
+  observation_type:
+    type: object
+    description: placeholder
+    properties:
+      id:
+        type: int
+        description: ID / primary key
+      name:
+        type: str
+        description: Short name for observation type
+      description:
+        type: str
+        description: Description of observation type
+      links:
+        type: dict
+        description: Link(s) to definition of observation type
+      _version:
+        type: int
+        description: Version number of this record
+      _change_date:
+        type: datetime
+        description: Date this record was changed
+      _user_id:
+        type: int
+        description: Which user/agent last modified this record
+      _status_id:
+        type: int
+        description: Whether this is the latest version or an archived version of the record
+      comments:
+        type: str
+        description: Free text comments on this record, for example description of changes made etc
+
+  facility_type:
+    type: object
+    description: WMDS facility type, type of observing facility
+    properties:
+      id:
+        type: int
+        description: ID / primary key
+      name:
+        type: str
+        description: Short name for feature type
+      description:
+        type: str
+        description: Description of feature type
+      links:
+        type: dict
+        description: Link(s) to definition of feature type
+      _version:
+        type: int
+        description: Version number of this record
+      _change_date:
+        type: datetime
+        description: Date this record was changed
+      _user_id:
+        type: int
+        description: Which user/agent last modified this record
+      _status_id:
+        type: int
+        description: Whether this is the latest version or an archived version of the record
+      comments:
+        type: str
+        description: Free text comments on this record, for example description of changes made etc
+
+  feature_type:
+    type: object
+    description: placeholder
+    properties:
+      id:
+        type: int
+        description: ID / primary key
+      name:
+        type: str
+        description: Short name for feature type
+      description:
+        type: str
+        description: Description of feature type
+      links:
+        type: dict
+        description: Link(s) to definition of feature type
+      _version:
+        type: int
+        description: Version number of this record
+      _change_date:
+        type: datetime
+        description: Date this record was changed
+      _user_id:
+        type: int
+        description: Which user/agent last modified this record
+      _status_id:
+        type: int
+        description: Whether this is the latest version or an archived version of the record
+      comments:
+        type: str
+        description: Free text comments on this record, for example description of changes made etc
+
+  wmo_region:
+    type: object
+    description: placeholder
+    properties:
+      id:
+        type: int
+        description: ID / primary key
+      name:
+        type: str
+        description: Short name for feature type
+      description:
+        type: str
+        description: Description of feature type
+      links:
+        type: dict
+        description: Link(s) to definition of feature type
+      _version:
+        type: int
+        description: Version number of this record
+      _change_date:
+        type: datetime
+        description: Date this record was changed
+      _user_id:
+        type: int
+        description: Which user/agent last modified this record
+      _status_id:
+        type: int
+        description: Whether this is the latest version or an archived version of the record
+      comments:
+        type: str
+        description: Free text comments on this record, for example description of changes made etc
+
+  territory:
+    type: object
+    description: placeholder
+    properties:
+      id:
+        type: int
+        description: ID / primary key
+      ISO3c:
+        type: str
+        description: ID / primary key
+      name:
+        type: str
+        description: Short name for feature type
+      description:
+        type: str
+        description: Description of feature type
+      wmo_region_id:
+        type: int
+        description: WMO region that represents the territory
+      links:
+        type: dict
+        description: Link(s) to definition of feature type
+      _version:
+        type: int
+        description: Version number of this record
+      _change_date:
+        type: datetime
+        description: Date this record was changed
+      _user_id:
+        type: int
+        description: Which user/agent last modified this record
+      _status_id:
+        type: int
+        description: Whether this is the latest version or an archived version of the record
+      comments:
+        type: str
+        description: Free text comments on this record, for example description of changes made etc
+
+  observed_property:
+    type: object
+    description: placeholder
+    properties:
+      id:
+        type: int
+        description: ID / primary key
+      short_name:
+        type: str
+        description: Short name representation of observed property, e.g. 'at'
+      standard_name:
+        type: str
+        description: CF standard name (if applicable), e.g. 'air_temperature'
+      units:
+        type: str
+        description: Canonical units, e.g. 'Kelvin'
+      description:
+        type: str
+        description: Description of observed property
+      links:
+        type: dict
+        description: Link(s) to definition / source of observed property
+      _version:
+        type: int
+        description: Version number of this record
+      _change_date:
+        type: datetime
+        description: Date this record was changed
+      _user_id:
+        type: int
+        description: Which user/agent last modified this record
+      _status_id:
+        type: int
+        description: Whether this is the latest version or an archived version of the record
+      comments:
+        type: str
+        description: Free text comments on this record, for example description of changes made etc
+
+  observing_procedure:
+    type: object
+    description: placeholder
+    properties:
+      id:
+        type: int
+        description: ID / primary key
+      name:
+        type: str
+        description: Name of observing procedure
+      description:
+        type: str
+        description: Description of observing procedure
+      links:
+        type: dict
+        description: Link(s) to further information
+      _version:
+        type: int
+        description: Version number of this record
+      _change_date:
+        type: datetime
+        description: Date this record was changed
+      _user_id:
+        type: int
+        description: Which user/agent last modified this record
+      _status_id:
+        type: int
+        description: Whether this is the latest version or an archived version of the record
+      comments:
+        type: str
+        description: Free text comments on this record, for example description of changes made etc
+
+  status:
+    type: object
+    description: placeholder
+    properties:
+      id:
+        type: int
+        description: ID / primary key
+      name:
+        type: str
+        description: Short name for status
+      description:
+        type: str
+        description: Description of the status
+      _version:
+        type: int
+        description: Version number of this record
+      _change_date:
+        type: datetime
+        description: Date this record was changed
+      _user_id:
+        type: int
+        description: Which user/agent last modified this record
+      _status_id:
+        type: int
+        description: Whether this is the latest version or an archived version of the record
+      comments:
+        type: str
+        description: Free text comments on this record, for example description of changes made etc
+
+  time_zone:
+    type: object
+    description: placeholder
+    properties:
+      id:
+        type: int
+        description: ID / primary key
+      abbreviation:
+        type: str
+        description: Abbreviation for time zone
+      name:
+        type: str
+        description: Name / description of timezone
+      offset:
+        type: float
+        description: Offset from UTC (hours)
+      _version:
+        type: int
+        description: Version number of this record
+      _change_date:
+        type: datetime
+        description: Date this record was changed
+      _user_id:
+        type: int
+        description: Which user/agent last modified this record
+      _status_id:
+        type: int
+        description: Whether this is the latest version or an archived version of the record
+      comments:
+        type: str
+        description: Free text comments on this record, for example description of changes made etc
+
+  source_type:
+    type: object
+    description: placeholder
+    properties:
+      id:
+        type: str
+        description: ID / primary key
+      name:
+        type: str
+        description: Name of source type
+      description:
+        type: str
+        description: Description of source type, e.g. file etc
+      scheme:
+        type: str
+        description: IANA scheme (if applicable)
+      links:
+        type: str
+        description: Links proviing further definition of source type
+      _version:
+        type: int
+        description: Version number of this record
+      _change_date:
+        type: datetime
+        description: Date this record was changed
+      _user_id:
+        type: int
+        description: Which user/agent last modified this record
+      _status_id:
+        type: int
+        description: Whether this is the latest version or an archived version of the record
+      comments:
+        type: str
+        description: Free text comments on this record, for example description of changes made etc
+
+  user:
+    type: object
+    description: placeholder
+    properties:
+      id:
+        type: str
+        description: ID / primary key
+      name:
+        type: str
+        description: Name of user/agent
+      _version:
+        type: int
+        description: Version number of this record
+      _change_date:
+        type: datetime
+        description: Date this record was changed
+      _user_id:
+        type: int
+        description: Which user/agent last modified this record
+      _status_id:
+        type: int
+        description: Whether this is the latest version or an archived version of the record
+      comments:
+        type: str
+        description: Free text comments on this record, for example description of changes made etc
+
+  media:
+    type: object
+    description: store for digital media, e.g. photos, reports, videos, etc
+    properties:
+      id:
+        type: str
+        description: 
+      media_type_id:
+        type: int
+        description: 
+      description:
+        type: str
+        description: 
+      created:
+        type: datetime
+        description: 
+      creator:
+        type: str
+        description: 
+      rights:
+        type: int
+        description: 
+      source:
+        type: str
+        description: 
+      data:
+        type: blob
+        description: 
+
+  media_type:
+    type: object
+    description: placeholder
+    properties:
+      id:
+        type: int
+        description: 
+      name:
+        type: int
+        description: 
+      description:
+        type: str
+        description: Type of media uploaded
+
+  host:
+    type: object
+    description: wmdr.observing_facility
+    properties:
+      allOf:
+      - $ref: 'https://raw.githubusercontent.com/opengeospatial/ogcapi-features/master/core/openapi/schemas/featureGeoJSON.yaml'
+      type:
+        type: string
+        enum: ["Feature"]
+      geometry:
+        type: object
+        properties:
+          type:
+            type: string
+            enum: [Point, Polygon]
+          coordinates:
+            type: array
+            minItems: 2
+            maxItems: 2
+            items:
+              type: number
+      properties:
+        type: object
+        properties:
+          id:
+            type: string
+            description: ID / primary key
+          name:
+            type: string
+            description: Preferred name of host
+          description:
+            type: string
+            description: Description of host
+          links:
+            type: dict
+            description: URI to host, e.g. to OSCAR/Surface
+          elevation:
+            type: number
+            description: Elevation of station above mean sea level in meters
+          wigos_station_identifier:
+            type: string
+            description: WIGOS station identifier
+          facility_type_id:
+            type: string
+            description: Type of observing facility, fixed land, mobile sea, etc
+          date_established:
+            type: string
+            format: date-time
+            description: Date host was first established
+          date_closed:
+            type: string
+            format: date-time
+            description: Date host was first established
+          wmo_region_id:
+            type: integer
+            description: WMO region in which the host is located
+          territory_id:
+            type: integer
+            description: Territory the host is located in
+          time_zone_id:
+            type: integer
+            description: Time zone the host is located in
+          valid_from:
+            type: string
+            format: date-time
+            description: Date from which the details for this record are valid
+          valid_to:
+            type: string
+            format: date-time
+            description: Date after which the details for this record are no longer valid
+          _version:
+            type: integer
+            description: Version number of this record
+          _change_date:
+            type: string
+            format: date-time
+            description: Date this record was changed
+          _user_id:
+            type: integer
+            description: Which user/agent last modified this record
+          _status_id:
+            type: integer
+            description: Whether this is the latest version or an archived version of the record
+          comments:
+            type: string
+            description: Free text comments on this record, for example description of changes made etc
+
+  host_environment:
+    type: object
+    description: Description of the environment at the specified host
+    properties:
+      id:
+        type: str
+        description: Primary key for this record
+      host_id:
+        type: str
+        description: Host associated with this record
+      climate_zone_id:
+        type: int
+        description: Climate zone that the associated host is located in
+      surface_cover_id:
+        type: int
+        description: Type of sueface cover
+      surface_roughness_id:
+        type: int
+        description: Typical surface roughness of the site surrounding the host
+      topography_id:
+        type: int
+        description: Topography of the environment surrounding the host
+      season_id:
+        type: int
+        description: Season that is applicable to this record (e.g. all, winter, spring, summer, autumn)
+      valid_from:
+        type: datetime
+        description: Date the this record is valid from
+      valid_to:
+        type: datetime
+        description: date that this record is valid to
+      _version:
+        type: int
+        description: Version number of this record
+      _change_date:
+        type: datetime
+        description: Date this record was changed
+      _user_id:
+        type: int
+        description: Which user/agent last modified this record
+      _status_id:
+        type: int
+        description: Whether this is the latest version or an archived version of the record
+      comments:
+        type: str
+        description: Free text comments on this record, for example description of changes made etc
+
+  climate_zone:
+    type: object
+    description: placeholder
+    properties:
+      id:
+        type: int
+        description: 
+      name:
+        type: str
+        description: 
+      description:
+        type: str
+        description: 
+
+  surface_cover:
+    type: object
+    description: placeholder
+    properties:
+      id:
+        type: int
+        description: 
+      name:
+        type: str
+        description: 
+      description:
+        type: str
+        description: 
+
+  surface_roughness:
+    type: object
+    description: placeholder
+    properties:
+      id:
+        type: int
+        description: 
+      name:
+        type: str
+        description: 
+      description:
+        type: str
+        description: 
+
+  topography:
+    type: object
+    description: placeholder
+    properties:
+      id:
+        type: int
+        description: 
+      name:
+        type: str
+        description: 
+      description:
+        type: str
+        description: 
+
+  season:
+    type: object
+    description: placeholder
+    properties:
+      id:
+        type: int
+        description: 
+      name:
+        type: str
+        description: 
+      description:
+        type: str
+        description: 
+
+  host_affiliation:
+    type: object
+    description: Which programs this host is affiliated with
+    properties:
+      id:
+        type: str
+        description: Primary key for this record
+      host_id:
+        type: str
+        description: Host described by this record
+      programme_id:
+        type: int
+        description: Observing programme that this host is affiliated with
+      valid_from:
+        type: datetime
+        description: Date from which the details for this record are valid
+      valid_to:
+        type: datetime
+        description: Date after which the details for this record are no longer valid
+      _version:
+        type: int
+        description: Version number of this record
+      _change_date:
+        type: datetime
+        description: Date this record was changed
+      _user_id:
+        type: int
+        description: Which user/agent last modified this record
+      _status_id:
+        type: int
+        description: Whether this is the latest version or an archived version of the record
+      comments:
+        type: str
+        description: Free text comments on this record, for example description of changes made etc
+
+  programme:
+    type: object
+    description: placeholder
+    properties:
+      id:
+        type: int
+        description: 
+      name:
+        type: str
+        description: 
+      description:
+        type: str
+        description: 
+
+  host_alias:
+    type: object
+    description: table to track known aliases for hosts
+    properties:
+      id:
+        type: str
+        description: Primary key for this record
+      host_id:
+        type: str
+        description: Primary ID by which the host is known
+      alternative_id:
+        type: str
+        description: Alternative ID by which the host is known
+      alternative_name:
+        type: str
+        description: Alternative name by which the host is known
+      valid_from:
+        type: datetime
+        description: Date the alternative id/name was used from
+      valid_to:
+        type: datetime
+        description: Date the alternative id/name was used to
+      _version:
+        type: int
+        description: Version number of this record
+      _change_date:
+        type: datetime
+        description: Date this record was changed
+      _user_id:
+        type: int
+        description: Which user/agent last modified this record
+      _status_id:
+        type: int
+        description: Whether this is the latest version or an archived version of the record
+      comments:
+        type: str
+        description: Free text comments on this record, for example description of changes made etc
+
+  host_responsible_party:
+    type: object
+    description: placeholder
+    properties:
+      id:
+        type: int
+        description: 
+      user_id:
+        type: int
+        description: 
+      description:
+        type: str
+        description: Description of role with this association. Note: this will be changed to a code table
+
+  host_media:
+    type: object
+    description: Link table between hosts and media
+    properties:
+      id:
+        type: str
+        description: Primary key for this record
+      host_id:
+        type: str
+        description: 
+      media_id:
+        type: int
+        description: 
+      valid_from:
+        type: datetime
+        description: 
+      valid_to:
+        type: datetime
+        description: 
+      _version:
+        type: int
+        description: Version number of this record
+      _change_date:
+        type: datetime
+        description: Date this record was changed
+      _user_id:
+        type: int
+        description: Which user/agent last modified this record
+      _status_id:
+        type: int
+        description: Whether this is the latest version or an archived version of the record
+      comments:
+        type: str
+        description: Free text comments on this record, for example description of changes made etc
+
+  observer:
+    type: object
+    description: wmdr.equipment
+    properties:
+      allOf:
+      - $ref: 'https://raw.githubusercontent.com/opengeospatial/ogcapi-features/master/core/openapi/schemas/featureGeoJSON.yaml'
+      type:
+        type: string
+        enum: ["Feature"]
+      geometry:
+        type: object
+        properties:
+          type:
+            type: string
+            enum: [Point, Polygon]
+          coordinates:
+            type: array
+            minItems: 2
+            maxItems: 2
+            items:
+              type: number
+      properties:
+        type: object
+        properties:
+          id:
+            type: string
+            description: ID / primary key
+          name:
+            type: string
+            description: Name of sensor
+          description:
+            type: string
+            description: Description of sensor
+          links:
+            type: dict
+            description: Link(s) to further information
+          elevation:
+            type: number
+            description: Elevation of observer above mean sea level
+          manufacturer:
+            type: string
+            description: Make, or manufacturer, of sensor
+          model:
+            type: string
+            description: Model of sensor
+          serial_number:
+            type: string
+            description: Serial number of sensor
+          firmware_version:
+            type: string
+            description: Firmware version of software installed in sensor
+          control_schedule_id:
+            type: integer
+            description: Link to information on calibration schedule and details
+          _version:
+            type: integer
+            description: Version number of this record
+          _change_date:
+            type: string
+            format: date-time
+            description: Date this record was changed
+          _user_id:
+            type: integer
+            description: Which user/agent last modified this record
+          _status_id:
+            type: integer
+            description: Whether this is the latest version or an archived version of the record
+          comments:
+            type: string
+            description: Free text comments on this record, for example description of changes made etc
+
+  control_schedule:
+    type: object
+    description: placeholder
+    properties:
+      id:
+        type: int
+        description: 
+      name:
+        type: int
+        description: 
+      description:
+        type: str
+        description: Description of control schedule
+
+  observer_characteristics:
+    type: object
+    description: Table to record sensor specifications
+    properties:
+      id:
+        type: str
+        description: Primary key for this record
+      observer_id:
+        type: str
+        description: The observer to which this record applies
+      observed_property_id:
+        type: int
+        description: The observed parameter to which this record applies
+      observing_method_id:
+        type: str
+        description: Primary method/principles by which the sensor makes measurements
+      measurement_units:
+        type: int
+        description: The units used in this record
+      drift_per_unit_time:
+        type: float
+        description: Sensor drift per unit time, units specified by measurement units, unit time by unit time
+      unit_time:
+        type: int
+        description: Unit time for drift per unit time (seconds)
+      valid_min:
+        type: float
+        description: Minimum observable value by sensor, in units specificed by measurement units
+      valid_max:
+        type: float
+        description: Maximum observable value by sensor, in units specificed by measurement units
+      measurement_uncertainty:
+        type: float
+        description: Measurement uncertainty for measurements from this sensor, 2 sigma. Units as per measuremenet units
+      measurement_accuracy:
+        type: float
+        description: Measurement accuracy (trueness) for measurements from this sensor, 2 sigma. Units as per measuremenet units
+      measurement_repeatability:
+        type: float
+        description: Measurement repeatability (precision) for measurements from this sensor, 2 sigma. Units as per measuremenet units
+      measurement_resolution:
+        type: float
+        description: Minimum change detectable for measurements from this sensor. Units as per measurement units
+      _version:
+        type: int
+        description: Version number of this record
+      _change_date:
+        type: datetime
+        description: Date this record was changed
+      _user_id:
+        type: int
+        description: Which user/agent last modified this record
+      _status_id:
+        type: int
+        description: Whether this is the latest version or an archived version of the record
+      comments:
+        type: str
+        description: Free text comments on this record, for example description of changes made etc
+
+  observing_method:
+    type: object
+    description: placeholder
+    properties:
+      id:
+        type: int
+        description: 
+      name:
+        type: int
+        description: 
+      description:
+        type: str
+        description: Description of observing method
+
+  observer_responsible_party:
+    type: object
+    description: placeholder
+    properties:
+      id:
+        type: int
+        description: 
+      user_id:
+        type: int
+        description: 
+      description:
+        type: str
+        description: Description of role with this association. Note: this will be changed to a code table
+
+  observer_media:
+    type: object
+    description: Link table between hosts and media
+    properties:
+      id:
+        type: str
+        description: Primary key for this record
+      observer_id:
+        type: str
+        description: 
+      media_id:
+        type: int
+        description: 
+      valid_from:
+        type: datetime
+        description: 
+      valid_to:
+        type: datetime
+        description: 
+      _version:
+        type: int
+        description: Version number of this record
+      _change_date:
+        type: datetime
+        description: Date this record was changed
+      _user_id:
+        type: int
+        description: Which user/agent last modified this record
+      _status_id:
+        type: int
+        description: Whether this is the latest version or an archived version of the record
+      comments:
+        type: str
+        description: Free text comments on this record, for example description of changes made etc
+
+  collection:
+    type: object
+    description: placeholder
+    properties:
+      id:
+        type: str
+        description: ID / primary key
+      name:
+        type: str
+        description: Name of collection
+      links:
+        type: dict
+        description: Link(s) to further information on collection
+      _version:
+        type: int
+        description: Version number of this record
+      _change_date:
+        type: datetime
+        description: Date this record was changed
+      _user_id:
+        type: int
+        description: Which user/agent last modified this record
+      _status_id:
+        type: int
+        description: Whether this is the latest version or an archived version of the record
+      comments:
+        type: str
+        description: Free text comments on this record, for example description of changes made etc
+
+  feature:
+    type: object
+    description: table to contain definition of different geographic features
+    properties:
+      allOf:
+      - $ref: 'https://raw.githubusercontent.com/opengeospatial/ogcapi-features/master/core/openapi/schemas/featureGeoJSON.yaml'
+      type:
+        type: string
+        enum: ["Feature"]
+      geometry:
+        type: object
+        properties:
+          type:
+            type: string
+            enum: [Point, Polygon]
+          coordinates:
+            type: array
+            minItems: 2
+            maxItems: 2
+            items:
+              type: number
+      properties:
+        type: object
+        properties:
+          id:
+            type: string
+            description: ID / primary key
+          name:
+            type: string
+            description: Name of feature
+          description:
+            type: string
+            description: Description of feature
+          links:
+            type: dict
+            description: Link(s) to further information on feature
+          feature_type_id:
+            type: integer
+            description: enumerated feature type
+          elevation:
+            type: number
+            description: Meam elevation of feature above mean sea level
+          parent_id:
+            type: string
+            description: Parent feature for this feature if nested
+          properties:
+            type: dict
+            description: Array of named values consistent with that defined for the feature type
+          _version:
+            type: integer
+            description: Version number of this record
+          _change_date:
+            type: string
+            format: date-time
+            description: Date this record was changed
+          _user_id:
+            type: integer
+            description: Which user/agent last modified this record
+          _status_id:
+            type: integer
+            description: Whether this is the latest version or an archived version of the record
+          comments:
+            type: string
+            description: Free text comments on this record, for example description of changes made etc
+
+  source:
+    type: object
+    description: placeholder
+    properties:
+      id:
+        type: str
+        description: ID / primary key
+      name:
+        type: str
+        description: Name of source
+      description:
+        type: str
+        description: Description of source type, e.g. file etc
+      source_type_id:
+        type: int
+        description: The type of source
+      links:
+        type: dict
+        description: Link(s) to further information on source
+      processor:
+        type: str
+        description: Name of processor used to ingest the data
+      _version:
+        type: int
+        description: Version number of this record
+      _change_date:
+        type: datetime
+        description: Date this record was changed
+      _user_id:
+        type: int
+        description: Which user/agent last modified this record
+      _status_id:
+        type: int
+        description: Whether this is the latest version or an archived version of the record
+      comments:
+        type: str
+        description: Free text comments on this record, for example description of changes made etc
+
+  observation:
+    type: object
+    description: table to store observations
+    properties:
+      allOf:
+      - $ref: 'https://raw.githubusercontent.com/opengeospatial/ogcapi-features/master/core/openapi/schemas/featureGeoJSON.yaml'
+      type:
+        type: string
+        enum: ["Feature"]
+      geometry:
+        type: object
+        properties:
+          type:
+            type: string
+            enum: [Point, Polygon]
+          coordinates:
+            type: array
+            minItems: 2
+            maxItems: 2
+            items:
+              type: number
+      properties:
+        type: object
+        properties:
+          id:
+            type: string
+            description: ID / primary key
+          elevation:
+            type: number
+            description: Elevation of observation above mean sea level (in meters)
+          observation_type_id:
+            type: integer
+            description: Type of observation
+          phenomenon_start:
+            type: string
+            format: date-time
+            description: Start time of the phenomenon being observed or observing period, if missing assumed instantaneous with time given by phenomenon_end
+          phenomenon_end:
+            type: string
+            format: date-time
+            description: End time of the phenomenon being observed or observing period
+          result_value:
+            type: number
+            description: The value of the result in float representation
+          result_uom:
+            type: string
+            description: Units used to represent the value being observed
+          result_description:
+            type: string
+            description: str representation of the result if applicable
+          result_quality:
+            type: dict
+            description: JSON representation of the result quality, key / value pairs
+          result_time:
+            type: string
+            format: date-time
+            description: Time that the result became available
+          valid_from:
+            type: string
+            format: date-time
+            description: Time that the result starts to be valid
+          valid_to:
+            type: string
+            format: date-time
+            description: Time after which the result is no longer valid
+          host_id:
+            type: string
+            description: Host associated with making the observation, equivalent to OGC OMS 'host'
+          observer_id:
+            type: string
+            description: Observer associated with making the observation, equivalent to OGC OMS 'observer'
+          observed_property_id:
+            type: integer
+            description: The phenomenon, or thing, being observed
+          observing_procedure_id:
+            type: integer
+            description: Procedure used to make the observation
+          collection_id:
+            type: string
+            description: Primary collection or dataset that this observation belongs to. Note: this is different to the OGC OMS collection concept.
+          parameter:
+            type: dict
+            description: List of key/ value pairs in dict
+          feature_id:
+            type: string
+            description: Feature of interest that this observation is associated with
+          _version:
+            type: integer
+            description: Version number of this record
+          _change_date:
+            type: string
+            format: date-time
+            description: Date this record was changed
+          _user_id:
+            type: integer
+            description: Which user/agent last modified this record
+          _status_id:
+            type: integer
+            description: Whether this is the latest version or an archived version of the record
+          comments:
+            type: string
+            description: Free text comments on this record, for example description of changes made etc
+          _source_id:
+            type: integer
+            description: The source of this record
+          _source_identifier:
+            type: integer
+            description: The original identifier for the record from the data source
+
+  deployment:
+    type: object
+    description: Table to track deployments of an observer to a host
+    properties:
+      id:
+        type: str
+        description: Unique ID / primary key for deployment
+      host_id:
+        type: str
+        description: 
+      observer_id:
+        type: str
+        description: 
+      valid_from:
+        type: datetime
+        description: 
+      valid_to:
+        type: datetime
+        description: 
+      installation_height:
+        type: float
+        description: Installation height above reference surface (in meters)
+      reference_surface:
+        type: int
+        description: 
+      exposure:
+        type: int
+        description: 
+      configuration:
+        type: str
+        description: Textual description of sensor installation and configuration
+      maintenance_schedule_id:
+        type: int
+        description: 
+      _version:
+        type: int
+        description: Version number of this record
+      _change_date:
+        type: datetime
+        description: Date this record was changed
+      _user_id:
+        type: int
+        description: Which user/agent last modified this record
+      _status_id:
+        type: int
+        description: Whether this is the latest version or an archived version of the record
+      comments:
+        type: str
+        description: Free text comments on this record, for example description of changes made etc
+
+  maintenance_schedule:
+    type: object
+    description: placeholder
+    properties:
+      id:
+        type: int
+        description: 
+      name:
+        type: int
+        description: 
+      description:
+        type: str
+        description: Description of maintenance schedule
+
+  exposure:
+    type: object
+    description: placeholder
+    properties:
+      id:
+        type: int
+        description: 
+      name:
+        type: int
+        description: 
+      description:
+        type: str
+        description: Description of sensor exposure according to WMO-No. 8
+
+  reference_surface:
+    type: object
+    description: placeholder
+    properties:
+      id:
+        type: int
+        description: 
+      name:
+        type: int
+        description: 
+      description:
+        type: str
+        description: Description of reference surface
+
+  deployment_media:
+    type: object
+    description: Link table between hosts and media
+    properties:
+      id:
+        type: str
+        description: Primary key for this record
+      deployment_id:
+        type: str
+        description: 
+      media_id:
+        type: int
+        description: 
+      valid_from:
+        type: datetime
+        description: 
+      valid_to:
+        type: datetime
+        description: 
+      _version:
+        type: int
+        description: Version number of this record
+      _change_date:
+        type: datetime
+        description: Date this record was changed
+      _user_id:
+        type: int
+        description: Which user/agent last modified this record
+      _status_id:
+        type: int
+        description: Whether this is the latest version or an archived version of the record
+      comments:
+        type: str
+        description: Free text comments on this record, for example description of changes made etc
+
+
