@@ -1,0 +1,19 @@
+<template>
+  <div>
+    <{{table.name|snake_to_pascal}}/>
+  </div>
+</template>
+
+<script>
+import {{table.name|snake_to_pascal}} from '@/web-components/forms/{{table.name|snake_to_kebab}}.vue';
+
+export default {
+  name: '{{table.name|snake_to_camel}}Form',
+  components: {
+    {{table.name|snake_to_pascal}}
+  },
+};
+</script>
+
+<style>
+</style>

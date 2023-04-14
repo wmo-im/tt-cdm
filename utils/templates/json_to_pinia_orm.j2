@@ -1,0 +1,39 @@
+{% set types = types.pinia %}
+import { Model } from 'pinia-orm'
+import LinksType from '@/models/LinksType';
+{% for column in table.columns %}
+{% if column.foreign_key %}
+{% set model = column.foreign_key.split(".")[1] | snake_to_pascal%}
+{% if model != (table.name|snake_to_pascal) %}
+import {{model}} from '@/models/{{model}}';
+{% endif %}
+{% endif %}
+{% endfor %}
+
+export default class {{table.name | snake_to_pascal }} extends Model {
+  static entity = '{{table.name}}';
+  static fields() {
+    return {
+{% for column in table.columns %}
+{%if types[column.kind]=="string"%}
+{%    set default="''"%}
+{%elif types[column.kind]=="attr"%}
+{%    if column.name=="links"%}
+{%        set default="new LinksType([])"%}
+{%    else %}
+{%        set default="null"%}
+{%    endif%}
+{%else%}
+{%    set default="null"%}
+{%endif%}
+      {{column.name}}: this.{{types[column.kind]}}({{default}}){% if not loop.last%},{%endif%}
+
+{%if column.foreign_key %}
+      {{column.name|replace("_id","")}}: this.belongsTo({{column.foreign_key.split(".")[1]|snake_to_pascal}},'{{column.name}}'){% if not loop.last%},{%endif%}
+
+{% endif %}
+{% endfor %}
+    };
+  };
+};
+

@@ -1,0 +1,29 @@
+@startuml
+{% for schema in schemas %}
+digraph {{schema.name}} {
+node [color=white]
+rankdir=LR;
+fontname="Arial";
+{%   for table in schema.tables %}
+    {{table.name}} [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5" COLOR="BLACK">
+        <TR><TD COLSPAN="2" BGCOLOR="lightgray">{{table.name}}</TD><TD COLSPAN="3" BGCOLOR="lightgray">{{table.comment}}</TD></TR>
+        <TR><TD COLSPAN="1" BGCOLOR="lightgray">Column</TD><TD COLSPAN="1" BGCOLOR="lightgray">Type</TD><TD COLSPAN="1" BGCOLOR="lightgray">Nullable</TD><TD COLSPAN="1" BGCOLOR="lightgray">Default</TD><TD COLSPAN="1" BGCOLOR="lightgray">Comments</TD></TR>
+{%     for column in table.columns %}
+{%if column.nullable%}{%set nullable=""%}{%else%}{%set nullable="NOT NULL"%}{%endif%}
+{%if column.default%}{%set default=column.default%}{%else%}{%set default=""%}{%endif%}
+        <TR><TD PORT="{{column.name}}L">{{column.name}}</TD><TD>{{column.kind}}</TD><TD>{{nullable}}</TD><TD>{{default}}</TD><TD PORT="{{column.name}}R">{{column.comment}}</TD></TR>
+{%     endfor %}
+        </TABLE>>]
+{%   endfor %}
+{%   for table in schema.tables %}
+{%     for column in table.columns %}
+{%if column.foreign_key%}
+{%set source = table.name%}
+{%set target = column.foreign_key.split(".")[1]%}
+{{source}}:{{column.name}}R -> {{target}}:idL
+{%endif%}
+{%     endfor %}
+{%   endfor %}
+}
+{% endfor %}
+@enduml

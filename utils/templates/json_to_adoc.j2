@@ -1,0 +1,16 @@
+{% for schema in schemas %}
+{%    for table in schema.tables %}
+.CDM {{table.name}}: {{table.comment}}
+|===
+|Property|Requirement|Description
+
+{%        for column in table.columns %}
+|``{{column.name}}``
+|{%if column.nullable%}optional{%else%}required{%endif%}
+|{{column.comment}}
+{%        endfor %}
+
+|===
+
+{%    endfor %}
+{% endfor %}

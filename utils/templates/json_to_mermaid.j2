@@ -1,0 +1,20 @@
+erDiagram
+{% for schema in schemas %}
+{%    for table in schema.tables %}
+    {{table.name|upper()}}{
+{%        for column in table.columns %}
+{%if not column.foreign_key%}
+        {{column.kind}} {{column.name}} "{{column.comment}}"
+{%endif%}
+{%        endfor %}
+    }
+{%    endfor %}
+{%    for table in schema.tables %}
+{%        for column in table.columns %}
+{% if column.foreign_key %}
+{% if column.nullable %}{%set card="o|"%}{% else %}{%set card="||"%}{% endif %}
+    {{table.name | upper()}} }o--{{card}}{{column.foreign_key.split(".")[1] | upper() }}: "{{column.fk_relation}}"
+{% endif %}
+{%        endfor %}
+{%    endfor %}
+{% endfor %}

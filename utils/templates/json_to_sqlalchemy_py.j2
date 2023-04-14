@@ -1,0 +1,103 @@
+# =============================================================================
+# MIT License
+#
+# Copyright (c) 2023, OpenCDMS
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+# =============================================================================
+from geoalchemy2 import Geography
+from sqlalchemy import (
+    Column,
+    DateTime,
+    ForeignKey,
+    Integer,
+    MetaData,
+    Numeric,
+    String,
+    Table
+)
+from sqlalchemy.dialects.postgresql import JSONB
+from sqlalchemy.orm import registry, relationship
+
+from opencdms.models import cdm
+
+
+mapper_registry = registry()
+
+
+{% for schema in schemas %}
+{%   for table in schema.tables %}
+{%       if table.name[-1] == "s" %}
+{%           set class = table.name %}
+{%       else %}
+{%           set class = table.name %}
+{%       endif %}
+{%       set ns = namespace(fk_flag = false)%}
+{{table.name}} = Table(
+    "{{table.name}}",
+    mapper_registry.metadata,
+{%       for column in table.columns %}
+{%           if column.foreign_key %}{%set suffix="_id"%}{%else%}{%set suffix=""%}{%endif%}
+{%           if column.foreign_key %}
+{%               set ns.fk_flag = true %}
+{%           endif %}
+{%           set kind = column.kind %}
+{%           if column.kind == "str" %}{% set kind = "String"%}{%endif%}
+{%           if column.kind == "float" %}{% set kind = "Numeric"%}{%endif%}
+{%           if column.kind == "int" %}{% set kind = "Integer"%}{%endif%}
+{%           if column.kind == "datetime" %}{% set kind = "DateTime(timezone=True)"%}{%endif%}
+{%           if column.kind == "dict" %}{% set kind = "JSONB"%}{%endif%}
+    Column("{{column.name}}{{suffix}}",{%if column.foreign_key%}ForeignKey("{{column.foreign_key}}"){%else%} {{kind}}{%endif%}, comment="{{column.comment}}"{%if column.primary_key%}, primary_key={{column.primary_key}}{%endif%}, index={{column.index}}),
+{%       endfor %}
+    schema="{{schema.name}}"
+)
+
+
+{%  endfor %}
+def start_mappers():
+{%   for table in schema.tables %}
+{%       if table.name[-1] == "s" %}
+{%           set class = table.name %}
+{%       else %}
+{%           set class = table.name %}
+{%       endif %}
+{%       set ns = namespace(fk_flag = false)%}
+{%       for column in table.columns %}
+{%           if column.foreign_key %}{%set suffix="_id"%}{%else%}{%set suffix=""%}{%endif%}
+{%           if column.foreign_key %}
+{%               set ns.fk_flag = false %}
+{%           endif %}
+{%       endfor %}
+{%       if ns.fk_flag %}
+    mapper_registry.map_imperatively(
+        cdm.{{class.split("_") | map("title") | join("") }},
+        {{table.name}},
+        properties = {
+{%           for column in table.columns %}
+{%               if column.foreign_key %}
+{%                   set tablename = column.foreign_key.split(".")[1] %}
+            "{{tablename}}_": relationship("{{tablename.split('_') | map('title') | join('') }}",back_populates="{{tablename}}"),
+{%               endif %}
+{%           endfor %}
+        })
+{%     else %}
+    mapper_registry.map_imperatively(cdm.{{class.split("_") | map("title") | join("") }}, {{table.name}})
+{%     endif %}
+{%  endfor %}
+{% endfor %}

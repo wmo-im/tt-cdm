@@ -1,0 +1,98 @@
+$schema: 'https://json-schema.org/draft/2020-12/schema'
+$id: 'https://raw.githubusercontent.com/opencdms/opencdms-data-layer/main/physical-data-model.yml'
+title: 'OpenCDMS schema for observations database'
+description: 'OpenCDMS schema for observations database'
+properties:
+{%set ns = namespace(geom=false)%}
+{% set geom = false %}
+{% for schema in schemas %}
+{%   for table in schema.tables %}
+  {{table.name}}:
+    type: object
+    description: {{table.comment}}
+{%      set ns.geom = false %}
+{%      for column in table.columns %}
+{%        if column.kind=='Geography'%}
+{%          set ns.geom = true %}
+{%        endif%}
+{%      endfor %}
+{%if ns.geom%}
+    properties:
+      allOf:
+      - $ref: 'https://raw.githubusercontent.com/opengeospatial/ogcapi-features/master/core/openapi/schemas/featureGeoJSON.yaml'
+      type:
+        type: string
+        enum: ["Feature"]
+      geometry:
+        type: object
+        properties:
+          type:
+            type: string
+            enum: [Point, Polygon]
+          coordinates:
+            type: array
+            minItems: 2
+            maxItems: 2
+            items:
+              type: number
+      properties:
+        type: object
+        properties:
+{%set tb = namespace(allOf = []) %}
+{%        for column in table.columns %}
+          {% if column.kind != 'Geography' %}
+          {{column.name}}:
+            {%if column.kind=='datetime'%}
+            type: string
+            format: date-time
+            {%elif column.kind=='Geography'%}
+            {%elif column.kind=='Numeric'%}
+            type: number
+            {%elif column.kind=='JSONB'%}
+            type: object
+
+            {%elif column.kind=='str'%}
+            type: string
+            {%elif column.kind=='int'%}
+            type: integer
+            {%elif column.kind=='float'%}
+            type: number
+            {%else%}
+            type: {{column.kind|lower()}}
+            {%endif%}
+            description: {{column.comment}}
+          {%endif%}
+{%        endfor %}
+
+{%else%}
+    properties:
+{%      for column in table.columns %}
+      {{column.name}}:
+        {%if column.kind=='DateTime'%}
+        type: string
+        format: date-time
+        {%elif column.kind=='Geography'%}
+        type: object
+        properties:
+          type:
+            type: string
+            enum: [Point, Polygon]
+          coordinates:
+            type: array
+            minItems: 2
+            maxItems: 2
+            items:
+              type: number
+        {%elif column.kind=='Numeric'%}
+        type: number
+        {%elif column.kind=='JSONB'%}
+        type: object
+        {%else%}
+        type: {{column.kind|lower()}}
+        {%endif%}
+        description: {{column.comment}}
+{%      endfor %}
+{{space}}
+{%endif%}
+{%   endfor %}
+{% endfor %}
