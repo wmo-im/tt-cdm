@@ -1,0 +1,28 @@
+== Scope
+This document defines the content, structure and encoding of individual observations for use in climate applications and
+monitoring in the context data exchange and in the context of managing the observations within a Climate Data
+Management System (CDMS). Data exchange is intended to be via the WMO Information System and via the Web.
+The data under consideration include observations from stations / platforms contributing to the WMO Integrated
+Global Observing Systems (WIGOS) as well as data from cosponsored programs, third party platforms and rescued data
+keyed from paper based sources.
+
+[NOTE]
+====
+Those stations / platforms from WIGOS are expected to be registered in one of the
+WMO Global Compilations of metadata and to have a WIGOS station identifier assigned, in accordance with provisions
+2.5.3 and 2.4.1 respectively from the Manual on the WMO Integrated Global Observing System (WMO-No. 1160).
+
+Other stations / platforms may not necessarily be registered in one of the WMO Global Compiliations.
+However, it is expected that the minimal set of metadata, as defined by the WIGOS Metadata Standard, is available but
+noting that ``unknown``, ``inapplicable`` and ``nilReason`` are valid entries for many of the elements.
+====
+
+
+The WMO Data Model for the exchange, representation and archival of climate data defined herein is an
+implementation of the  ``Observations`` requirements class from the _OGC Observations, Measurements and
+Samples (OGC-OMS)_ Standards ``Basic Observations Package`` requirements class. The ``Observations`` class has been
+chosen as, when combined with the WMO Core Metadata Profile 2 (WCMP2) and WIGOS Metadata Standard, the class
+provides all the necessary information with minimal specialisation / extension. GeoJSON has been chosen as the
+representation format, noting the widespread 'out-of-the-box' support in many available desktop applications
+and Web services / APIs. These choices are discussed further in Chapter 6.
+

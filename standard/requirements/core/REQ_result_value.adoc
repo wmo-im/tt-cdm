@@ -1,0 +1,8 @@
+[[req_core_result_value]]
+
+[width="90%",cols="2,6a"]
+|===
+^|*Requirement {counter:req-id}* |*/req/core/result/value*
+^|A |The ``properties.result.value`` property SHALL be of a type suitable for representing the ``properties.observedProperty``.
+|===
+

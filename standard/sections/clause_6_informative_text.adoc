@@ -1,0 +1,41 @@
+== Introduction
+
+=== Overview
+
+==== WMO Climate Data Management System Specification
+
+* Requirements
+** Observations
+*** Support of ECVs across domains
+*** Point observations
+*** Aggregated values (e.g. time mean)
+*** Others ...
+** Metadata
+*** Observations (static)
+**** WIGOS metadata
+**** Additional metadata (either optional or not included in WIGOS metadata)
+*** Observations (dynamic)
+**** Quality flags (QC and uncertainty)
+**** Mobile platforms
+**** Instance level metadata, e.g. sonde fill weight etc.
+*** Discovery metadata
+**** WCMP2
+**** Climate extension
+*** Data provenance metadata
+**** PROV-DM
+
+=== User stories
+
+ToDo, see ET-DRC GH pages and WMO-1131
+
+=== OGC-OMS
+
+=== WIGOS Metadata Standard
+
+=== Provenance
+
+=== WIS2 and Web considerations
+
+* WIS2 principles
+* OGC-API Features (replaces OGC WFS)
+* CF NetCDF Discrete Sampling Geometries and point data

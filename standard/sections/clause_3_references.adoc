@@ -1,0 +1,14 @@
+== References
+
+* ToDo, include the following and others
+
+- OGC-OMS
+- OGC API - Features
+- WCPM2
+- WMDS
+- WMDR
+- EUR 30832 EN
+
+- Kotsev, A., Minghini, M., Cetl, V., Penninga, F., Robbrecht, J. and Lutz, M., INSPIRE - A Public Sector Contribution
+to the European Green Deal Data Space, EUR 30832 EN, Publications Office of the European Union,
+Luxembourg, 2021, ISBN 978-92-76-41565-7, doi:10.2760/062896, JRC126319.

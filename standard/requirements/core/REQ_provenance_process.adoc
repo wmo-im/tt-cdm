@@ -1,0 +1,8 @@
+[[req_core_provenance]]
+[width="90%",cols="2,6a"]
+|===
+^|*Requirement {counter:req-id}* |*/req/core/provenance*
+^|G |A reference to the process used to generate the current version of the record SHALL be provided by tthe ``properties.parameter.process`` property.
+^|H |The reference provided by ``properties.parameter.process`` SHALL take the form of an HTTP URI.
+^|I |The HTTP URI SHALL resolve to a resource providing further information on the process.
+|===

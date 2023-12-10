@@ -1,0 +1,9 @@
+[[req_core_observer]]
+[width="90%",cols="2,6a"]
+|===
+^|*Requirement {counter:req-id}* |*/req/core/observer*
+^|A |When a reference to a sensor is provided via the ``properties.observer`` property it SHALL be provided as an HTTP(S) URI.
+^|B |The HTTP(S) URI SHALL resolve to a valid WIGOS metadata record and WMDR Equipment instance.
+^|C |The HTTP(S) URI MAY resolve to a valid WIGOS metadata record hosted by OSCAR/Surface.
+|===
+

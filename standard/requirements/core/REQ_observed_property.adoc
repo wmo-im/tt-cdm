@@ -1,0 +1,9 @@
+[[req_core_observed_property]]
+[width="90%",cols="2,6a"]
+|===
+^|*Requirement {counter:req-id}* |*/req/core/observed_property*
+^|A |A CDM observation record SHALL provide information on the property observed via the ``properties.observedProperty`` attribute.
+^|B |This information SHALL be provided as a reference to an observable property in a controlled vocabulary,
+with the reference provided as an HTTP(S) URI.
+^|C |The HTTP(S) URI SHALL resolve to a resource providing a definition of the observable property.
+|===

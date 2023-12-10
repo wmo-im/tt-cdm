@@ -1,0 +1,79 @@
+== Conventions
+This section provides details and examples for any conventions used in the document. Examples of conventions are
+symbols, abbreviations, use of JSON schema, or special notes regarding how to read the document.
+
+=== Identifiers
+
+* ToDo - check and correct the following
+
+The normative provisions in this Standard are denoted by the URI:
+
+http://schemas.wmo.int/cdm/1.0/spec/
+
+All requirements and conformance tests that appear in this document are denoted by partial URIs which are relative to this base.
+
+=== Examples
+
+* ToDo - check and correct the following
+
+Examples provided in this specification are encoded as GeoJSON.
+
+Complete examples can be found at https://schemas.wmo.int/cdm/examples/1.0
+
+=== Schemas
+
+* ToDo - check and correct the following
+
+The CDM schema can be found at https://schemas.wmo.int/cdm/1.0/cdm-bundled.json
+
+=== Schema representation
+
+JSON Schema footnote:[https://json-schema.org] objects are used throughout this standard to define the structure
+of metadata records. These schema objects are also typically represented using YAML footnote:[https://en.wikipedia.org/wiki/YAML].
+YAML is a superset of JSON, and in this standard are regarded as equivalent.
+
+CDM record instances are always represented as JSON.
+
+==== Properties
+
+A JSON **property** represents a key-value pair, where the key is the name of the property and the value is a standard
+JSON data type, including a nested JSON object.
+
+[source,json]
+----
+{
+  "myPropertyName": "test123"
+}
+----
+
+==== JSON Path
+
+JSONPath allows the indexing of a nested property using dot notation, similar to XPath and XML. In this document JSONPath
+is used to indicate which property is referenced and the subject of the text.
+
+For example, taking the JSON object shown below, the path ``$.geometry.type`` would return the string literal ``Point``
+whilst ``$.geometry.coordinates`` would return the array ``[12.3, 46.7]``. ``$.geometry.coordinates[0]`` would return
+the first value in the array ``12.3``.
+
+[source,json]
+----
+{
+    "geometry": {
+      "type": "Point",
+      "coordinates": [12.3, 46.7]
+    }
+}
+----
+
+Requirements in this document using JSONPath will take the form:
+
+____
+The property ``geometry.type`` SHALL take the value ``Point``.
+____
+
+For brevity, when referencing a property the leading ``$.`` has been dropped.
+
+=== Use of HTTPS
+
+For simplicity, this document only refers to the HTTP protocol. This is not meant to exclude the use of HTTPS and
+simply is a shorthand notation for "HTTP or HTTPS." In fact, most servers are expected to use HTTPS, not HTTP.

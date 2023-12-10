@@ -1,0 +1,9 @@
+[[rec_core_result]]
+[width="90%",cols="2,6a"]
+|===
+^|*Recommendation {counter:rec-id}* |*/rec/core/result/uom*
+^|A |The ``properties.result.uom`` should reference an entry from the QUDT units vocabulary (https://qudt.org/vocab/unit/)
+or from a vocabulary hosted by the WMO codes registry (https://codes.wmo.int).
+^|B |If a different vocabulary is used the linked resource SHOULD include a mapping to either the QUDT units vocabulary
+or a vocabulary hosted by the WMO codes registry.
+|===

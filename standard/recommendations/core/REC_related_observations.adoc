@@ -1,0 +1,7 @@
+[[rec_core_related_observations]]
+[width="90%",cols="2,6a"]
+|===
+^|*Recommendation {counter:rec-id}* |*/rec/core/result/relatedObservations*
+^|A | When there are related observations for a CDM record references to those related observations SHOULD be included
+in the ``properties.relatedObservatons`` property.
+|===

@@ -1,0 +1,8 @@
+[[req_core_result_time]]
+[width="90%",cols="2,6a"]
+|===
+^|*Requirement {counter:req-id}* |*/req/core/resultTime*
+^|A |The date and time that the result for an observation becomes available, or is updated, SHALL be given by the `+properties.resultTime+` property.
+^|B |All `+properties.resultTime+` values SHALL be represented by an instant in time and SHALL be a valid ISO8601 representation.
+|===
+

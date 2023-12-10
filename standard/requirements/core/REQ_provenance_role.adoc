@@ -1,0 +1,9 @@
+[[req_core_provenance_role]]
+[width="90%",cols="2,6a"]
+|===
+^|*Requirement {counter:req-id}* |*/req/core/provenance/role*
+^|A |Information on the role used by the agent at the time the CDM record was created or modified SHALL be provided
+as a reference via the ``properties.parameter.role`` property.
+^|B |The reference provided by ``properties.parameter.role`` SHALL take the form of an HTTP URI.
+^|C |The HTTP URI SHALL resolve to a resource providing further information on, and a definition of, the role.
+|===

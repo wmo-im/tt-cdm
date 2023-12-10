@@ -1,0 +1,15 @@
+[[req_core_provenance]]
+[width="90%",cols="2,6a"]
+|===
+^|*Requirement {counter:req-id}* |*/req/core/provenance*
+^|A |Each CDM record SHALL provide version information via the ``properties.parameter.version`` property.
+^|B |Each CDM record SHALL provide the date and time the record was last modified using the ``properties.parameter.changeDate`` property.
+^|C |The ``properties.parameter.changeDate`` SHALL be a time instance represented using the ISO 8601 standard. This SHALL
+be the creation date for the first version.
+^|D |Information on the user, agent or process that created or modified the record SHALL be provided as a reference via the ``properties.parameter.agent`` property.
+^|E |The reference provided by ``properties.parameter.agent`` SHALL take the form of an HTTP(S) URI.
+^|F |The HTTP(S) URI SHALL resolve to a resource providing further information on the agent.
+^|G |A reference to the activity used to generate the current version of the record SHALL be provided by tthe ``properties.parameter.activity`` property.
+^|H |The reference provided by ``properties.parameter.activity`` SHALL take the form of an HTTP(S) URI.
+^|I |The HTTP(S) URI SHALL resolve to a resource providing further information on the activity.
+|===

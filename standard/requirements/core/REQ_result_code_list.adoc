@@ -1,0 +1,10 @@
+[[req_core_result_code_list]]
+
+[width="90%",cols="2,6a"]
+|===
+^|*Requirement {counter:req-id}* |*/req/core/result/codeList*
+^|A |When the observation is a categorical observation, e.g. cloud type, the corresponding code list SHALL be
+referenced using the ``properties.result.codeList`` property.
+^|B |The reference for the code list SHALL be provided as an HTTP(S) URI.
+^|C |The HTTP(S) URI for the code list SHALL resolve to a resource providing a definition of the coded entry.
+|===

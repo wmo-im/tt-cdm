@@ -1,0 +1,16 @@
+[[rc_core]]
+[cols="1,4",width="90%"]
+|===
+2+|*Requirements Class*
+2+|http://www.wmo.int/spec/cdm/1/conf/core
+|Target type | TBC
+|Dependency |<<rfc8259,IETF RFC 8259: The JavaScript Object Notation (JSON) Data Interchange Format>>
+|Dependency |<<json-schema, JSON Schema>>
+|Dependency |<<rfc7946,GeoJSON>>
+|Dependency |<<ogc-oms,OGC Observations, Measurements and Samples>>
+|Dependency | <<The WMO WIGOS Metadata Represention>>
+|Dependency | WCMP2
+|Pre-conditions |
+The record conforms to the OGC OMS Basic Observations package conformance class
+(http://www.opengis.net/spec/om/3.0/req/obs-basic/Observation)
+|===

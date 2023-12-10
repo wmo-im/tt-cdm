@@ -1,0 +1,8 @@
+[[req_core_provenance_agent]]
+[width="90%",cols="2,6a"]
+|===
+^|*Requirement {counter:req-id}* |*/req/core/provenance/agent*
+^|A |Information on the user, agent or process that created or modified the record SHALL be provided as a reference via the ``properties.parameter.agent`` property.
+^|B |The reference provided by ``properties.parameter.agent`` SHALL take the form of an HTTP URI.
+^|C |The HTTP URI SHALL resolve to a resource providing further information on the agent.
+|===

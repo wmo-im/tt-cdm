@@ -1,0 +1,8 @@
+[[req_core_valid_time]]
+[width="90%",cols="2,6a"]
+|===
+^|*Requirement {counter:req-id}* |*/req/core/validTime*
+^|A |If a CDM record has an associated validity period this SHALL be specified via `+properties.validTime+`.
+^|B |All non-null `+properties.validTime+` values SHALL be valid ISO8601 representations or `+..+` for an open-ended extent.
+^|C |For CDM records without an associated validity period the `+properties.validTime+` MAY be set to `+null+` or MAY be omitted.
+|===

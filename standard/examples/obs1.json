@@ -1,0 +1,60 @@
+{
+  "id": "http://data.example.com/collections/C3S_SouthPacific/items/4/0.1",
+  "conformsTo": [],
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      146.271518,
+      -43.656952,
+      120
+    ]
+  },
+  "location": {},
+  "properties": {
+    "host": "https://oscar.wmo.int/surface/#/search/station/stationReportDetails/0-20000-0-94962",
+    "observer": null,
+    "observationType": "http://vocabulary.example.com/observationType/1",
+    "observedProperty": "http://vocab.nerc.ac.uk/standard_name/air_temperature/",
+    "observingProcedure": "http://vocabulary.example.com/observingProcedure/1",
+    "phenomenonTime": "1918-04-10T20:00:00.000Z",
+    "result": {
+      "value": 11.7,
+      "uom": "http://qudt.org/vocab/unit/DEG_C",
+      "codeList": null
+    },
+    "resultQuality": [
+      {
+        "flag": "unchecked"
+      }
+    ],
+    "resultTime": "2023-11-15T09:33:00",
+    "parameter": {
+      "agent": "http://data.example.com/users/0",
+      "role": "https://schema.org/maintainer",
+      "process": "http://vocabulary.example.com/process/manualEntry",
+      "date": "2023-11-15T08:30:00/2023-11-15T09:33:00",
+      "comment": "Initial copy of data from github repository by manual copying / keying.",
+      "derivedFrom": [
+        {
+          "source": "https://raw.githubusercontent.com/C3S-Data-Rescue-Lot1-WP3/Rescued-Data/master/SouthPacific/data/formatted/C3S_SouthPacific_Maatsuyker_19180409-19450831_ta.tsv",
+          "sourceIdentifier": "#:~:text=1918%094%0910%0920%090%090%0911.7%09Orig%3D53F%7Corig.time%3D0600"
+        }
+      ],
+      "status": "https://vocabulary.example.com/status/draft",
+      "version": "0.1",
+      "reportType": "http://vocabulary.example.com/reportType/1",
+    },
+    "featureOfInterest": [
+      {
+        "id": "https://data.example.com/features/airBubbleAroundSensor",
+        "type": "proximate"
+      },
+      {
+        "id": "http://codes.wmo.int/wmdr/ObservedLayer/SBL",
+        "type": "ultimate"
+      }
+    ],
+    "relatedObservations": []
+  }
+}

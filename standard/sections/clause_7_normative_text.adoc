@@ -1,0 +1,421 @@
+== The WMO Climate Data Model
+
+=== Requirement Class Core
+
+==== Overview
+
+[NOTE]
+.The following needs work
+====
+====
+
+The WMO Climate Data Model Core Requirements Class provides requirements to articulate the required elements of a WMO
+Climate Data Model (CDM) record. This builds on the Open Geospatial Consortium (OGC) Observations, Measurements
+and Samples (OMS) Standard, hereafter OGC-OMS. Within the data model each ``observation`` is represented as a GeoJSON
+``Feature``.
+
+
+include::../requirements/requirements_class_core.adoc[]
+
+The table below provides an overview of the properties set that can be included in a CDM record. Some of these are mandatory,
+indicated by the ``required`` key word in the tables, others ``optional`` and some ``conditional``.
+
+.CDM record core properties
+|===
+|Property|Requirement|Description
+
+|``id``
+|**required**
+|A unique identifier for the record (see <<_identifier>>)
+
+|``conformsTo``
+|**required**
+|The standards that this record conforms to (see <<_conformance>>)
+
+|``type``
+|**required**
+|A fixed value denoting the record as a GeoJSON ``Feature`` (see <<_validation>>).
+
+|``geometry``
+|**required**
+|The location of the observed feature of interest (see <<_location>>).
+
+|``properties.host``
+|**required**
+|The host involved in making the observation (see <<_host>>).
+
+|``properties.observer``
+|optional
+|The observer involved in making the observation (see <<_observer>>)
+
+|``properties.observationType``
+|optional
+|The type of observation (see <<_observation_type>>)
+
+|``properties.observedProperty``
+|**required**
+|The observable property that is the subject of the observation (see <<_observed_property>>).
+
+|``properties.observingProcedure``
+|**required**
+|The ObservingProcedure used by the Observation to determine the value of the ObservableProperty provided by the result
+(see <<_observing_procedure>>).
+
+|``properties.phenomenonTime``
+|**required**
+|The time, or period, that the phenomenon was observed or occurred (see <<_phenomenon_time>>).
+
+|``properties.result.value``
+|**required**
+|The result of the observation (see <<_result>>).
+
+|``properties.result.uom``
+|**required**
+|The unit of measure applicable to the result (see <<_result>>).
+
+|``properties.result.codeList``
+|conditional
+|Reference to the code list defining categorical observations (see <<_result>>).
+
+|``properties.resultQuality``
+|**required**
+|The quality of the result (see <<_result_quality>>)
+
+|``properites.resultTime``
+|**required**
+|The time that the result of the observation, or generation process, became available (see <<_result_time>>).
+
+//|``properties.parameter.prov``
+//|recommended
+//|Provenance information for this record (see <<_provenance>>).
+
+|``properties.parameter.agent``
+|**required**
+|Which user / agent last modified this record (see <<_provenance>>).
+
+|``properties.parameter.role``
+|**required**
+|The role the specified user / agent was acting under (see <<_provenance>>).
+
+|``properties.parameter.process``
+|**required**
+|The process involved in making the change to the CDM record or in deriving the record (see <<_provenance>>).
+
+|``properties.parameter.date``
+|**required**
+|The time period (or instant) over which the process was run (see <<_provenance>>).
+
+|``properties.parameter.comment``
+|**required**
+|Free text description of the change and the reasons for the change (see <<_provenance>>).
+
+//|``properties.parameter.derivedFrom[..].source``
+//|**required**
+//|The source(s) from which the record was derived (see <<_provenance>>).
+
+//|``properties.parameter.derivedFrom[..].sourceIdentifier``
+//|conditional
+//|The original identifier(s) for the record(s) in the specified source used to derive the record (see <<_provenance>>).
+
+|``properties.parameter.status``
+|**required**
+|The status of this CDM record, i.e. whether this is the latest version, the original raw data etc (see <<_provenance>>).
+
+|``properties.parameter.version``
+|**required**
+|The version identifier for the CDM record (see <<_provenance>>).
+
+|``properties.parameter.reportType``
+|**optional**
+|The type of report that this observation forms part of, e.g. SYNOP, TEMP, CLIMAT etc.
+
+|``properties.parameter.*``
+|**optional**
+|Additional parameters as required.
+
+|``properties.featureOfInterest``
+|**required**
+|One or more entities that are of interest to the act of observing (see <<_feature_of_interest>>).
+
+|``properties.relatedObservations``
+|optional
+|Related observations that provide further context of information (see <<_related_observations>>).
+
+|===
+
+==== Validation
+
+The WMO CDM schema is based on the OGC-OMS basic observation requirement class and associated information model. CDM
+records compliant with the WMO CDM schema are therefore compliant with the OGC-OMS basic observation requirement class.
+In this version only basic observations are supported, a future version will include observation collections.
+
+include::../requirements/core/REQ_validation.adoc[]
+
+==== Identifier
+
+include::../requirements/core/REQ_identifier.adoc[]
+
+[NOTE]
+.To Do
+====
+====
+- Text on OGC-API features to follow
+- featureId is the local id. Version information can be included
+
+include::../recommendations/core/REC_identifier.adoc[]
+
+==== Conformance
+
+The ``conformsTo`` property identifies the version of the WMO CDM standard that the record conforms to. Conformance
+validation is valuable for version detection and content handling.
+
+include::../requirements/core/REQ_conformance.adoc[]
+
+==== Location
+
+Each observation may have a separate location, distinct from that of the station / platform the obseravtion is
+associated with. In the case of remotely sensed data and _ex situ measurements_, the location may also be distinct
+from the location of the sensor or instrument making the observations.  As such, each observation includes a location
+via the ``geometry`` property.
+
+include::../requirements/core/REQ_geometry.adoc[]
+
+include::../recommendations/core/REC_geometry.adoc[]
+
+==== Host
+
+A CDM record leverages the WIGOS metadata standard (WMDS), and associated WIGOS Metadata Representation (WMDR) data model,
+for reporting the station / platform (WMDR ObservingFacility) associated with an observation. A reference to the
+station / platform is provided by the property ``host`` in conformance with the OGC-OMS conceptual model (i.e. requirement
+http://www.opengis.net/spec/om/3.0/req/obs-cpt/Observation/host-sem).
+
+include::../requirements/core/REQ_host.adoc[]
+
+Recognising the role of the OSCAR database as the key source of information for WIGOS metadata
+
+include::../recommendations/core/REC_host.adoc[]
+
+==== Observer
+
+As with the station / platform associated with an observation a CDM record utilises the WIGOS metadata standard for
+reporting the instrumentation (WMDR Equipment) used to make an observation. A reference to the
+instrument is provided by the property ``observer`` in conformance with the OGC-OMS conceptual model (i.e. requirement
+http://www.opengis.net/spec/om/3.0/req/obs-cpt/Observation/observer-sem).
+
+Due to the nature of the observing system and collection of observations over many decades the metadata providing
+information on the instrumentation may be missing. As a result the property ``observer`` is only recommended.
+
+include::../recommendations/core/REC_observer.adoc[]
+
+When information on the instrumentation used is available and included the following requirement applies.
+
+include::../requirements/core/REQ_observer.adoc[]
+
+As with the ``host`` property the reference may resolve to a valid WMDR record hosted by OSCAR/Surface.
+
+include::../permissions/core/PER_observer.adoc[]
+
+
+==== Observation type
+
+[NOTE]
+.ToDo
+====
+====
+
+==== Observed property
+
+The ``properties.observedProperty`` property provides information on the property belonging to the feature of interest
+observed. This may be measured directly, observed or derived. Examples include: air temperature near the surface,
+atmospheric pressure, cloud cover, cloud type, relative humidity, evaporation, etc. This information is given
+via a reference to a controlled vocabulary.
+
+include::../requirements/core/REQ_observed_property.adoc[]
+
+Recognising the need for extensibility and flexibility the use of the WMO code registry is recommended but
+not required. Similarly, the use of CF Standard Names is recommended
+
+include::../recommendations/core/REC_observed_property.adoc[]
+
+==== Observing procedure
+include::../requirements/core/REQ_observing_procedure.adoc[]
+
+==== Result
+
+The result of an observation is given by the ``properties.result`` property. This includes two mandatory properties
+providing the result value (``properties.result.value``) and the units of measurement (``properties.result.uom``)
+that the result is provided in. An additional property, ``properties.result.codeList`` , provides a reference to an
+external controlled vocabulary for coded values.
+
+include::../requirements/core/REQ_result.adoc[]
+
+The result value can be of any type but the type SHALL be suitable for representing the observed property.
+
+include::../requirements/core/REQ_result_value.adoc[]
+
+The units used to represent an observed value SHALL be included in the result of the observation and SHALL be provided
+via a reference to a controlled vocabulary. When an observation is a classification for which no units exist, or when
+the observation is a unitless quantity, the units can be declared as unitless, e.g. https://qudt.org/vocab/unit/UNITLESS.
+
+include::../requirements/core/REQ_result_uom.adoc[]
+
+It is recommended to use either a controlled vocabulary hosted by the WMO Codes Registry (https://codes.wmo.int) or the
+QUDT Units Vocabulary (https://qudt.org/2.1/vocab/unit). The later, the QUDT vocabulary, has the advantage of being
+interoperable with the UDUNITS software library (https://www.unidata.ucar.edu/software/udunits/) for unit conversion,
+such as from degrees Centigrade to Kelvin or from Fahrenheit to Kelvin.
+
+include::../recommendations/core/REC_result_uom.adoc[]
+
+Observations can include a categorisation of a phenomenon or observed property. For example, this may be
+the type of low cloud observed or the present weather at the time of observation. When an observation is categorical
+information on the controlled vocabulary used is required and specified via the ``properties.result.codeList`` property.
+
+include::../requirements/core/REQ_result_code_list.adoc[]
+
+When an observation is non-categorical the ``properties.result.codeList`` property is not required.
+
+include::../permissions/core/PER_result_code_list.adoc[]
+
+==== Result quality
+include::../requirements/core/REQ_result_quality.adoc[]
+
+==== Phenomenon time
+
+The ``properties.phenomenonTime`` provides information on the time of an observation, for instantaneous observations,
+or the period over which the observation has been made. For example, this may be a time instant for the reading of
+a thermometer, or it may be the period over which the accumulated rainfall has been measured.
+
+When a measurement is made _ex situ_, for example the salinity of a water sample collected in a Niskin bottle,
+the phenomenon time would the instant in time when the sample was collected and not the time when the analysis was made.
+The analysis time would be given by the result time.
+
+include::../requirements/core/REQ_phenomenon_time.adoc[]
+
+==== Result time
+
+Information on when a result first became available, or when it has been post-processed and updated,
+is required for a CDM record. This information is provided by the ``properties.resultTime`` property.
+
+For measurements made _ex situ_, such as a seawater salinity analysis made in a laboratory, the result time will
+be the time of that analysis whilst the phenomenon time will give the time of collection.
+
+include::../requirements/core/REQ_result_time.adoc[]
+
+==== Feature of interest
+
+The entity that is of interest in the act of observing is required for each CDM record. To enable multiple
+features, the feature of interest is represented in a CDM record by the ``properties.featureOfInterest`` property, with
+the property encoded as an array providing one or more values.
+
+[NOTE]
+.The following two paragraphs needs to be checked
+====
+====
+For example, an observation might be ratio of the ^18^O to ^16^O isotopes in a sample of marine foraminifera.
+This ratio might then be used to estimate the ice volume during the quaternary period. In this example, the marine
+foraminfera sample would be the proximate feature of interest and the ice volume the ultimate feature of interest.
+
+In another example, the observation may be the water level at a gauge site which, in turn, is used to estimate the flow
+rate from a ratings curve. In this example, the proximate feature of interest would be the gauge site and the ultimate
+feature of interest the river at that location.
+
+include::../requirements/core/REQ_feature_of_interest.adoc[]
+
+==== Provenance
+
+In order to fully understand the climate record it is necessary to understand the under-pinning data and observations.
+This includes information on the stations / platforms and instruments, as described by the WIGOS metadata, but also
+any processing, format conversions, homogenisation etc. that has been applied to the data. For data derived from
+other observations, such as daily means or extreme values, it is also important to link to the input data. To enable
+the provenance of a CDM record to be recorded the following properties are defined:
+
+* ``properties.paramater.agent``;
+* ``properties.paramater.role``;
+* ``properties.paramater.process``;
+* ``properties.paramater.date``;
+* ``properties.paramater.derivedFrom``; and
+* ``properties.paramater.version``.
+
+The specification of these properties are intended to be interoperable with the PROV-DM data model.
+
+include::../requirements/core/REQ_provenance_version.adoc[]
+
+The ``properties.parameter.agent`` provides information on who, or what, last changed the CDM record.
+
+include::../requirements/core/REQ_provenance_agent.adoc[]
+
+The resource referenced may be a person, a generic role, or a software agent or series of software agents working in
+sequence (i.e. a workflow plan). Where the resource is a person this can be anonymised as required.
+
+include::../permissions/core/PER_provenance_agent.adoc[]
+
+Noting that a user, or agent, may have multiple roles within a system it is important to record the role the agent was
+using when the CDM record was generated or derived. This is provided by the ``properties.parameter.role`` property.
+
+include::../requirements/core/REQ_provenance_role.adoc[]
+
+Information on how the CDM record was derived or generated is provided by the ``properties.paramater.process`` property.
+For a software based process this may be a reference to the source code or, in the case of e.g. an OGC-API Process,
+the OGC-API process endpoint. In the case of a manual process or more complicated workflow this may reference a
+resource that provides further information and links, such as a laboratory report, reference manual etc.
+
+include::../requirements/core/REQ_provenance_process.adoc[]
+
+Information on the duration of a process, for example the date and time that a process started and then finished, can
+provide useful information. For example, an unexpected processing time, either too long or too short, may indicate
+issues with the processing and that need further investigation. The processing time is included in the CDM record via
+the ``properties.parameter.date`` property, with the start time and end time provided as a time period.
+
+include::../requirements/core/REQ_provenance_date.adoc[]
+
+Information on the source of the data for the CDM record is provided by the ``properties.parameter.derivedFrom``property.
+
+include::../requirements/core/REQ_source.adoc[]
+
+Additional, free text information may be provided using the ``properties.parameter.comments`` property.
+
+include::../permissions/core/PER_provenance_comments.adoc[]
+
+[NOTE]
+.ToDo
+====
+====
+
+* __text on status is missing__
+* __text on version is missing__
+
+==== Additional parameters
+
+The CDM Core Requirements Class is intended to be extensible. Additional parameters MAY be defined for a CDM record
+provided they do not clash with one of the names defined in this document. Example usage can include the provision
+of instance level metadata or additional processing information not handled by the above requirements.
+
+[NOTE]
+.ToDo
+====
+====
+
+__We need to define how we want to handle these parameters, e.g. do we need to include a definition or is
+providing name / value pairs enough?__
+
+==== Related observations
+
+Weather reports typically contain multiple observations and in some cases these may relate to the same feature of interest.
+
+For example, a synoptic weather report can contain information on a cloud layer. In this case the feature of interest
+would be the cloud layer (e.g. the low cloud layer, https://codes.wmo.int/bufr4/codeflag/0-08-002/7). The observations
+may then provide information on the amount of low cloud (https://codes.wmo.int/bufr4/b/20/011), the type of low cloud
+(https://codes.wmo.int/bufr4/b/20/012) and the height of the cloud base (e.g. https://codes.wmo.int/bufr4/b/20/013). In
+this example there would be 3 related observations.
+
+When there are one or more related observations in a weather report it is recommended to include this information in the
+relevant CDM records using the ``properties.relatedObservations`` property.
+
+include::../recommendations/core/REC_related_observations.adoc[]
+include::../requirements/core/REQ_related_observations.adoc[]
+
+[NOTE]
+.ToDo
+====
+====
+Add examples to above requirements.

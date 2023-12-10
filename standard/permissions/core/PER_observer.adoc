@@ -1,0 +1,7 @@
+[[per_core_observer]]
+[width="90%",cols="2,6a"]
+|===
+^|*Permission {counter:per-id}* |*/per/core/observer*
+^|D |The HTTP URI MAY resolve to a valid WIGOS metadata record hosted by OSCAR/Surface.
+|===
+

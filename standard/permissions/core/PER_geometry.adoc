@@ -1,0 +1,9 @@
+[[per_core_location]]
+
+[width="90%",cols="2,6a"]
+|===
+^|*Permission {counter:per-id}* |*/per/core/location*
+^|A | When an observation is from a fixed station or sensor with an invariant location or where the
+observed feature of interest is fixed the ``geometry`` property may be set to ``null``.
+|===
+

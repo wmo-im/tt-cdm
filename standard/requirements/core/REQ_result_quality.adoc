@@ -1,0 +1,7 @@
+[[req_core_result_quality]]
+
+[width="90%",cols="2,6a"]
+|===
+^|*Requirement {counter:req-id}* |*/req/core/resultQuality*
+^|A |Information on the quality of the result SHALL be provided using the ``properties.result_quality`` property.
+|===

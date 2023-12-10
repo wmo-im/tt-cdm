@@ -1,0 +1,7 @@
+[[req_core_phenomenon_time]]
+[width="90%",cols="2,6a"]
+|===
+^|*Requirement {counter:req-id}* |*/req/core/phenomenonTime*
+^|A |A CDM record SHALL provide exactly one phenomenon time via the`+properties.phenomenonTime+` property.
+^|B |The `+properties.phenomenonTime+` values SHALL be encoded as a valid ISO 8601 representations.
+|===

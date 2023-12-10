@@ -1,0 +1,7 @@
+[[rec_core_host]]
+[width="90%",cols="2,6a"]
+|===
+^|*Permission {counter:rec-id}* |*/rec/core/host*
+^|A |The HTTP URI SHOULD resolve to a valid WIGOS metadata record hosted by OSCAR/Surface.
+|===
+

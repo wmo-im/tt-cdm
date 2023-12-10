@@ -1,0 +1,14 @@
+[[req_core_source]]
+[width="90%",cols="2,6a"]
+|===
+^|*Requirement {counter:req-id}* |*/req/core/source*
+^|A |A reference to the source(s) of a record SHALL be provided via the ``properties.parameter.derivedFrom`` property.
+^|B |The ``properties.parameter.derivedFrom`` property shall be of type ``array`` with a minimum length 1.
+^|C |Each element of the ``properties.parameter.derivedFrom`` array in turn SHALL have the properties ``source`` and ``sourceIdentifier``
+^|D |The reference(s) provided by the ``properties.parameter.derivedFrom[..].source`` property SHALL take the form of an HTTP URI.
+^|E |The HTTP URI provided by ``properties.parameter.derivedFrom[..].source`` SHALL resolve to a resource providing information on
+the source, including (where applicable) links to the source file, a description of the file format etc.
+^|F |Where the information is available, the original identifier(s) in the source SHALL be provided by the
+``properties.parameter.derivedFrom[..].sourceIdentifier`` property.
+^|G |The ``properties.parameter.derivedFrom[..].sourceIdentifier`` SHALL be of type array with a minimum length of 1.
+|===

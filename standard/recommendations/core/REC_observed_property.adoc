@@ -1,0 +1,11 @@
+[[rec_core_observed_property]]
+[width="90%",cols="2,6a"]
+|===
+^|*Recommendation {counter:rec-id}* |*/rec/core/observed_property*
+^|A |The resource linked by the HTTP URI SHOULD resolve to a controlled vocabulary hosted on the WMO Codes Registry:
+https://codes.wmo.int
+^|B |When a different resource is used the resource SHOULD provide a link to the definition of the observable property
+on the WMO Codes Registry https://codes.wmo.int when the link is unambiguous.
+^|C |The resource linked by the HTTP URI SHOULD provide the CF Standard Name where it has been defined for the
+observable property and where the link is unambiguous.
+|===

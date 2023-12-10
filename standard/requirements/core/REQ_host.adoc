@@ -1,0 +1,10 @@
+[[req_core_host]]
+[width="90%",cols="2,6a"]
+|===
+^|*Requirement {counter:req-id}* |*/req/core/host*
+^|A |A CDM observation record SHALL provide a reference to the station associated with the
+observation via the ``properties.host`` attribute.
+^|B |The reference SHALL be provided as an HTTP(S) URI.
+^|C |The HTTP(S) URI SHALL resolve to a valid WIGOS metadata record.
+|===
+

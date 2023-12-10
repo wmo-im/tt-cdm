@@ -1,0 +1,8 @@
+[[per_core_provenance_agent]]
+[width="90%",cols="2,6a"]
+|===
+^|*Permission {counter:per-id}* |*/per/core/provenance/agent*
+^|A |The resource referenced by the ``properties.parameter.agent`` property MAY be anonymised as required according to
+security, privacy or other business constraints. Similarly, the resource referenced may be a generic role or
+software agent as required.
+|===

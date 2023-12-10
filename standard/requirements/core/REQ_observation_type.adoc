@@ -1,0 +1,12 @@
+[[req_core_observation_type]]
+[width="90%",cols="2,6a"]
+
+this needs work / refinement.
+
+|===
+^|*Requirement {counter:req-id}* |*/req/core/observationType*
+^|A |An observation that forms part of a weather report, or part of a broader collection of observations, MAY provide
+a reference to the type via the ``properties.observationType`` attribute.
+^|B |When provided, the reference SHALL be provided as an HTTP(S) URI.
+^|C |The HTTP(S) URI SHALL resolve to a resource that provides a definition of the type and that provides further context.
+|===

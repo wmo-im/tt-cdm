@@ -1,0 +1,9 @@
+[[req_core_observing_procedure]]
+[width="90%",cols="2,6a"]
+|===
+^|*Requirement {counter:req-id}* |*/req/core/observingProcedure*
+^|A |A CDM observation record SHALL provide a reference to the procedure used to make the observation via the
+``properties.observingProcedure`` attribute.
+^|B |The reference SHALL be provided via an HTTP(S) URI.
+^|C |The HTTP(S) URI SHALL resolve to a resource that defines the procedure and that provides further context.
+|===

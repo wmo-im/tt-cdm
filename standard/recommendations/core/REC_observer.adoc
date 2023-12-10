@@ -1,0 +1,8 @@
+[[rec_core_observer]]
+[width="90%",cols="2,6a"]
+|===
+^|*Recommendation {counter:rec-id}* |*/rec/core/observer*
+^|A |When the instrument used to make an observation is known a reference to the sensor SHOULD be provided via
+the ``properties.observer`` property.
+|===
+

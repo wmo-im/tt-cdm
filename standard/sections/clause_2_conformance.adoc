@@ -1,0 +1,12 @@
+== Conformance
+
+Conformance with this standard SHALL be checked using the tests specified in Annex A (normative) of this document.
+
+The _OGC Abstract Specification Topic 20: Observations, Measurements and Samples_ standard (OGC-OMS) defines a
+conceptual schema for observations. This includes the specification of abstract and logical models for the exchange of
+information on the observations including, _inter alia_, the result of the observations and the processes and procedures
+used to make or collect the observation. The standard defined herein is an extension of the
+**http://www.opengis.net/spec/om/3.0/req/obs-basic/Observation** requirements class. Conformance with this standard
+requires demonstrated conformance to the applicable OGC-OMS Conformance Classes, notably
+**http://www.opengis.net/spec/om/3.0/conf/obs-basic/Observation** and related classes.
+

@@ -1,0 +1,9 @@
+[[req_core_provenance_date]]
+[width="90%",cols="2,6a"]
+|===
+^|*Requirement {counter:req-id}* |*/req/core/provenance/date*
+^|A |Each CDM record SHALL provide the start time and end time of the process used to generate the record via the
+``properties.parameter.date`` property.
+^|B |For an instantaneous process the ``properties.parameter.date`` property shall a valid time instance according to the ISO 8601 standard.
+^|C |For a non-instantaneous process the ``properties.parameter.date`` property shall a valid time period according to the ISO 8601 standard.
+|===

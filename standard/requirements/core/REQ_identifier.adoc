@@ -1,0 +1,14 @@
+[[req_core_identifier]]
+
+The ``id`` property is a unique identifier for a record within a datasets or observation collection. By assigning
+unique identifiers to each observation within a dataset it is possible to assign quality flags, provenance information
+and instance level metadata to each individual object.
+
+[width="90%",cols="2,6a"]
+|===
+^|*Requirement {counter:req-id}* |*/req/core/identifier*
+^|A |A CDM record SHALL have an identifier via the `+id+` property.
+^|B |A CDM record identifier SHALL be unique within the collection it is part of.
+^|C |A CDM record identifier SHALL NOT have spaces, special or accented characters.
+|===
+

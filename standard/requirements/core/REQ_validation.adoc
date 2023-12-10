@@ -1,0 +1,10 @@
+[[req_core_validation]]
+
+[width="90%",cols="2,6a"]
+|===
+^|*Requirement {counter:req-id}* |*/req/core/validation*
+^|A |Each CDM record SHALL validate without error against the CDM schema.
+^|B |Each CDM record SHALL provide the `+id+`, `+type+`, `+geometry+` and `+properties+` properties for GeoJSON compliance.
+^|C |Each CDM record `+type+` property SHALL be set to `+Feature+` for GeoJSON compliance.
+|===
+

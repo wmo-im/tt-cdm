@@ -1,0 +1,147 @@
+== Introduction
+
+=== Overview
+
+The data model defined in this document is intended for representing single observations as the atomic unit of data.
+This choice has been made to allow the tracking, and thus enhance traceability, at the observation level as well as
+to enable the exchange of dynamic metadata for individual observations. An existing WMO format, such as BUFR,
+could have been used but these lack the flexibility required for climate observations where niche information on non
+standard reporting practices may need to be exchanged.
+
+
+
+
+
+tracking and exchange of provenance and quality information at the observation
+level, as well as dynamic metadata.
+
+
+
+For example, an observation may be assigned a quality flag or processing information applicable to only that observation and
+not to neighbouring observations in time. Similarly, there may be dynamic observational metadata that needs to be
+exchanged with the observation.
+
+
+
+
+
+
+Climate observations - any sustained, long term set of observations of the natural environment that can be used to
+monitor and study the Earths climate system. This includes the atmosphere (over all surfaces - terrestrial, marine,
+cryosphere), the oceans and water resources.
+
+LCDM described in this document focuses on individual point observations as the atomic data unit to allow the assignment
+of unique IDs to each observation, and association of quality flags and provenance information at the observation level.
+The approach is similar data type agnostic. For example, when observations are described at the report level a new
+format and data type is required for each report.
+
+
+Use of the LCDM does not preclude packaging the data into larger collections, for example a GeoJSON FeatureCollection.
+Developing standard, ObservationCollections will be looked at in future work. Also, other formats, e.g. NetCDF.
+
+
+
+
+
+the observations that comprise a time series of air temperature over a long time period may have been
+made using a variety of instruments, ranging from mercury or alcohol in glass thermometers housed in a Stevenson
+screen at the start of the record to an electronic sensor housed in an aspirated radiation shield at the end of the
+period. During this period, the observations will have different
+
+
+
+=== User stories
+
+* Climatologist
+- Data management
+** Quality control
+** Homogenisation
+** Provenance
+- Time series analysis
+- Spatial analysis
+
+=== WMO Climate Data Management System Specifications
+
+- Non regulatory, i.e. Members are invited to follow to specifications when implementing a CDMS
+- High level descripition of a climate department within a medium to large sized NHMS.
+- Provides abstract definition of the functions required by a CDMS.
+- Specifies data standards
+* OGC OMS as a required foundation standard - LCDM implements this
+* Discovery metadata required - within WMO Context this is covered by WCMP(2)
+* WIGOS metadata required - within WMO COntext covered by WMDS / WMDR
+* Provenance required - LCDM OMS extended to include prov.
+
+=== OGC-OMS
+- brief description of OMS
+
+
+=== WCMP2
+- brief descrption of WCMP2
+
+=== WMDR
+- brief description of WMDR
+
+=== Conceptual model
+
+- UML diagram showing OMS at the core, linking to WCMP2 for DAR metadata, WMDR for host and observer metadata.
+
+
+=== Choice of the OGM-OMS obs-basic
+
+When developing the data model defined in this document several considerations need to be taken into account.
+
+First, the requirements specified by ET-DRC ... Also IM Guide.
+
+Plus:
+
+- as far as possible, every observation should be fully auditable from the moment it is collected through to it's
+use, both directly and in derived products.
+- to enable this tracking, each observation should be assigned a unique ID as early in its lifecycle as possible, noting
+that for many historic data this may be the latest digitised version.
+- quality and provenance information needs to be assigned at the observation level
+
+Secondly, the existing WMO Core Metadata Profile and WIGOS Metadata Standard need to be considered and the data
+model defined in alignment with those standards.
+
+Thirdly, the principles of the WIS2 ...
+
+Finally, lessons learnt, both within the WMO Community but also the broader data community.
+
+The OGC-OMS standards "Basic Observations Package Requirements Class" provides a
+basic logical model for observations and defines a "simple concrete featureType" for "rapid out-of-the-box deployment".
+
+
+Furthermore, noting the lessons learnt during the implementation of INSPIRE within the European Union, particularly
+on the development of custom extensions:
+
+[quote, INSPIRE - A Public Sector Contribution to the European Green Deal Data Space, 'Kotsev et al., 2021']
+____
+**4.4 Custom extensions are problematic**
+
+In the conceptualisation of INSPIRE, it was assumed in multiple cases that requirements which were during the scoping
+stage not supported by software tools and libraries would be implemented once proposed and endorsed by INSPIRE.
+Unfortunately, this rarely happened. Typical examples in this respect are (1) support for complex GML and XML attributes
+in desktop GIS clients, and (2) extended capabilities of INSPIRE network services. In both cases, those requirements
+have been to a large extent difficult to implement,, but also not very well support by clients and servers. That is
+why, it would be important to **align technical requirements as much as possible to functionalities that are
+already supported (out-of-the-box) by existing tools**. In addition, requirements that satisfy the needs of a
+particular 'niche' (e.g. exposing the same dataset in more than one natural language) often create an implementation
+overhead with little value added for most users and should ideally be avoided whenever possible.
+____
+
+GeoJSON has been chosen as the format used to represent the data model with minimal extension.
+
+Similar lessons have been learnt within the WMO community, for example leading to the WIS2.0 principles.
+
+
+    c) Basic: Within the Basic Packages, simple concrete featureTypes (specializing the abstract ones from the
+    Abstract Core model) have been defined with some basic utility attributes added for rapid out-of-the-box deployment.
+    A few additional concepts pertaining to collections and potential observations are introduced at this level.
+
+    While the Abstract Observation and Abstract Sample Core packages provide a common basis for all ISO 19109-based
+    implementations of the OMS conceptual model, the Basic Observations and the Basic Samples packages are designed
+    as ready-to-use concrete implementations for these concepts. It is expected that the Basic package classes are used
+    as a toolbox for implementing observations- and samples-related application schemas in pick-and-mix style: if the
+    Basic package classes provide all necessary information for data management and exchange use cases in a particular
+    application domain, they can simply be adopted as-is. In cases where more expressiveness is required, the Abstract
+    core or the Basic package classes may be specialized as required without breaking the integrity of the model.

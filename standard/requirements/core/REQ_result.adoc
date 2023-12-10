@@ -1,0 +1,8 @@
+[[req_core_result]]
+
+[width="90%",cols="2,6a"]
+|===
+^|*Requirement {counter:req-id}* |*/req/core/result*
+^|A |A CDM observation record SHALL provide exactly one result via the ``properties.result`` property.
+^|B |The ``properties.result``property SHALL in turn include the properties ``value`` and ``uom``.
+|===

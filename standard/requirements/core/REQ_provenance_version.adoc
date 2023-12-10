@@ -1,0 +1,6 @@
+[[req_core_provenance]]
+[width="90%",cols="2,6a"]
+|===
+^|*Requirement {counter:req-id}* |*/req/core/provenance*
+^|A |Each CDM record SHALL provide version information via the ``properties.parameter.version`` property.
+|===

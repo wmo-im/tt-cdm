@@ -1,0 +1,18 @@
+[[req_core_collection]]
+[width="90%",cols="2,6a"]
+|===
+^|*Requirement {counter:req-id}* |*/req/core/featureCollection*
+^|A | When a CDM record contains an observation collection the ``features`` property SHALL represent each observation
+in the collection as a single ``feature``. Each ``feature`` in turn SHALL conform with this standard.
+^|B | When the observations in the collection share a common location the location SHALL be encoded in the
+``common.geometry`` property.
+^|C | When the observations in the collection include the ``common.geometry`` property the corresponding
+``features[...].geometry`` MAY be set to ``null``.
+^|D | Properties common to all observations in the collection SHALL be included in ``common.properties`` property.
+^|E | When a property is included in ``common.properties`` this SHALL be omitted or set to null for each observation
+in the collection.
+
+For example, if the record contains ``common.properties.observedProperty`` then
+``features[...].properties.observedProperty`` shall be set to ``null`` or omitted for
+each observation in the collection.
+|===

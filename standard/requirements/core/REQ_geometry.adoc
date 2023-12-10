@@ -1,0 +1,11 @@
+[[req_core_geometry]]
+[width="90%",cols="2,6a"]
+|===
+^|*Requirement {counter:req-id}* |*/req/core/feature/geometry*
+^|A | Each CDM record SHALL provide exactly ONE ``geometry`` property to indicate the location of the observed
+phenomenon or property.
+^|B | The ``geometry`` property SHALL be a valid geojson geometry.
+^|C | The elements within the ``coordinates`` property SHALL be provided using integer or floating point representation.
+//^|D | When the ``geometry`` is set to ``null`` one of the ``properties.host``, ``properties.observer`` or
+//``properties.proximateFeatureOfInterest`` SHALL provide the location (see _/per/core/location_).
+|===

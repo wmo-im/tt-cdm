@@ -1,0 +1,6 @@
+[[per_core_provenance_comments]]
+[width="90%",cols="2,6a"]
+|===
+^|*Permission {counter:per-id}* |*/per/core/provenance/comments*
+^|A |Further information or comments on changes to the current record MAY be provided via the ``properties.parameter.comments`` property.
+|===

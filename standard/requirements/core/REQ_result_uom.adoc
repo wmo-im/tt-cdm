@@ -1,0 +1,10 @@
+[[req_core_result_uom]]
+
+[width="90%",cols="2,6a"]
+|===
+^|*Requirement {counter:req-id}* |*/req/core/result/uom*
+^|A |The ``properties.result.uom`` property SHALL be used to provide a reference to the units used to represent the result.
+^|B |The referenced units SHALL be suitable for the reported ``properties.observedProperty``.
+^|C |The reference for the units SHALL be provided as an HTTP(S) URI.
+^|D |The HTTP(S) URI for the units SHALL resolve to a resource providing a definition of the units.
+|===

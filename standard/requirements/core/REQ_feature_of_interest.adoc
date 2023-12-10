@@ -1,0 +1,14 @@
+[[req_core_feature_of_interest]]
+[width="90%",cols="2,6a"]
+|===
+^|*Requirement {counter:req-id}* |*/req/core/feature_of_interest*
+^|A |A CDM record SHALL provide a reference to at least one feature of interest using the
+``properties.featureOfInterest`` property.
+^|B |The ``properties.featureOfInterest`` property shall be of type array.
+^|C |Each element in the array shall have the properties ``id`` and ``type``.
+^|D |The ``properties.featureOfInterest[..].id`` property SHALL provide a reference to the feature.
+^|E |The reference SHALL be provided as an HTTP(S) URI.
+^|F |The HTTP(S) URI SHALL resolve to a resource providing further information on the feature.
+^|G |The ``properties.featureOfInterest[..].type`` property SHALL take the value ``proximate`` or ``ultimate`` to
+indicate whether the feature is a proximate feature of interest or ultimate feature of interest respectively.
+|===

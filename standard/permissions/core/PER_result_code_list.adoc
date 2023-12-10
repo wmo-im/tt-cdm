@@ -1,0 +1,6 @@
+[[per_core_result]]
+[width="90%",cols="2,6a"]
+|===
+^|*Permission {counter:per-id}* |*/per/core/result/codeList*
+^|A |When the result type is not a categorical value the ``properties.result.codeList`` may be omitted or set to ``null``.
+|===

@@ -1,0 +1,8 @@
+[[rec_core_identifier]]
+
+[width="90%",cols="2,6a"]
+|===
+^|*Recommendation {counter:rec-id}* |*/rec/core/identifier*
+^|A |A CDM record identifier should be HTTP URI encoded and take the form ``http://{basepath}/collections/{collectionId}/items/{featureId}/{version}``
+|===
+
