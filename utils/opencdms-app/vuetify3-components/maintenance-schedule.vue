@@ -3,8 +3,8 @@
     <v-card-title>Create new 'MaintenanceSchedule'</v-card-title>
     <v-card-text>
         <v-form>
-            <v-card-item><v-text-field label="id" v-model="maintenanceSchedule.id" type="number" hint="" persistent-hint></v-text-field></v-card-item>
-            <v-card-item><v-text-field label="name" v-model="maintenanceSchedule.name" type="number" hint="" persistent-hint></v-text-field></v-card-item>
+            <v-card-item><v-text-field label="id" v-model="maintenanceSchedule.id"  hint="" persistent-hint></v-text-field></v-card-item>
+            <v-card-item><v-text-field label="name" v-model="maintenanceSchedule.name"  hint="" persistent-hint></v-text-field></v-card-item>
             <v-card-item><v-text-field label="description" v-model="maintenanceSchedule.description"  hint="Description of maintenance schedule" persistent-hint></v-text-field></v-card-item>
         </v-form>
         <v-btn @click="createMaintenanceSchedule">Create MaintenanceSchedule</v-btn>
@@ -21,6 +21,7 @@ import {useStore} from 'pinia';
 import {useRepo} from 'pinia-orm';
 
 import LinkForm from '@/web-components/forms/links';
+import VueDatePicker from '@/web-components/pickers/date-picker.vue';
 
 
 
@@ -31,6 +32,17 @@ export default defineComponent({
   name: 'MaintenanceScheduleForm',
   props: {
   },
+  methods:{
+    parseLinks (links) {
+      let res;
+      if( links && links.length > 0 ){
+        res = JSON.stringify(links);
+      }else{
+        res = '';
+      }
+      return res;
+    }
+  },
   components: {
     VCard,
     VCardTitle,
@@ -40,15 +52,10 @@ export default defineComponent({
     VSelect,
     VForm,
     VBtn,
+    VueDatePicker,
     LinkForm
   },
   setup() {
-
-    const loadCSV = async (path) => {
-      let csvData;
-      csvData = await d3.dsv('|',path, d3.autoType);
-      return {csvData};
-    };
 
     // set up links object
     const links = ref([]);
@@ -73,11 +80,6 @@ export default defineComponent({
     const resetMaintenanceSchedule = () => {
         Object.assign(maintenanceSchedule.value, maintenanceScheduleRepo.make() );
     };
-
-
-    onBeforeMount( async() => {
-      // load reference data so this is available to the form
-    });
 
     return {
         maintenanceSchedule,

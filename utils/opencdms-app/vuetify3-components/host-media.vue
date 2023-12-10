@@ -6,10 +6,10 @@
             <v-card-item><v-text-field label="id" v-model="hostMedia.id"  hint="Primary key for this record" persistent-hint></v-text-field></v-card-item>
             <v-card-item><v-select :items="hostOptions" item-title="name" item-value="id" label="host" v-model="hostMedia.host" :hint="hostOptionsHint" return-object persistent-hint></v-select></v-card-item>
             <v-card-item><v-select :items="mediaOptions" item-title="name" item-value="id" label="media" v-model="hostMedia.media" :hint="mediaOptionsHint" return-object persistent-hint></v-select></v-card-item>
-            <v-card-item><v-text-field label="valid_from" v-model="hostMedia.valid_from"  hint="" persistent-hint></v-text-field></v-card-item>
-            <v-card-item><v-text-field label="valid_to" v-model="hostMedia.valid_to"  hint="" persistent-hint></v-text-field></v-card-item>
+            <v-card-item><VueDatePicker label="valid_from" v-model="hostMedia.valid_from"  hint="" persistent-hint></VueDatePicker></v-card-item>
+            <v-card-item><VueDatePicker label="valid_to" v-model="hostMedia.valid_to"  hint="" persistent-hint></VueDatePicker></v-card-item>
             <v-card-item><v-text-field label="_version" v-model="hostMedia._version" type="number" hint="Version number of this record" persistent-hint></v-text-field></v-card-item>
-            <v-card-item><v-text-field label="_change_date" v-model="hostMedia._change_date"  hint="Date this record was changed" persistent-hint></v-text-field></v-card-item>
+            <v-card-item><VueDatePicker label="_change_date" v-model="hostMedia._change_date"  hint="Date this record was changed" persistent-hint></VueDatePicker></v-card-item>
             <v-card-item><v-select :items="userOptions" item-title="name" item-value="id" label="user" v-model="hostMedia._user" :hint="userOptionsHint" return-object persistent-hint></v-select></v-card-item>
             <v-card-item><v-select :items="statusOptions" item-title="name" item-value="id" label="status" v-model="hostMedia._status" :hint="statusOptionsHint" return-object persistent-hint></v-select></v-card-item>
             <v-card-item><v-text-field label="comments" v-model="hostMedia.comments"  hint="Free text comments on this record, for example description of changes made etc" persistent-hint></v-text-field></v-card-item>
@@ -28,6 +28,7 @@ import {useStore} from 'pinia';
 import {useRepo} from 'pinia-orm';
 
 import LinkForm from '@/web-components/forms/links';
+import VueDatePicker from '@/web-components/pickers/date-picker.vue';
 
 
 import Host from '@/models/Host';
@@ -42,6 +43,17 @@ export default defineComponent({
   name: 'HostMediaForm',
   props: {
   },
+  methods:{
+    parseLinks (links) {
+      let res;
+      if( links && links.length > 0 ){
+        res = JSON.stringify(links);
+      }else{
+        res = '';
+      }
+      return res;
+    }
+  },
   components: {
     VCard,
     VCardTitle,
@@ -51,15 +63,10 @@ export default defineComponent({
     VSelect,
     VForm,
     VBtn,
+    VueDatePicker,
     LinkForm
   },
   setup() {
-
-    const loadCSV = async (path) => {
-      let csvData;
-      csvData = await d3.dsv('|',path, d3.autoType);
-      return {csvData};
-    };
 
     // set up links object
     const links = ref([]);
@@ -136,43 +143,6 @@ export default defineComponent({
     const resetHostMedia = () => {
         Object.assign(hostMedia.value, hostMediaRepo.make() );
     };
-
-
-    onBeforeMount( async() => {
-      // load reference data so this is available to the form
-      if( hostRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/host.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            hostRepo.save(data.value);
-          });
-      }
-      if( mediaRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/media.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            mediaRepo.save(data.value);
-          });
-      }
-      if( userRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/user.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            userRepo.save(data.value);
-          });
-      }
-      if( statusRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/status.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            statusRepo.save(data.value);
-          });
-      }
-    });
 
     return {
         hostMedia,

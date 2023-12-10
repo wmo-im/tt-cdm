@@ -3,14 +3,13 @@
     <v-card-title>Create new 'Status'</v-card-title>
     <v-card-text>
         <v-form>
-            <v-card-item><v-text-field label="id" v-model="status.id" type="number" hint="ID / primary key" persistent-hint></v-text-field></v-card-item>
-            <v-card-item><v-text-field label="name" v-model="status.name"  hint="Short name for status" persistent-hint></v-text-field></v-card-item>
+            <v-card-item><v-text-field label="id" v-model="status.id"  hint="ID / primary key" persistent-hint></v-text-field></v-card-item>
+            <v-card-item><v-text-field label="name" v-model="status.name"  hint="Short name for the status" persistent-hint></v-text-field></v-card-item>
             <v-card-item><v-text-field label="description" v-model="status.description"  hint="Description of the status" persistent-hint></v-text-field></v-card-item>
             <v-card-item><v-text-field label="_version" v-model="status._version" type="number" hint="Version number of this record" persistent-hint></v-text-field></v-card-item>
-            <v-card-item><v-text-field label="_change_date" v-model="status._change_date"  hint="Date this record was changed" persistent-hint></v-text-field></v-card-item>
+            <v-card-item><VueDatePicker label="_change_date" v-model="status._change_date"  hint="Date this record was changed" persistent-hint></VueDatePicker></v-card-item>
             <v-card-item><v-select :items="userOptions" item-title="name" item-value="id" label="user" v-model="status._user" :hint="userOptionsHint" return-object persistent-hint></v-select></v-card-item>
-            <v-card-item><v-select :items="statusOptions" item-title="name" item-value="id" label="status" v-model="status._status" :hint="statusOptionsHint" return-object persistent-hint></v-select></v-card-item>
-            <v-card-item><v-text-field label="comments" v-model="status.comments"  hint="Free text comments on this record, for example description of changes made etc" persistent-hint></v-text-field></v-card-item>
+            <v-card-item><v-text-field label="_comments" v-model="status._comments"  hint="Free text comments on this record, for example description of changes made etc" persistent-hint></v-text-field></v-card-item>
         </v-form>
         <v-btn @click="createStatus">Create Status</v-btn>
     </v-card-text>
@@ -26,10 +25,10 @@ import {useStore} from 'pinia';
 import {useRepo} from 'pinia-orm';
 
 import LinkForm from '@/web-components/forms/links';
+import VueDatePicker from '@/web-components/pickers/date-picker.vue';
 
 
 import User from '@/models/User';
-import Status from '@/models/Status';
 
 // import model
 import Status from '@/models/Status';
@@ -37,6 +36,17 @@ import Status from '@/models/Status';
 export default defineComponent({
   name: 'StatusForm',
   props: {
+  },
+  methods:{
+    parseLinks (links) {
+      let res;
+      if( links && links.length > 0 ){
+        res = JSON.stringify(links);
+      }else{
+        res = '';
+      }
+      return res;
+    }
   },
   components: {
     VCard,
@@ -47,15 +57,10 @@ export default defineComponent({
     VSelect,
     VForm,
     VBtn,
+    VueDatePicker,
     LinkForm
   },
   setup() {
-
-    const loadCSV = async (path) => {
-      let csvData;
-      csvData = await d3.dsv('|',path, d3.autoType);
-      return {csvData};
-    };
 
     // set up links object
     const links = ref([]);
@@ -78,19 +83,6 @@ export default defineComponent({
         return "Select user";
       }
     } );
-    const statusRepo = useRepo(Status);
-    const statusOptions = computed(() => { return statusRepo.all() });
-    const statusOptionsHint = computed(() => {
-      if( status.value._status !== null ){
-        if ( 'description' in status.value._status ){
-          return status.value._status.description;
-        }else{
-          return "";
-        }
-      }else{
-        return "Select status";
-      }
-    } );
 
     const statusRepo = useRepo(Status);
     const status = ref(statusRepo.make());
@@ -107,35 +99,13 @@ export default defineComponent({
         Object.assign(status.value, statusRepo.make() );
     };
 
-
-    onBeforeMount( async() => {
-      // load reference data so this is available to the form
-      if( userRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/user.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            userRepo.save(data.value);
-          });
-      }
-      if( statusRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/status.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            statusRepo.save(data.value);
-          });
-      }
-    });
-
     return {
         status,
         createStatus,
         resetStatus,
         links,
         updateLinks,
-        userOptions, userOptionsHint,
-        statusOptions, statusOptionsHint
+        userOptions, userOptionsHint
     }
   }
 });

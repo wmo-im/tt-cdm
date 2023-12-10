@@ -6,7 +6,7 @@
             <v-card-item><v-text-field label="id" v-model="media.id"  hint="" persistent-hint></v-text-field></v-card-item>
             <v-card-item><v-select :items="mediaTypeOptions" item-title="name" item-value="id" label="media_type" v-model="media.media_type" :hint="mediaTypeOptionsHint" return-object persistent-hint></v-select></v-card-item>
             <v-card-item><v-text-field label="description" v-model="media.description"  hint="" persistent-hint></v-text-field></v-card-item>
-            <v-card-item><v-text-field label="created" v-model="media.created"  hint="" persistent-hint></v-text-field></v-card-item>
+            <v-card-item><VueDatePicker label="created" v-model="media.created"  hint="" persistent-hint></VueDatePicker></v-card-item>
             <v-card-item><v-text-field label="creator" v-model="media.creator"  hint="" persistent-hint></v-text-field></v-card-item>
             <v-card-item><v-text-field label="rights" v-model="media.rights" type="number" hint="" persistent-hint></v-text-field></v-card-item>
             <v-card-item><v-text-field label="source" v-model="media.source"  hint="" persistent-hint></v-text-field></v-card-item>
@@ -26,6 +26,7 @@ import {useStore} from 'pinia';
 import {useRepo} from 'pinia-orm';
 
 import LinkForm from '@/web-components/forms/links';
+import VueDatePicker from '@/web-components/pickers/date-picker.vue';
 
 
 import MediaType from '@/models/MediaType';
@@ -37,6 +38,17 @@ export default defineComponent({
   name: 'MediaForm',
   props: {
   },
+  methods:{
+    parseLinks (links) {
+      let res;
+      if( links && links.length > 0 ){
+        res = JSON.stringify(links);
+      }else{
+        res = '';
+      }
+      return res;
+    }
+  },
   components: {
     VCard,
     VCardTitle,
@@ -46,15 +58,10 @@ export default defineComponent({
     VSelect,
     VForm,
     VBtn,
+    VueDatePicker,
     LinkForm
   },
   setup() {
-
-    const loadCSV = async (path) => {
-      let csvData;
-      csvData = await d3.dsv('|',path, d3.autoType);
-      return {csvData};
-    };
 
     // set up links object
     const links = ref([]);
@@ -92,19 +99,6 @@ export default defineComponent({
     const resetMedia = () => {
         Object.assign(media.value, mediaRepo.make() );
     };
-
-
-    onBeforeMount( async() => {
-      // load reference data so this is available to the form
-      if( mediaTypeRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/media_type.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            mediaTypeRepo.save(data.value);
-          });
-      }
-    });
 
     return {
         media,

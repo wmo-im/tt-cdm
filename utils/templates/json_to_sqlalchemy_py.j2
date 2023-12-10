@@ -22,6 +22,7 @@
 # SOFTWARE.
 # =============================================================================
 from geoalchemy2 import Geography
+from sqlalchemy_json import mutable_json_type
 from sqlalchemy import (
     Column,
     DateTime,
@@ -62,7 +63,7 @@ mapper_registry = registry()
 {%           if column.kind == "float" %}{% set kind = "Numeric"%}{%endif%}
 {%           if column.kind == "int" %}{% set kind = "Integer"%}{%endif%}
 {%           if column.kind == "datetime" %}{% set kind = "DateTime(timezone=True)"%}{%endif%}
-{%           if column.kind == "dict" %}{% set kind = "JSONB"%}{%endif%}
+{%           if column.kind == "dict" %}{% set kind = "mutable_json_type(dbtype=JSONB, nested=True)"%}{%endif%}
     Column("{{column.name}}{{suffix}}",{%if column.foreign_key%}ForeignKey("{{column.foreign_key}}"){%else%} {{kind}}{%endif%}, comment="{{column.comment}}"{%if column.primary_key%}, primary_key={{column.primary_key}}{%endif%}, index={{column.index}}),
 {%       endfor %}
     schema="{{schema.name}}"

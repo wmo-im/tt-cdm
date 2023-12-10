@@ -18,7 +18,7 @@ export default class Observation extends Model {
       id: this.string(''),
       location: this.string(''),
       elevation: this.number(null),
-      observation_type_id: this.number(null),
+      observation_type_id: this.string(''),
       observation_type: this.belongsTo(ObservationType,'observation_type_id'),
       phenomenon_start: this.string(''),
       phenomenon_end: this.string(''),
@@ -33,9 +33,9 @@ export default class Observation extends Model {
       host: this.belongsTo(Host,'host_id'),
       observer_id: this.string(''),
       observer: this.belongsTo(Observer,'observer_id'),
-      observed_property_id: this.number(null),
+      observed_property_id: this.string(''),
       observed_property: this.belongsTo(ObservedProperty,'observed_property_id'),
-      observing_procedure_id: this.number(null),
+      observing_procedure_id: this.string(''),
       observing_procedure: this.belongsTo(ObservingProcedure,'observing_procedure_id'),
       collection_id: this.string(''),
       collection: this.belongsTo(Collection,'collection_id'),
@@ -44,14 +44,14 @@ export default class Observation extends Model {
       feature: this.belongsTo(Feature,'feature_id'),
       _version: this.number(null),
       _change_date: this.string(''),
-      _user_id: this.number(null),
+      _user_id: this.string(''),
       _user: this.belongsTo(User,'_user_id'),
-      _status_id: this.number(null),
+      _status_id: this.string(''),
       _status: this.belongsTo(Status,'_status_id'),
       comments: this.string(''),
-      _source_id: this.number(null),
+      _source_id: this.string(''),
       _source: this.belongsTo(Source,'_source_id'),
-      _source_identifier: this.number(null)
+      _source_identifier: this.string('')
     };
   };
 };

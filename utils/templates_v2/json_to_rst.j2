@@ -1,0 +1,45 @@
+:html_theme.sidebar_secondary.remove:
+
+{{table.name}}
+====
+
+{{table.comment}}
+
+
+.. raw:: html
+
+   <style>
+
+      /*disable page width for wide tables*/
+      .bd-page-width {max-width: none;}
+      .bd-article-container {max-width: 100% !important;}
+
+      /* Limit primary side bar width for wide pages */
+      .bd-sidebar-primary {max-width: 400px;}
+
+      .sphinx-tabs-panel {overflow-x: scroll;}
+
+   </style>
+
+.. tabs::
+    .. tab:: Table definition
+
+        Download the definition as a CSV file: :download:`csv <{{table.name}}.csv>`.
+
+        .. csv-table:: Definition of the *{{table.name}}* table.
+           :header: "Property","Kind","References","Requirement","Description"
+
+{%         for column in table.columns %}
+           ".. _{%if column.name[0]=="_"%}{{column.name[1:]}}{%else%}{{column.name}}{%endif%}:
+
+           {{column.name}}","{{column.kind}}",{%if column.foreign_key%}{% set path = column.foreign_key.split('.')%}"`{{column.foreign_key}} <../{{path[0]}}/{{path[1]}}.html#{{path[2]}}>`_"{%else%}{%endif%},{%if column.nullable%}"Optional"{%else%}"Required"{%endif%},"{{column.comment}}"
+{%         endfor %}
+
+    .. tab:: Example data
+
+        Download the example CSV file: :download:`csv <./examples/{{table.name}}.csv>`.
+
+        .. csv-table:: Example data
+           :file: ./examples/{{table.name}}.csv
+           :header-rows: 1
+           :quote: '

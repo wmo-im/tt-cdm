@@ -7,15 +7,15 @@
             <v-card-item><v-text-field label="location" v-model="observation.location"  hint="Location of observation" persistent-hint></v-text-field></v-card-item>
             <v-card-item><v-text-field label="elevation" v-model="observation.elevation" type="number" hint="Elevation of observation above mean sea level (in meters)" persistent-hint></v-text-field></v-card-item>
             <v-card-item><v-select :items="observationTypeOptions" item-title="name" item-value="id" label="observation_type" v-model="observation.observation_type" :hint="observationTypeOptionsHint" return-object persistent-hint></v-select></v-card-item>
-            <v-card-item><v-text-field label="phenomenon_start" v-model="observation.phenomenon_start"  hint="Start time of the phenomenon being observed or observing period, if missing assumed instantaneous with time given by phenomenon_end" persistent-hint></v-text-field></v-card-item>
-            <v-card-item><v-text-field label="phenomenon_end" v-model="observation.phenomenon_end"  hint="End time of the phenomenon being observed or observing period" persistent-hint></v-text-field></v-card-item>
+            <v-card-item><VueDatePicker label="phenomenon_start" v-model="observation.phenomenon_start"  hint="Start time of the phenomenon being observed or observing period, if missing assumed instantaneous with time given by phenomenon_end" persistent-hint></VueDatePicker></v-card-item>
+            <v-card-item><VueDatePicker label="phenomenon_end" v-model="observation.phenomenon_end"  hint="End time of the phenomenon being observed or observing period" persistent-hint></VueDatePicker></v-card-item>
             <v-card-item><v-text-field label="result_value" v-model="observation.result_value" type="number" hint="The value of the result in float representation" persistent-hint></v-text-field></v-card-item>
             <v-card-item><v-text-field label="result_uom" v-model="observation.result_uom"  hint="Units used to represent the value being observed" persistent-hint></v-text-field></v-card-item>
             <v-card-item><v-text-field label="result_description" v-model="observation.result_description"  hint="str representation of the result if applicable" persistent-hint></v-text-field></v-card-item>
             <v-card-item><v-text-field label="result_quality" v-model="observation.result_quality"  hint="JSON representation of the result quality, key / value pairs" persistent-hint></v-text-field></v-card-item>
-            <v-card-item><v-text-field label="result_time" v-model="observation.result_time"  hint="Time that the result became available" persistent-hint></v-text-field></v-card-item>
-            <v-card-item><v-text-field label="valid_from" v-model="observation.valid_from"  hint="Time that the result starts to be valid" persistent-hint></v-text-field></v-card-item>
-            <v-card-item><v-text-field label="valid_to" v-model="observation.valid_to"  hint="Time after which the result is no longer valid" persistent-hint></v-text-field></v-card-item>
+            <v-card-item><VueDatePicker label="result_time" v-model="observation.result_time"  hint="Time that the result became available" persistent-hint></VueDatePicker></v-card-item>
+            <v-card-item><VueDatePicker label="valid_from" v-model="observation.valid_from"  hint="Time that the result starts to be valid" persistent-hint></VueDatePicker></v-card-item>
+            <v-card-item><VueDatePicker label="valid_to" v-model="observation.valid_to"  hint="Time after which the result is no longer valid" persistent-hint></VueDatePicker></v-card-item>
             <v-card-item><v-select :items="hostOptions" item-title="name" item-value="id" label="host" v-model="observation.host" :hint="hostOptionsHint" return-object persistent-hint></v-select></v-card-item>
             <v-card-item><v-select :items="observerOptions" item-title="name" item-value="id" label="observer" v-model="observation.observer" :hint="observerOptionsHint" return-object persistent-hint></v-select></v-card-item>
             <v-card-item><v-select :items="observedPropertyOptions" item-title="name" item-value="id" label="observed_property" v-model="observation.observed_property" :hint="observedPropertyOptionsHint" return-object persistent-hint></v-select></v-card-item>
@@ -24,12 +24,12 @@
             <v-card-item><v-text-field label="parameter" v-model="observation.parameter"  hint="List of key/ value pairs in dict" persistent-hint></v-text-field></v-card-item>
             <v-card-item><v-select :items="featureOptions" item-title="name" item-value="id" label="feature" v-model="observation.feature" :hint="featureOptionsHint" return-object persistent-hint></v-select></v-card-item>
             <v-card-item><v-text-field label="_version" v-model="observation._version" type="number" hint="Version number of this record" persistent-hint></v-text-field></v-card-item>
-            <v-card-item><v-text-field label="_change_date" v-model="observation._change_date"  hint="Date this record was changed" persistent-hint></v-text-field></v-card-item>
+            <v-card-item><VueDatePicker label="_change_date" v-model="observation._change_date"  hint="Date this record was changed" persistent-hint></VueDatePicker></v-card-item>
             <v-card-item><v-select :items="userOptions" item-title="name" item-value="id" label="user" v-model="observation._user" :hint="userOptionsHint" return-object persistent-hint></v-select></v-card-item>
             <v-card-item><v-select :items="statusOptions" item-title="name" item-value="id" label="status" v-model="observation._status" :hint="statusOptionsHint" return-object persistent-hint></v-select></v-card-item>
             <v-card-item><v-text-field label="comments" v-model="observation.comments"  hint="Free text comments on this record, for example description of changes made etc" persistent-hint></v-text-field></v-card-item>
             <v-card-item><v-select :items="sourceOptions" item-title="name" item-value="id" label="source" v-model="observation._source" :hint="sourceOptionsHint" return-object persistent-hint></v-select></v-card-item>
-            <v-card-item><v-text-field label="_source_identifier" v-model="observation._source_identifier" type="number" hint="The original identifier for the record from the data source" persistent-hint></v-text-field></v-card-item>
+            <v-card-item><v-text-field label="_source_identifier" v-model="observation._source_identifier"  hint="The original identifier for the record from the data source" persistent-hint></v-text-field></v-card-item>
         </v-form>
         <v-btn @click="createObservation">Create Observation</v-btn>
     </v-card-text>
@@ -45,6 +45,7 @@ import {useStore} from 'pinia';
 import {useRepo} from 'pinia-orm';
 
 import LinkForm from '@/web-components/forms/links';
+import VueDatePicker from '@/web-components/pickers/date-picker.vue';
 
 
 import ObservationType from '@/models/ObservationType';
@@ -65,6 +66,17 @@ export default defineComponent({
   name: 'ObservationForm',
   props: {
   },
+  methods:{
+    parseLinks (links) {
+      let res;
+      if( links && links.length > 0 ){
+        res = JSON.stringify(links);
+      }else{
+        res = '';
+      }
+      return res;
+    }
+  },
   components: {
     VCard,
     VCardTitle,
@@ -74,15 +86,10 @@ export default defineComponent({
     VSelect,
     VForm,
     VBtn,
+    VueDatePicker,
     LinkForm
   },
   setup() {
-
-    const loadCSV = async (path) => {
-      let csvData;
-      csvData = await d3.dsv('|',path, d3.autoType);
-      return {csvData};
-    };
 
     // set up links object
     const links = ref([]);
@@ -237,91 +244,6 @@ export default defineComponent({
     const resetObservation = () => {
         Object.assign(observation.value, observationRepo.make() );
     };
-
-
-    onBeforeMount( async() => {
-      // load reference data so this is available to the form
-      if( observationTypeRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/observation_type.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            observationTypeRepo.save(data.value);
-          });
-      }
-      if( hostRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/host.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            hostRepo.save(data.value);
-          });
-      }
-      if( observerRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/observer.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            observerRepo.save(data.value);
-          });
-      }
-      if( observedPropertyRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/observed_property.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            observedPropertyRepo.save(data.value);
-          });
-      }
-      if( observingProcedureRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/observing_procedure.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            observingProcedureRepo.save(data.value);
-          });
-      }
-      if( collectionRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/collection.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            collectionRepo.save(data.value);
-          });
-      }
-      if( featureRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/feature.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            featureRepo.save(data.value);
-          });
-      }
-      if( userRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/user.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            userRepo.save(data.value);
-          });
-      }
-      if( statusRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/status.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            statusRepo.save(data.value);
-          });
-      }
-      if( sourceRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/source.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            sourceRepo.save(data.value);
-          });
-      }
-    });
 
     return {
         observation,

@@ -3,9 +3,15 @@
     <v-card-title>Create new 'Season'</v-card-title>
     <v-card-text>
         <v-form>
-            <v-card-item><v-text-field label="id" v-model="season.id" type="number" hint="" persistent-hint></v-text-field></v-card-item>
+            <v-card-item><v-text-field label="id" v-model="season.id"  hint="" persistent-hint></v-text-field></v-card-item>
             <v-card-item><v-text-field label="name" v-model="season.name"  hint="" persistent-hint></v-text-field></v-card-item>
             <v-card-item><v-text-field label="description" v-model="season.description"  hint="" persistent-hint></v-text-field></v-card-item>
+            <v-card-item><LinkForm :links="links" @updateLinks="updateLinks" ></LinkForm></v-card-item>
+            <v-card-item><v-text-field label="_version" v-model="season._version" type="number" hint="Version number of this record" persistent-hint></v-text-field></v-card-item>
+            <v-card-item><VueDatePicker label="_change_date" v-model="season._change_date"  hint="Date this record was changed" persistent-hint></VueDatePicker></v-card-item>
+            <v-card-item><v-select :items="userOptions" item-title="name" item-value="id" label="user" v-model="season._user" :hint="userOptionsHint" return-object persistent-hint></v-select></v-card-item>
+            <v-card-item><v-select :items="statusOptions" item-title="name" item-value="id" label="status" v-model="season._status" :hint="statusOptionsHint" return-object persistent-hint></v-select></v-card-item>
+            <v-card-item><v-text-field label="comments" v-model="season.comments"  hint="Free text comments on this record, for example description of changes made etc" persistent-hint></v-text-field></v-card-item>
         </v-form>
         <v-btn @click="createSeason">Create Season</v-btn>
     </v-card-text>
@@ -21,8 +27,11 @@ import {useStore} from 'pinia';
 import {useRepo} from 'pinia-orm';
 
 import LinkForm from '@/web-components/forms/links';
+import VueDatePicker from '@/web-components/pickers/date-picker.vue';
 
 
+import User from '@/models/User';
+import Status from '@/models/Status';
 
 // import model
 import Season from '@/models/Season';
@@ -30,6 +39,17 @@ import Season from '@/models/Season';
 export default defineComponent({
   name: 'SeasonForm',
   props: {
+  },
+  methods:{
+    parseLinks (links) {
+      let res;
+      if( links && links.length > 0 ){
+        res = JSON.stringify(links);
+      }else{
+        res = '';
+      }
+      return res;
+    }
   },
   components: {
     VCard,
@@ -40,15 +60,10 @@ export default defineComponent({
     VSelect,
     VForm,
     VBtn,
+    VueDatePicker,
     LinkForm
   },
   setup() {
-
-    const loadCSV = async (path) => {
-      let csvData;
-      csvData = await d3.dsv('|',path, d3.autoType);
-      return {csvData};
-    };
 
     // set up links object
     const links = ref([]);
@@ -58,6 +73,32 @@ export default defineComponent({
     }
 
     // set up repos
+    const userRepo = useRepo(User);
+    const userOptions = computed(() => { return userRepo.all() });
+    const userOptionsHint = computed(() => {
+      if( season.value._user !== null ){
+        if ( 'description' in season.value._user ){
+          return season.value._user.description;
+        }else{
+          return "";
+        }
+      }else{
+        return "Select user";
+      }
+    } );
+    const statusRepo = useRepo(Status);
+    const statusOptions = computed(() => { return statusRepo.all() });
+    const statusOptionsHint = computed(() => {
+      if( season.value._status !== null ){
+        if ( 'description' in season.value._status ){
+          return season.value._status.description;
+        }else{
+          return "";
+        }
+      }else{
+        return "Select status";
+      }
+    } );
 
     const seasonRepo = useRepo(Season);
     const season = ref(seasonRepo.make());
@@ -74,17 +115,14 @@ export default defineComponent({
         Object.assign(season.value, seasonRepo.make() );
     };
 
-
-    onBeforeMount( async() => {
-      // load reference data so this is available to the form
-    });
-
     return {
         season,
         createSeason,
         resetSeason,
         links,
-        updateLinks
+        updateLinks,
+        userOptions, userOptionsHint,
+        statusOptions, statusOptionsHint
     }
   }
 });

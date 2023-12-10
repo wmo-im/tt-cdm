@@ -26,12 +26,14 @@ export default class {{table.name | snake_to_pascal }} extends Model {
 {%else%}
 {%    set default="null"%}
 {%endif%}
+{% if not column.foreign_key %}
       {{column.name}}: this.{{types[column.kind]}}({{default}}){% if not loop.last%},{%endif%}
+{% else %}
+      {{column.name}}_id: this.{{types[column.kind]}}({{default}}){% if not loop.last%},{%endif%}
 
-{%if column.foreign_key %}
-      {{column.name|replace("_id","")}}: this.belongsTo({{column.foreign_key.split(".")[1]|snake_to_pascal}},'{{column.name}}'){% if not loop.last%},{%endif%}
-
+      {{column.name|replace("_id","")}}: this.belongsTo({{column.foreign_key.split(".")[1]|snake_to_pascal}},'{{column.name}}_id'){% if not loop.last%},{%endif%}
 {% endif %}
+
 {% endfor %}
     };
   };

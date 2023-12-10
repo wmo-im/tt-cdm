@@ -5,11 +5,7 @@
         <v-form>
             <v-card-item><v-text-field label="id" v-model="user.id"  hint="ID / primary key" persistent-hint></v-text-field></v-card-item>
             <v-card-item><v-text-field label="name" v-model="user.name"  hint="Name of user/agent" persistent-hint></v-text-field></v-card-item>
-            <v-card-item><v-text-field label="_version" v-model="user._version" type="number" hint="Version number of this record" persistent-hint></v-text-field></v-card-item>
-            <v-card-item><v-text-field label="_change_date" v-model="user._change_date"  hint="Date this record was changed" persistent-hint></v-text-field></v-card-item>
-            <v-card-item><v-select :items="userOptions" item-title="name" item-value="id" label="user" v-model="user._user" :hint="userOptionsHint" return-object persistent-hint></v-select></v-card-item>
-            <v-card-item><v-select :items="statusOptions" item-title="name" item-value="id" label="status" v-model="user._status" :hint="statusOptionsHint" return-object persistent-hint></v-select></v-card-item>
-            <v-card-item><v-text-field label="comments" v-model="user.comments"  hint="Free text comments on this record, for example description of changes made etc" persistent-hint></v-text-field></v-card-item>
+            <v-card-item><v-text-field label="description" v-model="user.description"  hint="Description of user / agent" persistent-hint></v-text-field></v-card-item>
         </v-form>
         <v-btn @click="createUser">Create User</v-btn>
     </v-card-text>
@@ -25,10 +21,9 @@ import {useStore} from 'pinia';
 import {useRepo} from 'pinia-orm';
 
 import LinkForm from '@/web-components/forms/links';
+import VueDatePicker from '@/web-components/pickers/date-picker.vue';
 
 
-import User from '@/models/User';
-import Status from '@/models/Status';
 
 // import model
 import User from '@/models/User';
@@ -36,6 +31,17 @@ import User from '@/models/User';
 export default defineComponent({
   name: 'UserForm',
   props: {
+  },
+  methods:{
+    parseLinks (links) {
+      let res;
+      if( links && links.length > 0 ){
+        res = JSON.stringify(links);
+      }else{
+        res = '';
+      }
+      return res;
+    }
   },
   components: {
     VCard,
@@ -46,15 +52,10 @@ export default defineComponent({
     VSelect,
     VForm,
     VBtn,
+    VueDatePicker,
     LinkForm
   },
   setup() {
-
-    const loadCSV = async (path) => {
-      let csvData;
-      csvData = await d3.dsv('|',path, d3.autoType);
-      return {csvData};
-    };
 
     // set up links object
     const links = ref([]);
@@ -64,32 +65,6 @@ export default defineComponent({
     }
 
     // set up repos
-    const userRepo = useRepo(User);
-    const userOptions = computed(() => { return userRepo.all() });
-    const userOptionsHint = computed(() => {
-      if( user.value._user !== null ){
-        if ( 'description' in user.value._user ){
-          return user.value._user.description;
-        }else{
-          return "";
-        }
-      }else{
-        return "Select user";
-      }
-    } );
-    const statusRepo = useRepo(Status);
-    const statusOptions = computed(() => { return statusRepo.all() });
-    const statusOptionsHint = computed(() => {
-      if( user.value._status !== null ){
-        if ( 'description' in user.value._status ){
-          return user.value._status.description;
-        }else{
-          return "";
-        }
-      }else{
-        return "Select status";
-      }
-    } );
 
     const userRepo = useRepo(User);
     const user = ref(userRepo.make());
@@ -106,35 +81,12 @@ export default defineComponent({
         Object.assign(user.value, userRepo.make() );
     };
 
-
-    onBeforeMount( async() => {
-      // load reference data so this is available to the form
-      if( userRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/user.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            userRepo.save(data.value);
-          });
-      }
-      if( statusRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/status.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            statusRepo.save(data.value);
-          });
-      }
-    });
-
     return {
         user,
         createUser,
         resetUser,
         links,
-        updateLinks,
-        userOptions, userOptionsHint,
-        statusOptions, statusOptionsHint
+        updateLinks
     }
   }
 });

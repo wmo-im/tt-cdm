@@ -8,5 +8,3 @@ RUN echo "Acquire::Check-Valid-Until \"false\";\nAcquire::Check-Date \"false\";"
     && apt-get update -y \
     && apt-get install -y ${DEBIAN_PACKAGES} \
     && apt-get install -y python3 python3-pip libpq-dev
-
-ENTRYPOINT bash

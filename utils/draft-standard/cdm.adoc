@@ -1,261 +1,3 @@
-.CDM observation_type: placeholder
-|===
-|Property|Requirement|Description
-
-|``id``
-|required|ID / primary key
-|``name``
-|required|Short name for observation type
-|``description``
-|required|Description of observation type
-|``links``
-|optional|Link(s) to definition of observation type
-|``_version``
-|required|Version number of this record
-|``_change_date``
-|required|Date this record was changed
-|``_user_id``
-|required|Which user/agent last modified this record
-|``_status_id``
-|required|Whether this is the latest version or an archived version of the record
-|``comments``
-|required|Free text comments on this record, for example description of changes made etc
-
-|===
-
-.CDM facility_type: WMDS facility type, type of observing facility
-|===
-|Property|Requirement|Description
-
-|``id``
-|required|ID / primary key
-|``name``
-|required|Short name for feature type
-|``description``
-|required|Description of feature type
-|``links``
-|optional|Link(s) to definition of feature type
-|``_version``
-|required|Version number of this record
-|``_change_date``
-|required|Date this record was changed
-|``_user_id``
-|required|Which user/agent last modified this record
-|``_status_id``
-|required|Whether this is the latest version or an archived version of the record
-|``comments``
-|required|Free text comments on this record, for example description of changes made etc
-
-|===
-
-.CDM feature_type: placeholder
-|===
-|Property|Requirement|Description
-
-|``id``
-|required|ID / primary key
-|``name``
-|required|Short name for feature type
-|``description``
-|required|Description of feature type
-|``links``
-|optional|Link(s) to definition of feature type
-|``_version``
-|required|Version number of this record
-|``_change_date``
-|required|Date this record was changed
-|``_user_id``
-|required|Which user/agent last modified this record
-|``_status_id``
-|required|Whether this is the latest version or an archived version of the record
-|``comments``
-|required|Free text comments on this record, for example description of changes made etc
-
-|===
-
-.CDM wmo_region: placeholder
-|===
-|Property|Requirement|Description
-
-|``id``
-|required|ID / primary key
-|``name``
-|required|Short name for feature type
-|``description``
-|required|Description of feature type
-|``links``
-|optional|Link(s) to definition of feature type
-|``_version``
-|required|Version number of this record
-|``_change_date``
-|required|Date this record was changed
-|``_user_id``
-|required|Which user/agent last modified this record
-|``_status_id``
-|required|Whether this is the latest version or an archived version of the record
-|``comments``
-|required|Free text comments on this record, for example description of changes made etc
-
-|===
-
-.CDM territory: placeholder
-|===
-|Property|Requirement|Description
-
-|``id``
-|required|ID / primary key
-|``ISO3c``
-|required|ID / primary key
-|``name``
-|required|Short name for feature type
-|``description``
-|required|Description of feature type
-|``wmo_region_id``
-|optional|WMO region that represents the territory
-|``links``
-|optional|Link(s) to definition of feature type
-|``_version``
-|required|Version number of this record
-|``_change_date``
-|required|Date this record was changed
-|``_user_id``
-|required|Which user/agent last modified this record
-|``_status_id``
-|required|Whether this is the latest version or an archived version of the record
-|``comments``
-|required|Free text comments on this record, for example description of changes made etc
-
-|===
-
-.CDM observed_property: placeholder
-|===
-|Property|Requirement|Description
-
-|``id``
-|required|ID / primary key
-|``short_name``
-|required|Short name representation of observed property, e.g. 'at'
-|``standard_name``
-|optional|CF standard name (if applicable), e.g. 'air_temperature'
-|``units``
-|required|Canonical units, e.g. 'Kelvin'
-|``description``
-|required|Description of observed property
-|``links``
-|optional|Link(s) to definition / source of observed property
-|``_version``
-|required|Version number of this record
-|``_change_date``
-|required|Date this record was changed
-|``_user_id``
-|required|Which user/agent last modified this record
-|``_status_id``
-|required|Whether this is the latest version or an archived version of the record
-|``comments``
-|required|Free text comments on this record, for example description of changes made etc
-
-|===
-
-.CDM observing_procedure: placeholder
-|===
-|Property|Requirement|Description
-
-|``id``
-|required|ID / primary key
-|``name``
-|required|Name of observing procedure
-|``description``
-|required|Description of observing procedure
-|``links``
-|optional|Link(s) to further information
-|``_version``
-|required|Version number of this record
-|``_change_date``
-|required|Date this record was changed
-|``_user_id``
-|required|Which user/agent last modified this record
-|``_status_id``
-|required|Whether this is the latest version or an archived version of the record
-|``comments``
-|required|Free text comments on this record, for example description of changes made etc
-
-|===
-
-.CDM status: placeholder
-|===
-|Property|Requirement|Description
-
-|``id``
-|required|ID / primary key
-|``name``
-|required|Short name for status
-|``description``
-|required|Description of the status
-|``_version``
-|required|Version number of this record
-|``_change_date``
-|required|Date this record was changed
-|``_user_id``
-|required|Which user/agent last modified this record
-|``_status_id``
-|required|Whether this is the latest version or an archived version of the record
-|``comments``
-|required|Free text comments on this record, for example description of changes made etc
-
-|===
-
-.CDM time_zone: placeholder
-|===
-|Property|Requirement|Description
-
-|``id``
-|required|ID / primary key
-|``abbreviation``
-|required|Abbreviation for time zone
-|``name``
-|required|Name / description of timezone
-|``offset``
-|required|Offset from UTC (hours)
-|``_version``
-|required|Version number of this record
-|``_change_date``
-|required|Date this record was changed
-|``_user_id``
-|required|Which user/agent last modified this record
-|``_status_id``
-|required|Whether this is the latest version or an archived version of the record
-|``comments``
-|required|Free text comments on this record, for example description of changes made etc
-
-|===
-
-.CDM source_type: placeholder
-|===
-|Property|Requirement|Description
-
-|``id``
-|required|ID / primary key
-|``name``
-|required|Name of source type
-|``description``
-|required|Description of source type, e.g. file etc
-|``scheme``
-|optional|IANA scheme (if applicable)
-|``links``
-|optional|Links proviing further definition of source type
-|``_version``
-|required|Version number of this record
-|``_change_date``
-|required|Date this record was changed
-|``_user_id``
-|required|Which user/agent last modified this record
-|``_status_id``
-|required|Whether this is the latest version or an archived version of the record
-|``comments``
-|required|Free text comments on this record, for example description of changes made etc
-
-|===
-
 .CDM user: placeholder
 |===
 |Property|Requirement|Description
@@ -264,52 +6,974 @@
 |required|ID / primary key
 |``name``
 |required|Name of user/agent
+|``description``
+|required|Description of user / agent
+
+|===
+
+.CDM status: Controlled vocabulary to record the status of a record
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key
+|``name``
+|required|Short name for the status
+|``description``
+|required|Description of the status
 |``_version``
 |required|Version number of this record
 |``_change_date``
 |required|Date this record was changed
-|``_user_id``
+|``_user``
 |required|Which user/agent last modified this record
-|``_status_id``
-|required|Whether this is the latest version or an archived version of the record
-|``comments``
+|``_comments``
 |required|Free text comments on this record, for example description of changes made etc
 
 |===
 
-.CDM media: store for digital media, e.g. photos, reports, videos, etc
+.CDM application_area: Application area code list.
 |===
 |Property|Requirement|Description
 
 |``id``
-|optional|
-|``media_type_id``
-|optional|
-|``description``
-|optional|
-|``created``
-|optional|
-|``creator``
-|optional|
-|``rights``
-|optional|
-|``source``
-|optional|
-|``data``
-|optional|
-
-|===
-
-.CDM media_type: placeholder
-|===
-|Property|Requirement|Description
-
-|``id``
-|optional|
+|required|ID / primary key.
+|``inScheme``
+|required|The scheme/vocabulary that this record is from.
 |``name``
-|optional|
+|required|Short name / abbreviation for the application area.
 |``description``
-|required|Type of media uploaded
+|required|Description of the application area.
+|``links``
+|optional|Link(s) to further information on the application area.
+|``_version``
+|required|Version of this record, e.g. 1.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM climate_zone: Climate zone code list.
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key.
+|``inSchema``
+|required|The scheme/vocabulary that this record is from.
+|``name``
+|optional|Short name / abbreviation for the climate zone.
+|``description``
+|required|Description of the climate zone
+|``links``
+|optional|Links providing further definition of climate zone
+|``_version``
+|required|Version number of this record
+|``_change_date``
+|required|Date this record was changed
+|``_user``
+|required|Which user/agent last modified this record
+|``_status``
+|required|Whether this is the latest version or an archived version of the record
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc
+
+|===
+
+.CDM exposure: Sensor exposure classification code list.
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key.
+|``inSchema``
+|required|The scheme/vocabulary that this record is from.
+|``name``
+|optional|Short name / abbreviation for exposure classification.
+|``description``
+|required|Description of sensor exposure according to WMO-No. 8.
+|``links``
+|optional|Links providing further definition of exposure class.
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM facility_type: Facility type code list.
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key.
+|``inScheme``
+|required|The scheme/vocabulary that this record is from.
+|``name``
+|required|Short name / abbreviation for the facility type.
+|``description``
+|required|Description of the facility type.
+|``links``
+|optional|Link(s) to definition of facility type.
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM feature_type: Feature type code list.
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key.
+|``inScheme``
+|required|The scheme/vocabulary that this record is from.
+|``name``
+|required|Short name / abbreviation for the feature type.
+|``description``
+|required|Description of the feature type.
+|``links``
+|optional|Link(s) to definition of feature type.
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM measurement_quality: Measurement quality classification code list.
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key.
+|``inScheme``
+|required|The scheme/vocabulary that this record is from.
+|``name``
+|required|Short name / abbreviation for the measurement quality classification.
+|``description``
+|required|Description of the measurement quality classification.
+|``links``
+|optional|Link(s) to definition of fmeasurement quality classification.
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM media_type: Media type code list.
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key.
+|``inScheme``
+|required|The scheme/vocabulary that this record is from.
+|``name``
+|required|Short name / abbreviation for the media type.
+|``description``
+|required|Description of the media type.
+|``links``
+|optional|Link(s) to definition of media type.
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM observation_type: Observation type code list.
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key
+|``inSchema``
+|required|The scheme/vocabulary that this record is from.
+|``name``
+|required|Short name / abbreviation for the observation type.
+|``description``
+|required|Description of the observation type.
+|``links``
+|optional|Link(s) to definition of the observation type.
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM observed_property: Observed property code list.
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key.
+|``inScheme``
+|required|The scheme/vocabulary that this record is from.
+|``name``
+|required|Short name / abbreviation of observed property, e.g. 'at' for air temperature.
+|``description``
+|required|Description of observed property.
+|``standard_name``
+|optional|CF standard name (if applicable), e.g. 'air_temperature'.
+|``units``
+|required|Canonical units, e.g. 'Kelvin'.
+|``links``
+|optional|Link(s) to definition / source of observed property.
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM observing_method: Observing method code list.
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key.
+|``inScheme``
+|required|The scheme/vocabulary that this record is from.
+|``name``
+|optional|Short name / abbreviation of the observing method.
+|``description``
+|required|Description of observing method.
+|``links``
+|optional|Links providing further definition of observing method.
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM observing_procedure: Observing procedure code list.
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key.
+|``inScheme``
+|required|The scheme/vocabulary that this record is from.
+|``name``
+|optional|Short name / abbreviation of the observing procedure.
+|``description``
+|required|Description of observing procedure.
+|``links``
+|optional|Links providing further definition of observing procedure.
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM observing_program: Observing program code list.
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key.
+|``inScheme``
+|required|The scheme/vocabulary that this record is from.
+|``name``
+|optional|Short name / abbreviation of the observing program.
+|``description``
+|required|Description of observing program.
+|``links``
+|optional|Links providing further definition of observing program.
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM operating_status: Operating status code list.
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key.
+|``inScheme``
+|required|The scheme/vocabulary that this record is from.
+|``name``
+|optional|Short name / abbreviation of the operating status.
+|``description``
+|required|Description of operating status.
+|``links``
+|optional|Links providing further definition of operating status.
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM reference_surface: Reference surface code list.
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key.
+|``inScheme``
+|required|The scheme/vocabulary that this record is from.
+|``name``
+|optional|Short name / abbreviation of the reference surface.
+|``description``
+|required|Description of reference surface.
+|``links``
+|optional|Links providing further definition of reference.
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM representativeness: Representativeness classification code list.
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key.
+|``inScheme``
+|required|The scheme/vocabulary that this record is from.
+|``name``
+|optional|Short name / abbreviation for the representativeness classification.
+|``description``
+|required|Description of the representativeness classification.
+|``links``
+|optional|Links providing further information on the representativeness classification.
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM role: The function performed by the responsible party.
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key.
+|``inScheme``
+|required|The scheme/vocabulary that this record is from.
+|``name``
+|optional|Short name / abbreviation of the role.
+|``description``
+|required|Description of the role.
+|``links``
+|optional|Links providing further information on the role.
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM source_type: Source type code list
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key.
+|``inScheme``
+|required|The scheme/vocabulary that this record is from.
+|``name``
+|required|Name of source type
+|``description``
+|required|Description of source type, e.g. file etc
+|``IANA_scheme``
+|optional|IANA scheme (if applicable)
+|``links``
+|optional|Links providing further definition of source type
+|``_version``
+|required|Version number of this record
+|``_change_date``
+|required|Date this record was changed
+|``_user``
+|required|Which user/agent last modified this record
+|``_status``
+|required|Whether this is the latest version or an archived version of the record
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc
+
+|===
+
+.CDM surface_cover: Surface cover classification code list.
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key.
+|``inScheme``
+|required|The scheme/vocabulary that this record is from.
+|``name``
+|optional|Short name / abbreviation of the surface cover classification.
+|``description``
+|required|Description of the surface cover classification.
+|``links``
+|optional|Links providing further information on the surface cover classification.
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM surface_roughness: Surface roughness classification code list.
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key.
+|``inScheme``
+|required|The scheme/vocabulary that this record is from.
+|``name``
+|optional|Short name / abbreviation of the surface roughness classification.
+|``description``
+|required|Description of the surface roughness classification.
+|``links``
+|optional|Links providing further information on the surface roughness classification.
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM territory: Territory / country code list
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key.
+|``inScheme``
+|required|The scheme/vocabulary that this record is from.
+|``name``
+|required|Short name / abbreviation for the territory.
+|``description``
+|required|Official name of territory.
+|``ISO3c``
+|required|ISO 3 character country code.
+|``wmo_region``
+|optional|WMO region that represents the territory.
+|``links``
+|optional|Link(s) to further information.
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM time_zone: Time zone code list
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key
+|``inScheme``
+|required|The scheme/vocabulary that this record is from.
+|``name``
+|required|Name / abbreviation of time zone
+|``description``
+|required|Description of the time zone.
+|``offset``
+|required|Offset from UTC in hours (decimal)
+|``links``
+|optional|Link(s) to further information.
+|``_version``
+|required|Version number of this record
+|``_change_date``
+|required|Date this record was changed
+|``_user``
+|required|Which user/agent last modified this record
+|``_status``
+|required|Whether this is the latest version or an archived version of the record
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc
+
+|===
+
+.CDM topography_bathymetry: Topography / bathymetry classification code list.
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key.
+|``inScheme``
+|required|The scheme/vocabulary that this record is from.
+|``name``
+|optional|Short name / abbreviation of the topography / bathymetry classification.
+|``description``
+|required|Description of the topography / bathymetry classification.
+|``links``
+|optional|Links providing further information on the topography / bathymetry classification.
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM wmo_region: WMO regional association code list.
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key.
+|``inScheme``
+|required|The scheme/vocabulary that this record is from.
+|``name``
+|optional|Short name / abbreviation of the WMO regional association.
+|``description``
+|required|Description of the WMO regional association.
+|``links``
+|optional|Links providing further information on the WMO regional association.
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM deployment: Deployed equipment
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|Unique ID / primary key for deployment.
+|``deployed_equipment``
+|optional|The deployed equipment.
+|``host``
+|optional|The host / observing facility where the equipment is deployed.
+|``height_above_local_reference_surface``
+|optional|Installation height of equipment above reference surface (in meters).
+|``local_reference_surface``
+|optional|The local reference surface.
+|``valid_from``
+|optional|Date that this record is valid from.
+|``valid_to``
+|optional|Date that this record is valid to.
+|``communication_method``
+|optional|The primary data communication method.
+|``source_of_observation``
+|required|The source of the observation (manual, automatic, visual etc.).
+|``exposure``
+|optional|The degree to which an instrument is affected by external influences according to the exposure classification (see WMO No. 8).
+|``measurement_quality``
+|optional|Expected quality of measurements from the sensor in teh current configuration according to the measurement quality classification (see WMO-No. 8).
+|``representativeness``
+|optional|An assessment of the representativeness of the observations.
+|``configuration``
+|optional|Description of any shielding or configuration/setup of the instrumentation.
+|``control_schedule``
+|optional|Description of schedule for calibrations or verification of instrument.
+|``maintenance_schedule``
+|optional|A description (and schedule) of maintenance that is routinely performed on an instrument.
+|``links``
+|optional|Link(s) to further information on deployment.
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM deployment_application_area: Link table between deployments and application area
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|Primary key for this record.
+|``deployment``
+|required|The deployment this record belongs to.
+|``application_area``
+|required|The application area this record belongs to.
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM deployment_log: Log of events associated with the deployment of a piece of equipment
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key.
+|``deployment``
+|required|The deployment to which this record applies.
+|``author``
+|required|Author of the log entry.
+|``datetime``
+|required|Date and time of the event being logged.
+|``description``
+|required|Description of of the event being logged.
+|``links``
+|required|Links to further documentation of the logged event.
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM deployment_media: Link table between deployments and associated media, e.g. photos
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|Primary key for this record.
+|``deployment``
+|optional|The deployment this record belongs to.
+|``media``
+|optional|The media this record belongs to.
+|``valid_from``
+|optional|Date from which the media is valid.
+|``valid_to``
+|optional|Date from which the media is no longer valid.
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM deployment_party: Nominated points of contact for the host / station metadata
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|Unique identifier for this record.
+|``responsible_party``
+|required|The responsible party.
+|``role``
+|required|The role this responsible party plays.
+|``deployment``
+|required|The deployment that this record corresponds to.
+|``valid_from``
+|optional|Date this record is valid from.
+|``valid_to``
+|optional|Date this record is valid to.
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM equipment: Basic information on equipment
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key.
+|``description``
+|required|Description of sensor.
+|``equipment_type``
+|required|The type of equipment, e.g. temperature sensor, sensor housing, etc
+|``online_resource``
+|optional|Link(s) to further information.
+|``specification_link``
+|optional|Link to manufacturers (or other) specification describing the equipment.
+|``firmware_version``
+|optional|Firmware version of software installed in sensor.
+|``manufacturer``
+|optional|Make, or manufacturer, of sensor.
+|``model``
+|optional|Model of sensor.
+|``serial_number``
+|optional|Serial number of sensor.
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM equipment_log: Equipment log
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key.
+|``equipment``
+|required|The equipment / sensor to which this record applies.
+|``author``
+|required|Author of the log entry.
+|``datetime``
+|required|Date and time of the event being logged.
+|``description``
+|required|Description of of the event being logged.
+|``links``
+|required|Links to further documentation of the logged event.
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM equipment_media: Link table between equipment and associated media, e.g. photos
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|Primary key for this record.
+|``equipment``
+|optional|The equipment this record belongs to.
+|``media``
+|optional|The media this record belongs to.
+|``valid_from``
+|optional|Date from which the media is valid.
+|``valid_to``
+|optional|Date from which the media is no longer valid.
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM equipment_responsible_party: placeholder
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|
+|``equipment``
+|required|The equipment that this record corresponds to.
+|``responsible_party``
+|required|The responsible party associated with the record.
+|``role``
+|required|The role the responsible party plays.
+|``valid_from``
+|optional|Date this record is valid from.
+|``valid_to``
+|optional|Date this record is valid to.
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM feature: Basic definition of geographic features
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key.
+|``name``
+|optional|Name of feature.
+|``description``
+|optional|Description of feature.
+|``feature_type``
+|required|Feature type.
+|``geometry``
+|required|Location / geospatial geometry of feature.
+|``elevation``
+|optional|Mean elevation of feature above mean sea level.
+|``parent``
+|optional|Parent feature for this feature if nested.
+|``properties``
+|optional|Array of named values consistent with that defined for the feature type.
+|``links``
+|optional|Link(s) to further information on feature.
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
 
 |===
 
@@ -318,45 +982,103 @@
 |Property|Requirement|Description
 
 |``id``
-|required|ID / primary key
+|required|ID / primary key.
 |``name``
-|required|Preferred name of host
+|required|Preferred name of host.
 |``description``
-|optional|Description of host
+|optional|Description of host.
 |``links``
-|optional|URI to host, e.g. to OSCAR/Surface
-|``location``
-|optional|Location of station
-|``elevation``
-|optional|Elevation of station above mean sea level in meters
+|optional|URI to host, e.g. to OSCAR/Surface.
 |``wigos_station_identifier``
-|optional|WIGOS station identifier
-|``facility_type_id``
-|optional|Type of observing facility, fixed land, mobile sea, etc
+|optional|WIGOS station identifier.
+|``facility_type``
+|optional|Type of observing facility, fixed land, mobile sea, etc.
 |``date_established``
-|optional|Date host was first established
+|optional|Date host was first established.
 |``date_closed``
-|optional|Date host was first established
-|``wmo_region_id``
-|optional|WMO region in which the host is located
-|``territory_id``
-|optional|Territory the host is located in
-|``time_zone_id``
-|optional|Time zone the host is located in
+|optional|Date host was first established.
+|``wmo_region``
+|optional|WMO region in which the host is located.
+|``territory``
+|optional|Territory the host is located in.
+|``time_zone``
+|optional|Time zone the host is located in.
 |``valid_from``
-|optional|Date from which the details for this record are valid
+|optional|Date from which the details for this record are valid.
 |``valid_to``
-|optional|Date after which the details for this record are no longer valid
+|optional|Date after which the details for this record are no longer valid.
 |``_version``
-|required|Version number of this record
+|required|Version number of this record.
 |``_change_date``
-|required|Date this record was changed
-|``_user_id``
-|required|Which user/agent last modified this record
-|``_status_id``
-|required|Whether this is the latest version or an archived version of the record
-|``comments``
-|required|Free text comments on this record, for example description of changes made etc
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM host_affiliation: Host affiliations
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|Primary key for this record.
+|``host``
+|required|Host described by this record.
+|``program``
+|optional|Observing program that this host is affiliated with.
+|``valid_from``
+|optional|Date from which the details for this record are valid.
+|``valid_to``
+|optional|Date after which the details for this record are no longer valid.
+|``reporting_status``
+|optional|Declared reporting status of an observing facility with respect to a certain program/network affiliation.
+|``program_specific_id``
+|optional|WIGOS station identifier.
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM host_alias: Host / station aliases
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|Primary key for this record.
+|``host``
+|required|Primary ID by which the host is known.
+|``alternative_id``
+|optional|Alternative ID by which the host is known.
+|``alternative_name``
+|optional|Alternative name by which the host is known.
+|``alternative_authority``
+|optional|ID scheme / authority assigning alternative ID.
+|``valid_from``
+|optional|Date the alternative id/name was used from.
+|``valid_to``
+|optional|Last date the alternative id/name was used.
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
 
 |===
 
@@ -365,19 +1087,23 @@
 |Property|Requirement|Description
 
 |``id``
-|required|Primary key for this record
-|``host_id``
-|required|Host associated with this record
-|``climate_zone_id``
-|optional|Climate zone that the associated host is located in
-|``surface_cover_id``
-|optional|Type of sueface cover
-|``surface_roughness_id``
-|optional|Typical surface roughness of the site surrounding the host
-|``topography_id``
-|optional|Topography of the environment surrounding the host
-|``season_id``
-|optional|Season that is applicable to this record (e.g. all, winter, spring, summer, autumn)
+|required|Primary key for this record.
+|``host``
+|required|Host associated with this record.
+|``climate_zone``
+|optional|Climate zone that the associated host is located in.
+|``surface_cover``
+|optional|Type of surface cover.
+|``surface_roughness``
+|optional|Typical surface roughness of the site surrounding the host.
+|``altitude_or_depth``
+|optional|The altitude/depth with respect to mean sea level (enumerated).
+|``local_topography``
+|optional|The local topography.
+|``relative_elevation``
+|optional|The relative elevation.
+|``topographic_context``
+|optional|The topographic context.
 |``valid_from``
 |optional|Date the this record is valid from
 |``valid_to``
@@ -386,159 +1112,72 @@
 |required|Version number of this record
 |``_change_date``
 |required|Date this record was changed
-|``_user_id``
+|``_user``
 |required|Which user/agent last modified this record
-|``_status_id``
+|``_status``
 |required|Whether this is the latest version or an archived version of the record
-|``comments``
+|``_comments``
 |required|Free text comments on this record, for example description of changes made etc
 
 |===
 
-.CDM climate_zone: placeholder
+.CDM host_location: Host locations
 |===
 |Property|Requirement|Description
 
 |``id``
-|optional|
-|``name``
-|optional|
-|``description``
-|required|
-
-|===
-
-.CDM surface_cover: placeholder
-|===
-|Property|Requirement|Description
-
-|``id``
-|optional|
-|``name``
-|optional|
-|``description``
-|required|
-
-|===
-
-.CDM surface_roughness: placeholder
-|===
-|Property|Requirement|Description
-
-|``id``
-|optional|
-|``name``
-|optional|
-|``description``
-|required|
-
-|===
-
-.CDM topography: placeholder
-|===
-|Property|Requirement|Description
-
-|``id``
-|optional|
-|``name``
-|optional|
-|``description``
-|required|
-
-|===
-
-.CDM season: placeholder
-|===
-|Property|Requirement|Description
-
-|``id``
-|optional|
-|``name``
-|optional|
-|``description``
-|required|
-
-|===
-
-.CDM host_affiliation: Which programs this host is affiliated with
-|===
-|Property|Requirement|Description
-
-|``id``
-|required|Primary key for this record
-|``host_id``
-|required|Host described by this record
-|``programme_id``
-|optional|Observing programme that this host is affiliated with
+|required|Primary key for this record.
+|``host``
+|required|Host/station associated with this record.
+|``location``
+|optional|Location of host/station during indicated time period.
+|``elevation``
+|optional|Elevation of station above mean sea level in meters.
+|``geopositioning_method``
+|optional|Method by which the location was determined
 |``valid_from``
-|optional|Date from which the details for this record are valid
+|optional|Date from which the details for this record are valid.
 |``valid_to``
-|optional|Date after which the details for this record are no longer valid
+|optional|Date after which the details for this record are no longer valid.
 |``_version``
-|required|Version number of this record
+|required|Version number of this record.
 |``_change_date``
-|required|Date this record was changed
-|``_user_id``
-|required|Which user/agent last modified this record
-|``_status_id``
-|required|Whether this is the latest version or an archived version of the record
-|``comments``
-|required|Free text comments on this record, for example description of changes made etc
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
 
 |===
 
-.CDM programme: placeholder
+.CDM host_log: Host / station log
 |===
 |Property|Requirement|Description
 
 |``id``
-|optional|
-|``name``
-|optional|
+|required|ID / primary key.
+|``host``
+|required|The host to which this record applies.
+|``author``
+|required|Author of the log entry.
+|``datetime``
+|required|Date and time of the event being logged.
 |``description``
-|required|
-
-|===
-
-.CDM host_alias: table to track known aliases for hosts
-|===
-|Property|Requirement|Description
-
-|``id``
-|required|Primary key for this record
-|``host_id``
-|required|Primary ID by which the host is known
-|``alternative_id``
-|optional|Alternative ID by which the host is known
-|``alternative_name``
-|optional|Alternative name by which the host is known
-|``valid_from``
-|optional|Date the alternative id/name was used from
-|``valid_to``
-|optional|Date the alternative id/name was used to
+|required|Description of of the event being logged.
+|``links``
+|required|Links to further documentation of the logged event.
 |``_version``
-|required|Version number of this record
+|required|Version number of this record.
 |``_change_date``
-|required|Date this record was changed
-|``_user_id``
-|required|Which user/agent last modified this record
-|``_status_id``
-|required|Whether this is the latest version or an archived version of the record
-|``comments``
-|required|Free text comments on this record, for example description of changes made etc
-
-|===
-
-.CDM host_responsible_party: placeholder
-|===
-|Property|Requirement|Description
-
-|``id``
-|optional|
-|``user_id``
-|optional|
-|``description``
-|required|Description of role with this association. Note: this will be changed to a code table
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
 
 |===
 
@@ -547,260 +1186,77 @@
 |Property|Requirement|Description
 
 |``id``
-|required|Primary key for this record
-|``host_id``
-|optional|
-|``media_id``
-|optional|
+|required|Primary key for this record.
+|``host``
+|optional|The host to which this media belongs.
+|``media``
+|optional|The associated media.
 |``valid_from``
-|optional|
+|optional|Date from which this record is valid.
 |``valid_to``
-|optional|
+|optional|Date from which this record is no longer valid.
 |``_version``
-|required|Version number of this record
+|required|Version number of this record.
 |``_change_date``
-|required|Date this record was changed
-|``_user_id``
-|required|Which user/agent last modified this record
-|``_status_id``
-|required|Whether this is the latest version or an archived version of the record
-|``comments``
-|required|Free text comments on this record, for example description of changes made etc
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
 
 |===
 
-.CDM observer: wmdr.equipment
-|===
-|Property|Requirement|Description
-
-|``id``
-|required|ID / primary key
-|``name``
-|required|Name of sensor
-|``description``
-|required|Description of sensor
-|``links``
-|optional|Link(s) to further information
-|``location``
-|optional|Location of observer
-|``elevation``
-|optional|Elevation of observer above mean sea level
-|``manufacturer``
-|optional|Make, or manufacturer, of sensor
-|``model``
-|optional|Model of sensor
-|``serial_number``
-|optional|Serial number of sensor
-|``firmware_version``
-|optional|Firmware version of software installed in sensor
-|``control_schedule_id``
-|optional|Link to information on calibration schedule and details
-|``_version``
-|required|Version number of this record
-|``_change_date``
-|required|Date this record was changed
-|``_user_id``
-|required|Which user/agent last modified this record
-|``_status_id``
-|required|Whether this is the latest version or an archived version of the record
-|``comments``
-|required|Free text comments on this record, for example description of changes made etc
-
-|===
-
-.CDM control_schedule: placeholder
+.CDM host_responsible_party: Nominated points of contact for the host / station metadata
 |===
 |Property|Requirement|Description
 
 |``id``
-|optional|
-|``name``
-|optional|
-|``description``
-|required|Description of control schedule
-
-|===
-
-.CDM observer_characteristics: Table to record sensor specifications
-|===
-|Property|Requirement|Description
-
-|``id``
-|required|Primary key for this record
-|``observer_id``
-|required|The observer to which this record applies
-|``observed_property_id``
-|optional|The observed parameter to which this record applies
-|``observing_method_id``
-|optional|Primary method/principles by which the sensor makes measurements
-|``measurement_units``
-|optional|The units used in this record
-|``drift_per_unit_time``
-|optional|Sensor drift per unit time, units specified by measurement units, unit time by unit time
-|``unit_time``
-|optional|Unit time for drift per unit time (seconds)
-|``valid_min``
-|optional|Minimum observable value by sensor, in units specificed by measurement units
-|``valid_max``
-|optional|Maximum observable value by sensor, in units specificed by measurement units
-|``measurement_uncertainty``
-|optional|Measurement uncertainty for measurements from this sensor, 2 sigma. Units as per measuremenet units
-|``measurement_accuracy``
-|optional|Measurement accuracy (trueness) for measurements from this sensor, 2 sigma. Units as per measuremenet units
-|``measurement_repeatability``
-|optional|Measurement repeatability (precision) for measurements from this sensor, 2 sigma. Units as per measuremenet units
-|``measurement_resolution``
-|optional|Minimum change detectable for measurements from this sensor. Units as per measurement units
-|``_version``
-|required|Version number of this record
-|``_change_date``
-|required|Date this record was changed
-|``_user_id``
-|required|Which user/agent last modified this record
-|``_status_id``
-|required|Whether this is the latest version or an archived version of the record
-|``comments``
-|required|Free text comments on this record, for example description of changes made etc
-
-|===
-
-.CDM observing_method: placeholder
-|===
-|Property|Requirement|Description
-
-|``id``
-|optional|
-|``name``
-|optional|
-|``description``
-|required|Description of observing method
-
-|===
-
-.CDM observer_responsible_party: placeholder
-|===
-|Property|Requirement|Description
-
-|``id``
-|optional|
-|``user_id``
-|optional|
-|``description``
-|required|Description of role with this association. Note: this will be changed to a code table
-
-|===
-
-.CDM observer_media: Link table between hosts and media
-|===
-|Property|Requirement|Description
-
-|``id``
-|required|Primary key for this record
-|``observer_id``
-|optional|
-|``media_id``
-|optional|
+|required|Unique identifier for this record.
+|``responsible_party``
+|required|The responsible party.
+|``role``
+|required|The role this responsible party plays.
+|``host``
+|required|The host that this record corresponds to.
 |``valid_from``
-|optional|
+|optional|Date this record is valid from.
 |``valid_to``
-|optional|
+|optional|Date this record is valid to.
 |``_version``
-|required|Version number of this record
+|required|Version number of this record.
 |``_change_date``
-|required|Date this record was changed
-|``_user_id``
-|required|Which user/agent last modified this record
-|``_status_id``
-|required|Whether this is the latest version or an archived version of the record
-|``comments``
-|required|Free text comments on this record, for example description of changes made etc
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
 
 |===
 
-.CDM collection: placeholder
+.CDM media: (Place holder) Store for digital media, e.g. photos, reports, videos, etc
 |===
 |Property|Requirement|Description
 
 |``id``
-|required|ID / primary key
-|``name``
-|required|Name of collection
-|``links``
-|optional|Link(s) to further information on collection
-|``_version``
-|required|Version number of this record
-|``_change_date``
-|required|Date this record was changed
-|``_user_id``
-|required|Which user/agent last modified this record
-|``_status_id``
-|required|Whether this is the latest version or an archived version of the record
-|``comments``
-|required|Free text comments on this record, for example description of changes made etc
-
-|===
-
-.CDM feature: table to contain definition of different geographic features
-|===
-|Property|Requirement|Description
-
-|``id``
-|required|ID / primary key
-|``name``
-|optional|Name of feature
+|optional|ID / primary key.
+|``media_type``
+|optional|The type of media described by this entry.
 |``description``
-|optional|Description of feature
-|``links``
-|optional|Link(s) to further information on feature
-|``feature_type_id``
-|required|enumerated feature type
-|``geometry``
-|required|
-|``elevation``
-|optional|Meam elevation of feature above mean sea level
-|``parent_id``
-|optional|Parent feature for this feature if nested
-|``properties``
-|optional|Array of named values consistent with that defined for the feature type
-|``_version``
-|required|Version number of this record
-|``_change_date``
-|required|Date this record was changed
-|``_user_id``
-|required|Which user/agent last modified this record
-|``_status_id``
-|required|Whether this is the latest version or an archived version of the record
-|``comments``
-|required|Free text comments on this record, for example description of changes made etc
-
-|===
-
-.CDM source: placeholder
-|===
-|Property|Requirement|Description
-
-|``id``
-|required|ID / primary key
-|``name``
-|required|Name of source
-|``description``
-|required|Description of source type, e.g. file etc
-|``source_type_id``
-|required|The type of source
-|``links``
-|optional|Link(s) to further information on source
-|``processor``
-|optional|Name of processor used to ingest the data
-|``_version``
-|required|Version number of this record
-|``_change_date``
-|required|Date this record was changed
-|``_user_id``
-|required|Which user/agent last modified this record
-|``_status_id``
-|required|Whether this is the latest version or an archived version of the record
-|``comments``
-|required|Free text comments on this record, for example description of changes made etc
+|optional|Description of the media.
+|``created``
+|optional|Date the media was created/uploaded.
+|``creator``
+|optional|Who uploaded the media. 
+|``rights``
+|optional|Digital rights associated with the media.
+|``source``
+|optional|Source of the media.
+|``data``
+|optional|TBD
 
 |===
 
@@ -809,162 +1265,255 @@
 |Property|Requirement|Description
 
 |``id``
-|required|ID / primary key
+|required|ID / primary key.
 |``location``
-|required|Location of observation
+|required|Location of observation.
 |``elevation``
-|optional|Elevation of observation above mean sea level (in meters)
-|``observation_type_id``
-|optional|Type of observation
+|required|Elevation of observation above mean sea level (in meters).
+|``observation_type``
+|optional|Type of observation.
 |``phenomenon_start``
-|optional|Start time of the phenomenon being observed or observing period, if missing assumed instantaneous with time given by phenomenon_end
+|optional|Start time of the phenomenon being observed or observing period, if missing assumed instantaneous with time given by phenomenon_end.
 |``phenomenon_end``
-|required|End time of the phenomenon being observed or observing period
+|required|End time of the phenomenon being observed or observing period.
 |``result_value``
-|required|The value of the result in float representation
+|required|The value of the result in float representation.
 |``result_uom``
-|optional|Units used to represent the value being observed
+|required|Units used to represent the value being observed.
 |``result_description``
-|optional|str representation of the result if applicable
+|optional|str representation of the result if applicable.
 |``result_quality``
-|optional|JSON representation of the result quality, key / value pairs
+|optional|JSON representation of the result quality, key / value pairs.
 |``result_time``
-|optional|Time that the result became available
+|optional|Time that the result became available.
 |``valid_from``
-|optional|Time that the result starts to be valid
+|optional|Time that the result starts to be valid.
 |``valid_to``
-|optional|Time after which the result is no longer valid
-|``host_id``
-|required|Host associated with making the observation, equivalent to OGC OMS 'host'
-|``observer_id``
-|optional|Observer associated with making the observation, equivalent to OGC OMS 'observer'
-|``observed_property_id``
-|required|The phenomenon, or thing, being observed
-|``observing_procedure_id``
-|optional|Procedure used to make the observation
-|``collection_id``
-|optional|Primary collection or dataset that this observation belongs to. Note: this is different to the OGC OMS collection concept.
+|optional|Time after which the result is no longer valid.
+|``host``
+|required|Host associated with making the observation, equivalent to OGC OMS 'host'.
+|``observer``
+|optional|Observer associated with making the observation, equivalent to OGC OMS 'observer'.
+|``observed_property``
+|required|The phenomenon, or thing, being observed.
+|``observing_procedure``
+|optional|Procedure used to make the observation.
+|``dataset``
+|optional|Primary dataset that this observation belongs to.
 |``parameter``
-|optional|List of key/ value pairs in dict
-|``feature_id``
-|optional|Feature of interest that this observation is associated with
+|optional|List of key/ value pairs in dict.
+|``featureOfInterest``
+|optional|Feature of interest that this observation is associated with.
 |``_version``
-|required|Version number of this record
+|required|Version number of this record.
 |``_change_date``
-|required|Date this record was changed
-|``_user_id``
-|required|Which user/agent last modified this record
-|``_status_id``
-|required|Whether this is the latest version or an archived version of the record
-|``comments``
-|required|Free text comments on this record, for example description of changes made etc
-|``_source_id``
-|required|The source of this record
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+|``_source``
+|required|The source of this record.
 |``_source_identifier``
-|required|The original identifier for the record from the data source
+|required|The original identifier for the record from the data source (if available).
 
 |===
 
-.CDM deployment: Table to track deployments of an observer to a host
+.CDM reference_stations: Reference stations
 |===
 |Property|Requirement|Description
 
 |``id``
-|required|Unique ID / primary key for deployment
-|``host_id``
-|optional|
-|``observer_id``
-|optional|
+|required|ID / primary key for this record.
+|``host``
+|optional|The host / station this record is for.
+|``reference_station``
+|optional|The host / station acting as a reference station.
 |``valid_from``
-|optional|
+|optional|Date the reference station started as a reference station for this host.
 |``valid_to``
-|optional|
-|``installation_height``
-|optional|Installation height above reference surface (in meters)
-|``reference_surface``
-|optional|
-|``exposure``
-|optional|
-|``configuration``
-|optional|Textual description of sensor installation and configuration
-|``maintenance_schedule_id``
-|optional|
+|optional|Date the reference station stopped as a reference station for this host.
 |``_version``
-|required|Version number of this record
+|required|Version number of this record.
 |``_change_date``
-|required|Date this record was changed
-|``_user_id``
-|required|Which user/agent last modified this record
-|``_status_id``
-|required|Whether this is the latest version or an archived version of the record
-|``comments``
-|required|Free text comments on this record, for example description of changes made etc
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
 
 |===
 
-.CDM maintenance_schedule: placeholder
-|===
-|Property|Requirement|Description
-
-|``id``
-|optional|
-|``name``
-|optional|
-|``description``
-|required|Description of maintenance schedule
-
-|===
-
-.CDM exposure: placeholder
+.CDM responsible_party: Identification of, and means of communication with, person responsible for the resource.
 |===
 |Property|Requirement|Description
 
 |``id``
-|optional|
-|``name``
-|optional|
-|``description``
-|required|Description of sensor exposure according to WMO-No. 8
+|required|A value uniquely identifying a party (individual or organization).
+|``individual_name``
+|optional|The name of the organization or the individual.
+|``position_name``
+|optional|Role or position of the responsible person.
+|``organization_name``
+|optional|Organization/affiliation of the individual/responsible person. In case of an organization, the name property should be used and this property is not to be used.
+|``contact_information``
+|optional|Contact information
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
 
 |===
 
-.CDM reference_surface: placeholder
+.CDM sensor_characteristics: Table to record sensor specifications
 |===
 |Property|Requirement|Description
 
 |``id``
-|optional|
-|``name``
-|optional|
-|``description``
-|required|Description of reference surface
+|required|Primary key for this record.
+|``equipment``
+|required|The equipment / sensor to which this record applies.
+|``observed_property``
+|required|The observed parameter to which this record applies.
+|``observing_method``
+|required|Primary method/principles by which the sensor makes measurements.
+|``observing_method_details``
+|optional|A description of the method of measurement/observation used.
+|``measurement_units``
+|optional|The units used in this record.
+|``drift_per_unit_time``
+|optional|Intrinsic capability of the measurement/observing method - drift per unit time. Typically a percentage per unit time but could be absolute e.g. 1 degree per year.
+|``unit_time``
+|optional|Unit time for drift per unit time (seconds).
+|``valid_min``
+|optional|Minimum observable value by sensor, in units specified by measurement units.
+|``valid_max``
+|optional|Maximum observable value by sensor, in units specified by measurement units.
+|``specified_absolute_uncertainty``
+|optional|Measurement uncertainty for measurements from this sensor, 2 sigma. Units as per measurement units.
+|``specified_relative_uncertainty``
+|optional|Measurement uncertainty for measurements from this sensor, 2 sigma. Units in %, e.g. 20 %.
+|``links``
+|optional|Link(s) to further information.
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
 
 |===
 
-.CDM deployment_media: Link table between hosts and media
+.CDM sensor_operating_status: Operating status
 |===
 |Property|Requirement|Description
 
 |``id``
-|required|Primary key for this record
-|``deployment_id``
-|optional|
-|``media_id``
-|optional|
+|required|Primary key for this record.
+|``deployment``
+|required|The deployment this record belongs to.
+|``operating_status``
+|required|The operating status of the deployed equipment.
 |``valid_from``
-|optional|
+|optional|The date from which this status applies.
 |``valid_to``
-|optional|
+|optional|The date from which this status is no longer valid.
 |``_version``
-|required|Version number of this record
+|required|Version number of this record.
 |``_change_date``
-|required|Date this record was changed
-|``_user_id``
-|required|Which user/agent last modified this record
-|``_status_id``
-|required|Whether this is the latest version or an archived version of the record
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
 |``comments``
-|required|Free text comments on this record, for example description of changes made etc
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM source: placeholder
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|ID / primary key.
+|``name``
+|required|Name of source.
+|``description``
+|required|Description of source type, e.g. file etc.
+|``source_type``
+|required|The type of source.
+|``links``
+|optional|Link(s) to further information on source.
+|``processor``
+|optional|Name of processor used to ingest the data.
+|``parameters``
+|optional|Parameters required to access the data from this source (NEED TO CHECK THIS, ENCRYPT?).
+|``_version``
+|required|Version number of this record.
+|``_change_date``
+|required|Date this record was changed.
+|``_user``
+|required|Which user/agent last modified this record.
+|``_status``
+|required|Whether this is the latest version or an archived version of the record.
+|``_comments``
+|required|Free text comments on this record, for example description of changes made etc.
+
+|===
+
+.CDM record: Discovery metadata record.
+|===
+|Property|Requirement|Description
+
+|``id``
+|required|A unique identifier of the catalogue record.
+|``time``
+|required|The temporal extent of the resource. Can be null if there is no associated temporal extent.
+|``title``
+|required|A human-readable name given to the resource.
+|``location``
+|required|A geometry associated with the resource that is used for discovery. Can be null if there is no associated geometry.
+|``created``
+|required|Date of creation of this record.
+|``updated``
+|required|The most recent date on which the record was changed.
+|``resource_type``
+|required|The nature or genre of the resource. The value should be a code, convenient for filtering records. Where available, a link to the canonical URI of the record type resource will be added to the 'links' property.
+|``description``
+|required|A free-text account of the resource.
+|``keywords``
+|required|The topic or topics of the resource. Typically represented using free-form keywords, tags, key phrases, or classification codes. Semi-colon delimited
+|``language``
+|required|The natural language used for textual values (e.g. titles, descriptions, etc.) of the resource. ISO 639-1/639-2 codes should be used.
+|``external_ids``
+|required|An identifier for the resource assigned by an external (to the catalogue) entity.
+|``themes``
+|required|A knowledge organization system used to classify the resource.
+|``formats``
+|required|A list of available distributions of the resource.
+|``providers``
+|required|A list of providers qualified by their role in association to the record.
+|``license``
+|required|A legal document under which the resource is made available. The value should be a code, convenient for filtering the records. Where applicable, the use of the identifiers from the SPDX License List is recommended. If multiple licenses apply, it is recommended to use ''various'.  Where available, links to a URI of each applicable license should be added to the 'links' property.
+|``rights``
+|required|A statement that concerns all rights not addressed by the license such as a copyright statement.
+|``links``
+|required|A list of links for accessing the resource (e.g. download link, access link) in one of the supported distribution formats and/or links to other resources associated with this resource. Also, a list of links for navigating the API (e.g. prev, next, etc.).  Since the specification requires that at least the self link be present then the min items for this list should be one.
 
 |===
 

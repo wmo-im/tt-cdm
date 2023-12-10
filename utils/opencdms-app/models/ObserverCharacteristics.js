@@ -13,7 +13,7 @@ export default class ObserverCharacteristics extends Model {
       id: this.string(''),
       observer_id: this.string(''),
       observer: this.belongsTo(Observer,'observer_id'),
-      observed_property_id: this.number(null),
+      observed_property_id: this.string(''),
       observed_property: this.belongsTo(ObservedProperty,'observed_property_id'),
       observing_method_id: this.string(''),
       observing_method: this.belongsTo(ObservingMethod,'observing_method_id'),
@@ -28,9 +28,9 @@ export default class ObserverCharacteristics extends Model {
       measurement_resolution: this.number(null),
       _version: this.number(null),
       _change_date: this.string(''),
-      _user_id: this.number(null),
+      _user_id: this.string(''),
       _user: this.belongsTo(User,'_user_id'),
-      _status_id: this.number(null),
+      _status_id: this.string(''),
       _status: this.belongsTo(Status,'_status_id'),
       comments: this.string('')
     };

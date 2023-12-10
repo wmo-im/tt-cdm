@@ -6,16 +6,14 @@ export default class Status extends Model {
   static entity = 'status';
   static fields() {
     return {
-      id: this.number(null),
+      id: this.string(''),
       name: this.string(''),
       description: this.string(''),
       _version: this.number(null),
       _change_date: this.string(''),
-      _user_id: this.number(null),
+      _user_id: this.string(''),
       _user: this.belongsTo(User,'_user_id'),
-      _status_id: this.number(null),
-      _status: this.belongsTo(Status,'_status_id'),
-      comments: this.string('')
+      _comments: this.string('')
     };
   };
 };

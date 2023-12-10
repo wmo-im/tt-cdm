@@ -13,7 +13,7 @@
             <v-card-item><v-select :items="featureOptions" item-title="name" item-value="id" label="feature" v-model="feature.parent" :hint="featureOptionsHint" return-object persistent-hint></v-select></v-card-item>
             <v-card-item><v-text-field label="properties" v-model="feature.properties"  hint="Array of named values consistent with that defined for the feature type" persistent-hint></v-text-field></v-card-item>
             <v-card-item><v-text-field label="_version" v-model="feature._version" type="number" hint="Version number of this record" persistent-hint></v-text-field></v-card-item>
-            <v-card-item><v-text-field label="_change_date" v-model="feature._change_date"  hint="Date this record was changed" persistent-hint></v-text-field></v-card-item>
+            <v-card-item><VueDatePicker label="_change_date" v-model="feature._change_date"  hint="Date this record was changed" persistent-hint></VueDatePicker></v-card-item>
             <v-card-item><v-select :items="userOptions" item-title="name" item-value="id" label="user" v-model="feature._user" :hint="userOptionsHint" return-object persistent-hint></v-select></v-card-item>
             <v-card-item><v-select :items="statusOptions" item-title="name" item-value="id" label="status" v-model="feature._status" :hint="statusOptionsHint" return-object persistent-hint></v-select></v-card-item>
             <v-card-item><v-text-field label="comments" v-model="feature.comments"  hint="Free text comments on this record, for example description of changes made etc" persistent-hint></v-text-field></v-card-item>
@@ -32,6 +32,7 @@ import {useStore} from 'pinia';
 import {useRepo} from 'pinia-orm';
 
 import LinkForm from '@/web-components/forms/links';
+import VueDatePicker from '@/web-components/pickers/date-picker.vue';
 
 
 import FeatureType from '@/models/FeatureType';
@@ -46,6 +47,17 @@ export default defineComponent({
   name: 'FeatureForm',
   props: {
   },
+  methods:{
+    parseLinks (links) {
+      let res;
+      if( links && links.length > 0 ){
+        res = JSON.stringify(links);
+      }else{
+        res = '';
+      }
+      return res;
+    }
+  },
   components: {
     VCard,
     VCardTitle,
@@ -55,15 +67,10 @@ export default defineComponent({
     VSelect,
     VForm,
     VBtn,
+    VueDatePicker,
     LinkForm
   },
   setup() {
-
-    const loadCSV = async (path) => {
-      let csvData;
-      csvData = await d3.dsv('|',path, d3.autoType);
-      return {csvData};
-    };
 
     // set up links object
     const links = ref([]);
@@ -140,43 +147,6 @@ export default defineComponent({
     const resetFeature = () => {
         Object.assign(feature.value, featureRepo.make() );
     };
-
-
-    onBeforeMount( async() => {
-      // load reference data so this is available to the form
-      if( featureTypeRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/feature_type.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            featureTypeRepo.save(data.value);
-          });
-      }
-      if( featureRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/feature.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            featureRepo.save(data.value);
-          });
-      }
-      if( userRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/user.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            userRepo.save(data.value);
-          });
-      }
-      if( statusRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/status.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            statusRepo.save(data.value);
-          });
-      }
-    });
 
     return {
         feature,

@@ -1,0 +1,4 @@
+"Property","Kind","References","Requirement","Description"
+{%        for column in table.columns %}
+"{{column.name}}","{{column.kind}}",{%if column.foreign_key%}"{{column.foreign_key}}"{%else%}{%endif%},{%if column.nullable%}"Optional"{%else%}"Required"{%endif%},"{{column.comment}}"
+{%        endfor %}

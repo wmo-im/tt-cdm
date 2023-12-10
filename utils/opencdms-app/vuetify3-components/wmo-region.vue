@@ -3,12 +3,12 @@
     <v-card-title>Create new 'WmoRegion'</v-card-title>
     <v-card-text>
         <v-form>
-            <v-card-item><v-text-field label="id" v-model="wmoRegion.id" type="number" hint="ID / primary key" persistent-hint></v-text-field></v-card-item>
-            <v-card-item><v-text-field label="name" v-model="wmoRegion.name"  hint="Short name for feature type" persistent-hint></v-text-field></v-card-item>
-            <v-card-item><v-text-field label="description" v-model="wmoRegion.description"  hint="Description of feature type" persistent-hint></v-text-field></v-card-item>
+            <v-card-item><v-text-field label="id" v-model="wmoRegion.id"  hint="ID / primary key" persistent-hint></v-text-field></v-card-item>
+            <v-card-item><v-text-field label="name" v-model="wmoRegion.name"  hint="Short name for WMO region" persistent-hint></v-text-field></v-card-item>
+            <v-card-item><v-text-field label="description" v-model="wmoRegion.description"  hint="Long name of WMO region" persistent-hint></v-text-field></v-card-item>
             <v-card-item><LinkForm :links="links" @updateLinks="updateLinks" ></LinkForm></v-card-item>
             <v-card-item><v-text-field label="_version" v-model="wmoRegion._version" type="number" hint="Version number of this record" persistent-hint></v-text-field></v-card-item>
-            <v-card-item><v-text-field label="_change_date" v-model="wmoRegion._change_date"  hint="Date this record was changed" persistent-hint></v-text-field></v-card-item>
+            <v-card-item><VueDatePicker label="_change_date" v-model="wmoRegion._change_date"  hint="Date this record was changed" persistent-hint></VueDatePicker></v-card-item>
             <v-card-item><v-select :items="userOptions" item-title="name" item-value="id" label="user" v-model="wmoRegion._user" :hint="userOptionsHint" return-object persistent-hint></v-select></v-card-item>
             <v-card-item><v-select :items="statusOptions" item-title="name" item-value="id" label="status" v-model="wmoRegion._status" :hint="statusOptionsHint" return-object persistent-hint></v-select></v-card-item>
             <v-card-item><v-text-field label="comments" v-model="wmoRegion.comments"  hint="Free text comments on this record, for example description of changes made etc" persistent-hint></v-text-field></v-card-item>
@@ -27,6 +27,7 @@ import {useStore} from 'pinia';
 import {useRepo} from 'pinia-orm';
 
 import LinkForm from '@/web-components/forms/links';
+import VueDatePicker from '@/web-components/pickers/date-picker.vue';
 
 
 import User from '@/models/User';
@@ -39,6 +40,17 @@ export default defineComponent({
   name: 'WmoRegionForm',
   props: {
   },
+  methods:{
+    parseLinks (links) {
+      let res;
+      if( links && links.length > 0 ){
+        res = JSON.stringify(links);
+      }else{
+        res = '';
+      }
+      return res;
+    }
+  },
   components: {
     VCard,
     VCardTitle,
@@ -48,15 +60,10 @@ export default defineComponent({
     VSelect,
     VForm,
     VBtn,
+    VueDatePicker,
     LinkForm
   },
   setup() {
-
-    const loadCSV = async (path) => {
-      let csvData;
-      csvData = await d3.dsv('|',path, d3.autoType);
-      return {csvData};
-    };
 
     // set up links object
     const links = ref([]);
@@ -107,27 +114,6 @@ export default defineComponent({
     const resetWmoRegion = () => {
         Object.assign(wmoRegion.value, wmoRegionRepo.make() );
     };
-
-
-    onBeforeMount( async() => {
-      // load reference data so this is available to the form
-      if( userRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/user.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            userRepo.save(data.value);
-          });
-      }
-      if( statusRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/status.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            statusRepo.save(data.value);
-          });
-      }
-    });
 
     return {
         wmoRegion,

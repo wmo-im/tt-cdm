@@ -12,7 +12,7 @@ export default class Feature extends Model {
       name: this.string(''),
       description: this.string(''),
       links: this.attr(new LinksType([])),
-      feature_type_id: this.number(null),
+      feature_type_id: this.string(''),
       feature_type: this.belongsTo(FeatureType,'feature_type_id'),
       geometry: this.string(''),
       elevation: this.number(null),
@@ -21,9 +21,9 @@ export default class Feature extends Model {
       properties: this.attr(null),
       _version: this.number(null),
       _change_date: this.string(''),
-      _user_id: this.number(null),
+      _user_id: this.string(''),
       _user: this.belongsTo(User,'_user_id'),
-      _status_id: this.number(null),
+      _status_id: this.string(''),
       _status: this.belongsTo(Status,'_status_id'),
       comments: this.string('')
     };

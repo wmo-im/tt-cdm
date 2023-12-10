@@ -4,16 +4,16 @@
     <v-card-text>
         <v-form>
             <v-card-item><v-text-field label="id" v-model="hostEnvironment.id"  hint="Primary key for this record" persistent-hint></v-text-field></v-card-item>
-            <v-card-item><v-text-field label="host_id" v-model="hostEnvironment.host_id"  hint="Host associated with this record" persistent-hint></v-text-field></v-card-item>
+            <v-card-item><v-text-field label="host" v-model="hostEnvironment.host"  hint="Host associated with this record" persistent-hint></v-text-field></v-card-item>
             <v-card-item><v-select :items="climateZoneOptions" item-title="name" item-value="id" label="climate_zone" v-model="hostEnvironment.climate_zone" :hint="climateZoneOptionsHint" return-object persistent-hint></v-select></v-card-item>
             <v-card-item><v-select :items="surfaceCoverOptions" item-title="name" item-value="id" label="surface_cover" v-model="hostEnvironment.surface_cover" :hint="surfaceCoverOptionsHint" return-object persistent-hint></v-select></v-card-item>
             <v-card-item><v-select :items="surfaceRoughnessOptions" item-title="name" item-value="id" label="surface_roughness" v-model="hostEnvironment.surface_roughness" :hint="surfaceRoughnessOptionsHint" return-object persistent-hint></v-select></v-card-item>
             <v-card-item><v-select :items="topographyOptions" item-title="name" item-value="id" label="topography" v-model="hostEnvironment.topography" :hint="topographyOptionsHint" return-object persistent-hint></v-select></v-card-item>
             <v-card-item><v-select :items="seasonOptions" item-title="name" item-value="id" label="season" v-model="hostEnvironment.season" :hint="seasonOptionsHint" return-object persistent-hint></v-select></v-card-item>
-            <v-card-item><v-text-field label="valid_from" v-model="hostEnvironment.valid_from"  hint="Date the this record is valid from" persistent-hint></v-text-field></v-card-item>
-            <v-card-item><v-text-field label="valid_to" v-model="hostEnvironment.valid_to"  hint="date that this record is valid to" persistent-hint></v-text-field></v-card-item>
+            <v-card-item><VueDatePicker label="valid_from" v-model="hostEnvironment.valid_from"  hint="Date the this record is valid from" persistent-hint></VueDatePicker></v-card-item>
+            <v-card-item><VueDatePicker label="valid_to" v-model="hostEnvironment.valid_to"  hint="date that this record is valid to" persistent-hint></VueDatePicker></v-card-item>
             <v-card-item><v-text-field label="_version" v-model="hostEnvironment._version" type="number" hint="Version number of this record" persistent-hint></v-text-field></v-card-item>
-            <v-card-item><v-text-field label="_change_date" v-model="hostEnvironment._change_date"  hint="Date this record was changed" persistent-hint></v-text-field></v-card-item>
+            <v-card-item><VueDatePicker label="_change_date" v-model="hostEnvironment._change_date"  hint="Date this record was changed" persistent-hint></VueDatePicker></v-card-item>
             <v-card-item><v-select :items="userOptions" item-title="name" item-value="id" label="user" v-model="hostEnvironment._user" :hint="userOptionsHint" return-object persistent-hint></v-select></v-card-item>
             <v-card-item><v-select :items="statusOptions" item-title="name" item-value="id" label="status" v-model="hostEnvironment._status" :hint="statusOptionsHint" return-object persistent-hint></v-select></v-card-item>
             <v-card-item><v-text-field label="comments" v-model="hostEnvironment.comments"  hint="Free text comments on this record, for example description of changes made etc" persistent-hint></v-text-field></v-card-item>
@@ -32,6 +32,7 @@ import {useStore} from 'pinia';
 import {useRepo} from 'pinia-orm';
 
 import LinkForm from '@/web-components/forms/links';
+import VueDatePicker from '@/web-components/pickers/date-picker.vue';
 
 
 import ClimateZone from '@/models/ClimateZone';
@@ -49,6 +50,17 @@ export default defineComponent({
   name: 'HostEnvironmentForm',
   props: {
   },
+  methods:{
+    parseLinks (links) {
+      let res;
+      if( links && links.length > 0 ){
+        res = JSON.stringify(links);
+      }else{
+        res = '';
+      }
+      return res;
+    }
+  },
   components: {
     VCard,
     VCardTitle,
@@ -58,15 +70,10 @@ export default defineComponent({
     VSelect,
     VForm,
     VBtn,
+    VueDatePicker,
     LinkForm
   },
   setup() {
-
-    const loadCSV = async (path) => {
-      let csvData;
-      csvData = await d3.dsv('|',path, d3.autoType);
-      return {csvData};
-    };
 
     // set up links object
     const links = ref([]);
@@ -182,67 +189,6 @@ export default defineComponent({
     const resetHostEnvironment = () => {
         Object.assign(hostEnvironment.value, hostEnvironmentRepo.make() );
     };
-
-
-    onBeforeMount( async() => {
-      // load reference data so this is available to the form
-      if( climateZoneRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/climate_zone.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            climateZoneRepo.save(data.value);
-          });
-      }
-      if( surfaceCoverRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/surface_cover.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            surfaceCoverRepo.save(data.value);
-          });
-      }
-      if( surfaceRoughnessRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/surface_roughness.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            surfaceRoughnessRepo.save(data.value);
-          });
-      }
-      if( topographyRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/topography.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            topographyRepo.save(data.value);
-          });
-      }
-      if( seasonRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/season.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            seasonRepo.save(data.value);
-          });
-      }
-      if( userRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/user.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            userRepo.save(data.value);
-          });
-      }
-      if( statusRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/status.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            statusRepo.save(data.value);
-          });
-      }
-    });
 
     return {
         hostEnvironment,

@@ -18,13 +18,13 @@ export default class Observer extends Model {
       model: this.string(''),
       serial_number: this.string(''),
       firmware_version: this.string(''),
-      control_schedule_id: this.number(null),
+      control_schedule_id: this.string(''),
       control_schedule: this.belongsTo(ControlSchedule,'control_schedule_id'),
       _version: this.number(null),
       _change_date: this.string(''),
-      _user_id: this.number(null),
+      _user_id: this.string(''),
       _user: this.belongsTo(User,'_user_id'),
-      _status_id: this.number(null),
+      _status_id: this.string(''),
       _status: this.belongsTo(Status,'_status_id'),
       comments: this.string('')
     };

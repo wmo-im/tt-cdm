@@ -6,25 +6,19 @@
     <v-card-text>
         <v-form>
 {# Iterate over columns and set input types #}
-{# Special cases #}
-{# - columns with a foreign key #}
-{# - links #}
-{# - location / geometry #}
-{# #}
-{# #}
-{# #}
-{# #}
 {%      for column in table.columns %}
 {%          if column.name == "links" %}
             <v-card-item><LinkForm :links="links" @updateLinks="updateLinks" ></LinkForm></v-card-item>
+{%      elif column.kind == "datetime" %}
+            <v-card-item><VueDatePicker label="{{column.name}}" v-model="{{table.name|snake_to_camel}}.{{column.name}}"  hint="{{column.comment}}" persistent-hint></VueDatePicker></v-card-item>
 {%      elif column.foreign_key %}
-{% set fk_table = column.foreign_key.split(".")[1]  | snake_to_camel %}
-{% set fk_model = column.foreign_key.split(".")[1]  | snake_to_pascal %}
-{% set fk_key   = column.foreign_key.split(".")[2] %}
-{% set fk_name   = column.foreign_key.split(".")[1] %}
-{% if fk_name not in models %}
-{% set _ = models.append( [fk_name,column.name] ) %}
-{% endif %}
+{%          set fk_table = column.foreign_key.split(".")[1]  | snake_to_camel %}
+{%          set fk_model = column.foreign_key.split(".")[1]  | snake_to_pascal %}
+{%          set fk_key   = column.foreign_key.split(".")[2] %}
+{%          set fk_name   = column.foreign_key.split(".")[1] %}
+{%          if fk_name not in models %}
+{%              set _ = models.append( [fk_name,column.name] ) %}
+{%          endif %}
             <v-card-item><v-select :items="{{fk_table}}Options" item-title="name" item-value="{{fk_key}}" label="{{fk_name}}" v-model="{{table.name|snake_to_camel}}.{{column.name|replace("_id","")}}" :hint="{{fk_table}}OptionsHint" return-object persistent-hint></v-select></v-card-item>
 {%      else %}
 {% if column.kind == "int" %}{%set rules = "integer" %}{%endif%}
@@ -47,6 +41,7 @@ import {useStore} from 'pinia';
 import {useRepo} from 'pinia-orm';
 
 import LinkForm from '@/web-components/forms/links';
+import VueDatePicker from '@/web-components/pickers/date-picker.vue';
 
 
 {% for model in models %}
@@ -60,6 +55,17 @@ export default defineComponent({
   name: '{{table.name|snake_to_pascal}}Form',
   props: {
   },
+  methods:{
+    parseLinks (links) {
+      let res;
+      if( links && links.length > 0 ){
+        res = JSON.stringify(links);
+      }else{
+        res = '';
+      }
+      return res;
+    }
+  },
   components: {
     VCard,
     VCardTitle,
@@ -69,15 +75,10 @@ export default defineComponent({
     VSelect,
     VForm,
     VBtn,
+    VueDatePicker,
     LinkForm
   },
   setup() {
-
-    const loadCSV = async (path) => {
-      let csvData;
-      csvData = await d3.dsv('|',path, d3.autoType);
-      return {csvData};
-    };
 
     // set up links object
     const links = ref([]);
@@ -117,21 +118,6 @@ export default defineComponent({
     const reset{{table.name|snake_to_pascal}} = () => {
         Object.assign({{table.name|snake_to_camel}}.value, {{table.name|snake_to_camel}}Repo.make() );
     };
-
-
-    onBeforeMount( async() => {
-      // load reference data so this is available to the form
-{% for model in models %}
-      if( {{model[0] | snake_to_camel}}Repo.all().length === 0){
-          // load reference data
-          loadCSV('/data/{{model[0]}}.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            {{model[0] | snake_to_camel}}Repo.save(data.value);
-          });
-      }
-{% endfor %}
-    });
 
     return {%raw%}{{%endraw%}
 

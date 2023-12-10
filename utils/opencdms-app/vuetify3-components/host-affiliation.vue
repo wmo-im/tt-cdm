@@ -6,10 +6,10 @@
             <v-card-item><v-text-field label="id" v-model="hostAffiliation.id"  hint="Primary key for this record" persistent-hint></v-text-field></v-card-item>
             <v-card-item><v-select :items="hostOptions" item-title="name" item-value="id" label="host" v-model="hostAffiliation.host" :hint="hostOptionsHint" return-object persistent-hint></v-select></v-card-item>
             <v-card-item><v-select :items="programmeOptions" item-title="name" item-value="id" label="programme" v-model="hostAffiliation.programme" :hint="programmeOptionsHint" return-object persistent-hint></v-select></v-card-item>
-            <v-card-item><v-text-field label="valid_from" v-model="hostAffiliation.valid_from"  hint="Date from which the details for this record are valid" persistent-hint></v-text-field></v-card-item>
-            <v-card-item><v-text-field label="valid_to" v-model="hostAffiliation.valid_to"  hint="Date after which the details for this record are no longer valid" persistent-hint></v-text-field></v-card-item>
+            <v-card-item><VueDatePicker label="valid_from" v-model="hostAffiliation.valid_from"  hint="Date from which the details for this record are valid" persistent-hint></VueDatePicker></v-card-item>
+            <v-card-item><VueDatePicker label="valid_to" v-model="hostAffiliation.valid_to"  hint="Date after which the details for this record are no longer valid" persistent-hint></VueDatePicker></v-card-item>
             <v-card-item><v-text-field label="_version" v-model="hostAffiliation._version" type="number" hint="Version number of this record" persistent-hint></v-text-field></v-card-item>
-            <v-card-item><v-text-field label="_change_date" v-model="hostAffiliation._change_date"  hint="Date this record was changed" persistent-hint></v-text-field></v-card-item>
+            <v-card-item><VueDatePicker label="_change_date" v-model="hostAffiliation._change_date"  hint="Date this record was changed" persistent-hint></VueDatePicker></v-card-item>
             <v-card-item><v-select :items="userOptions" item-title="name" item-value="id" label="user" v-model="hostAffiliation._user" :hint="userOptionsHint" return-object persistent-hint></v-select></v-card-item>
             <v-card-item><v-select :items="statusOptions" item-title="name" item-value="id" label="status" v-model="hostAffiliation._status" :hint="statusOptionsHint" return-object persistent-hint></v-select></v-card-item>
             <v-card-item><v-text-field label="comments" v-model="hostAffiliation.comments"  hint="Free text comments on this record, for example description of changes made etc" persistent-hint></v-text-field></v-card-item>
@@ -28,6 +28,7 @@ import {useStore} from 'pinia';
 import {useRepo} from 'pinia-orm';
 
 import LinkForm from '@/web-components/forms/links';
+import VueDatePicker from '@/web-components/pickers/date-picker.vue';
 
 
 import Host from '@/models/Host';
@@ -42,6 +43,17 @@ export default defineComponent({
   name: 'HostAffiliationForm',
   props: {
   },
+  methods:{
+    parseLinks (links) {
+      let res;
+      if( links && links.length > 0 ){
+        res = JSON.stringify(links);
+      }else{
+        res = '';
+      }
+      return res;
+    }
+  },
   components: {
     VCard,
     VCardTitle,
@@ -51,15 +63,10 @@ export default defineComponent({
     VSelect,
     VForm,
     VBtn,
+    VueDatePicker,
     LinkForm
   },
   setup() {
-
-    const loadCSV = async (path) => {
-      let csvData;
-      csvData = await d3.dsv('|',path, d3.autoType);
-      return {csvData};
-    };
 
     // set up links object
     const links = ref([]);
@@ -136,43 +143,6 @@ export default defineComponent({
     const resetHostAffiliation = () => {
         Object.assign(hostAffiliation.value, hostAffiliationRepo.make() );
     };
-
-
-    onBeforeMount( async() => {
-      // load reference data so this is available to the form
-      if( hostRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/host.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            hostRepo.save(data.value);
-          });
-      }
-      if( programmeRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/programme.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            programmeRepo.save(data.value);
-          });
-      }
-      if( userRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/user.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            userRepo.save(data.value);
-          });
-      }
-      if( statusRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/status.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            statusRepo.save(data.value);
-          });
-      }
-    });
 
     return {
         hostAffiliation,

@@ -3,14 +3,15 @@
     <v-card-title>Create new 'ObservedProperty'</v-card-title>
     <v-card-text>
         <v-form>
-            <v-card-item><v-text-field label="id" v-model="observedProperty.id" type="number" hint="ID / primary key" persistent-hint></v-text-field></v-card-item>
-            <v-card-item><v-text-field label="short_name" v-model="observedProperty.short_name"  hint="Short name representation of observed property, e.g. 'at'" persistent-hint></v-text-field></v-card-item>
+            <v-card-item><v-text-field label="id" v-model="observedProperty.id"  hint="ID / primary key" persistent-hint></v-text-field></v-card-item>
+            <v-card-item><v-text-field label="authority" v-model="observedProperty.authority"  hint="Naming authority for code list entry" persistent-hint></v-text-field></v-card-item>
+            <v-card-item><v-text-field label="short_name" v-model="observedProperty.short_name"  hint="Short name representation of observed property, e.g. 'at' for air temperature" persistent-hint></v-text-field></v-card-item>
             <v-card-item><v-text-field label="standard_name" v-model="observedProperty.standard_name"  hint="CF standard name (if applicable), e.g. 'air_temperature'" persistent-hint></v-text-field></v-card-item>
             <v-card-item><v-text-field label="units" v-model="observedProperty.units"  hint="Canonical units, e.g. 'Kelvin'" persistent-hint></v-text-field></v-card-item>
             <v-card-item><v-text-field label="description" v-model="observedProperty.description"  hint="Description of observed property" persistent-hint></v-text-field></v-card-item>
             <v-card-item><LinkForm :links="links" @updateLinks="updateLinks" ></LinkForm></v-card-item>
             <v-card-item><v-text-field label="_version" v-model="observedProperty._version" type="number" hint="Version number of this record" persistent-hint></v-text-field></v-card-item>
-            <v-card-item><v-text-field label="_change_date" v-model="observedProperty._change_date"  hint="Date this record was changed" persistent-hint></v-text-field></v-card-item>
+            <v-card-item><VueDatePicker label="_change_date" v-model="observedProperty._change_date"  hint="Date this record was changed" persistent-hint></VueDatePicker></v-card-item>
             <v-card-item><v-select :items="userOptions" item-title="name" item-value="id" label="user" v-model="observedProperty._user" :hint="userOptionsHint" return-object persistent-hint></v-select></v-card-item>
             <v-card-item><v-select :items="statusOptions" item-title="name" item-value="id" label="status" v-model="observedProperty._status" :hint="statusOptionsHint" return-object persistent-hint></v-select></v-card-item>
             <v-card-item><v-text-field label="comments" v-model="observedProperty.comments"  hint="Free text comments on this record, for example description of changes made etc" persistent-hint></v-text-field></v-card-item>
@@ -29,6 +30,7 @@ import {useStore} from 'pinia';
 import {useRepo} from 'pinia-orm';
 
 import LinkForm from '@/web-components/forms/links';
+import VueDatePicker from '@/web-components/pickers/date-picker.vue';
 
 
 import User from '@/models/User';
@@ -41,6 +43,17 @@ export default defineComponent({
   name: 'ObservedPropertyForm',
   props: {
   },
+  methods:{
+    parseLinks (links) {
+      let res;
+      if( links && links.length > 0 ){
+        res = JSON.stringify(links);
+      }else{
+        res = '';
+      }
+      return res;
+    }
+  },
   components: {
     VCard,
     VCardTitle,
@@ -50,15 +63,10 @@ export default defineComponent({
     VSelect,
     VForm,
     VBtn,
+    VueDatePicker,
     LinkForm
   },
   setup() {
-
-    const loadCSV = async (path) => {
-      let csvData;
-      csvData = await d3.dsv('|',path, d3.autoType);
-      return {csvData};
-    };
 
     // set up links object
     const links = ref([]);
@@ -109,27 +117,6 @@ export default defineComponent({
     const resetObservedProperty = () => {
         Object.assign(observedProperty.value, observedPropertyRepo.make() );
     };
-
-
-    onBeforeMount( async() => {
-      // load reference data so this is available to the form
-      if( userRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/user.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            userRepo.save(data.value);
-          });
-      }
-      if( statusRepo.all().length === 0){
-          // load reference data
-          loadCSV('/data/status.psv').then( (result) => {
-            const data = ref(null);
-            data.value = result.csvData;
-            statusRepo.save(data.value);
-          });
-      }
-    });
 
     return {
         observedProperty,
